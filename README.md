@@ -147,7 +147,7 @@ src/
             └── GoogleSignInButton.tsx
 public/
 └── images/
-    └── hypercar-hero.png       # DESIGN.md 톤에 맞춘 비상표 히어로 이미지
+    └── business-hero.png       # DESIGN.md 톤에 맞춘 비상표 히어로 이미지
 ```
 
 ## 아키텍처 핵심 결정

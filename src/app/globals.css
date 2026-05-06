@@ -79,7 +79,7 @@ button:disabled {
 
 .hero-photo-band {
   background-color: var(--color-canvas);
-  background-image: url("/images/hypercar-hero.png");
+  background-image: url("/images/business-hero.png");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;

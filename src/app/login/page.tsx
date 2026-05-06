@@ -20,19 +20,7 @@ export default async function LoginPage({
 
   return (
     <main className="hero-photo-band flex min-h-screen flex-col bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
-      <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4 sm:px-8">
-        <span className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)]">
-          Menu
-        </span>
-        <span className="font-display text-sm uppercase tracking-[0.42em] text-[var(--color-on-dark)]">
-          My Todo
-        </span>
-        <span className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)]">
-          Login
-        </span>
-      </nav>
-
-      <div className="mx-auto grid w-full max-w-7xl flex-1 items-end gap-12 px-4 pb-16 pt-20 sm:px-8 md:grid-cols-[1fr_420px] md:pb-24">
+      <div className="mx-auto grid w-full max-w-7xl flex-1 items-end gap-12 px-4 pb-16 pt-28 sm:px-8 md:grid-cols-[1fr_420px] md:pb-24 md:pt-36">
         <section className="max-w-2xl">
           <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
             Secure access
