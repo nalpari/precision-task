@@ -32,17 +32,20 @@ export default function EmailMagicLinkForm() {
 
   if (status.kind === "sent") {
     return (
-      <p className="rounded-md bg-emerald-50 px-3 py-2 text-sm text-emerald-900 dark:bg-emerald-950/40 dark:text-emerald-200">
-        매직링크를 <span className="font-medium">{email}</span>로 보냈어요.
+      <p className="border-y border-[var(--color-success)] py-3 font-text text-base text-[var(--color-success)]">
+        매직링크를 <span className="text-[var(--color-on-dark)]">{email}</span>로 보냈어요.
         메일함을 확인하세요.
       </p>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-      <label htmlFor="email" className="text-sm font-medium">
-        이메일
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <label
+        htmlFor="email"
+        className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]"
+      >
+        Email
       </label>
       <input
         id="email"
@@ -52,17 +55,17 @@ export default function EmailMagicLinkForm() {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         placeholder="you@example.com"
-        className="h-10 rounded-md border border-zinc-300 px-3 text-sm outline-none focus:border-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:focus:border-zinc-100"
+        className="h-12 border-0 border-b border-[var(--color-hairline-strong)] bg-transparent px-0 font-text text-xl text-[var(--color-on-dark)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-on-dark)]"
       />
       <button
         type="submit"
         disabled={status.kind === "sending"}
-        className="h-10 rounded-md bg-zinc-900 text-sm font-medium text-zinc-50 transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:opacity-60 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        className="min-h-11 rounded-full border border-[var(--color-on-dark)] bg-transparent px-8 font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-on-dark)] transition-colors hover:bg-[var(--color-on-dark)] hover:text-[var(--color-canvas)] disabled:opacity-50"
       >
-        {status.kind === "sending" ? "보내는 중..." : "매직링크 보내기"}
+        {status.kind === "sending" ? "Sending" : "Send Magic Link"}
       </button>
       {status.kind === "error" && (
-        <p className="text-sm text-red-600 dark:text-red-400">
+        <p className="font-text text-base text-[var(--color-warning)]">
           {status.message}
         </p>
       )}
