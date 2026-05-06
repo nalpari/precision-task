@@ -4,40 +4,6 @@
   "graph": {
     "hyperedges": [
       {
-        "id": "auth_flow_pipeline",
-        "label": "End-to-end Auth Flow",
-        "nodes": [
-          "proxy_proxy",
-          "page_page",
-          "page_loginpage",
-          "emailmagiclinkform_emailmagiclinkform",
-          "googlesigninbutton_googlesigninbutton",
-          "route_callback_get",
-          "route_signout_post",
-          "server_createclient",
-          "client_createclient"
-        ],
-        "relation": "participate_in",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.95,
-        "source_file": "AGENTS.md"
-      },
-      {
-        "id": "todo_mutation_actions",
-        "label": "Todo Mutation Server Actions",
-        "nodes": [
-          "todos_addtodo",
-          "todos_toggletodo",
-          "todos_renametodo",
-          "todos_removetodo",
-          "todos_getuserorthrow"
-        ],
-        "relation": "implement",
-        "confidence": "EXTRACTED",
-        "confidence_score": 0.95,
-        "source_file": "src/app/_actions/todos.ts"
-      },
-      {
         "id": "bugatti_design_application",
         "label": "Bugatti Design Tokens Applied to Todo UI",
         "nodes": [
@@ -53,6 +19,52 @@
         "confidence": "INFERRED",
         "confidence_score": 0.85,
         "source_file": "DESIGN.md"
+      },
+      {
+        "id": "optimistic_mutation_flow",
+        "label": "Optimistic Mutation Flow (UI -> reducer -> Server Action -> RLS)",
+        "nodes": [
+          "todolistclient_todolistclient",
+          "todolistclient_reduce",
+          "todos_addtodo",
+          "todos_toggletodo",
+          "todos_renametodo",
+          "todos_removetodo",
+          "public_todos_table"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.9,
+        "source_file": "src/app/_components/TodoListClient.tsx"
+      },
+      {
+        "id": "reorder_fractional_position_pattern",
+        "label": "Fractional Position Reorder Pattern",
+        "nodes": [
+          "todolistclient_handledragend",
+          "todolistclient_reduce",
+          "todos_reordertodo",
+          "agents_reorderconvention",
+          "public_todos_table"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 0.95,
+        "source_file": "src/app/_actions/todos.ts"
+      },
+      {
+        "id": "auth_gate_chain",
+        "label": "Server-side Auth Gate Chain",
+        "nodes": [
+          "page_page",
+          "todos_getuserorthrow",
+          "agents_authgate",
+          "agents_datasecurity"
+        ],
+        "relation": "form",
+        "confidence": "INFERRED",
+        "confidence_score": 0.85,
+        "source_file": "AGENTS.md"
       }
     ]
   },
@@ -63,7 +75,7 @@
       "source_file": "postcss.config.mjs",
       "source_location": "L1",
       "id": "postcss_config_mjs",
-      "community": 18,
+      "community": 11,
       "norm_label": "postcss.config.mjs"
     },
     {
@@ -72,7 +84,7 @@
       "source_file": "next-env.d.ts",
       "source_location": "L1",
       "id": "next_env_d_ts",
-      "community": 19,
+      "community": 12,
       "norm_label": "next-env.d.ts"
     },
     {
@@ -81,7 +93,7 @@
       "source_file": "eslint.config.mjs",
       "source_location": "L1",
       "id": "eslint_config_mjs",
-      "community": 20,
+      "community": 13,
       "norm_label": "eslint.config.mjs"
     },
     {
@@ -90,7 +102,7 @@
       "source_file": "next.config.ts",
       "source_location": "L1",
       "id": "next_config_ts",
-      "community": 21,
+      "community": 14,
       "norm_label": "next.config.ts"
     },
     {
@@ -99,7 +111,7 @@
       "source_file": "src/proxy.ts",
       "source_location": "L1",
       "id": "src_proxy_ts",
-      "community": 14,
+      "community": 7,
       "norm_label": "proxy.ts"
     },
     {
@@ -108,7 +120,7 @@
       "source_file": "src/proxy.ts",
       "source_location": "L4",
       "id": "src_proxy_proxy",
-      "community": 14,
+      "community": 7,
       "norm_label": "proxy()"
     },
     {
@@ -117,7 +129,7 @@
       "source_file": "src/types/todo.ts",
       "source_location": "L1",
       "id": "src_types_todo_ts",
-      "community": 22,
+      "community": 15,
       "norm_label": "todo.ts"
     },
     {
@@ -126,7 +138,7 @@
       "source_file": "src/app/layout.tsx",
       "source_location": "L1",
       "id": "src_app_layout_tsx",
-      "community": 15,
+      "community": 8,
       "norm_label": "layout.tsx"
     },
     {
@@ -135,7 +147,7 @@
       "source_file": "src/app/layout.tsx",
       "source_location": "L35",
       "id": "app_layout_rootlayout",
-      "community": 15,
+      "community": 8,
       "norm_label": "rootlayout()"
     },
     {
@@ -144,7 +156,7 @@
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
       "id": "src_app_page_tsx",
-      "community": 23,
+      "community": 16,
       "norm_label": "page.tsx"
     },
     {
@@ -153,7 +165,7 @@
       "source_file": "src/app/auth/signout/route.ts",
       "source_location": "L1",
       "id": "src_app_auth_signout_route_ts",
-      "community": 3,
+      "community": 2,
       "norm_label": "route.ts"
     },
     {
@@ -162,7 +174,7 @@
       "source_file": "src/app/auth/signout/route.ts",
       "source_location": "L4",
       "id": "signout_route_post",
-      "community": 3,
+      "community": 2,
       "norm_label": "post()"
     },
     {
@@ -171,7 +183,7 @@
       "source_file": "src/app/auth/callback/route.ts",
       "source_location": "L1",
       "id": "src_app_auth_callback_route_ts",
-      "community": 3,
+      "community": 2,
       "norm_label": "route.ts"
     },
     {
@@ -180,7 +192,7 @@
       "source_file": "src/app/auth/callback/route.ts",
       "source_location": "L4",
       "id": "callback_route_get",
-      "community": 3,
+      "community": 2,
       "norm_label": "get()"
     },
     {
@@ -189,7 +201,7 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L1",
       "id": "src_app_actions_todos_ts",
-      "community": 6,
+      "community": 2,
       "norm_label": "todos.ts"
     },
     {
@@ -198,7 +210,7 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L6",
       "id": "actions_todos_getuserorthrow",
-      "community": 6,
+      "community": 2,
       "norm_label": "getuserorthrow()"
     },
     {
@@ -207,7 +219,7 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L15",
       "id": "actions_todos_addtodo",
-      "community": 6,
+      "community": 2,
       "norm_label": "addtodo()"
     },
     {
@@ -216,7 +228,7 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L28",
       "id": "actions_todos_toggletodo",
-      "community": 6,
+      "community": 2,
       "norm_label": "toggletodo()"
     },
     {
@@ -225,7 +237,7 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L38",
       "id": "actions_todos_renametodo",
-      "community": 6,
+      "community": 2,
       "norm_label": "renametodo()"
     },
     {
@@ -234,8 +246,17 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L55",
       "id": "actions_todos_removetodo",
-      "community": 6,
+      "community": 2,
       "norm_label": "removetodo()"
+    },
+    {
+      "label": "reorderTodo()",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L65",
+      "id": "actions_todos_reordertodo",
+      "community": 2,
+      "norm_label": "reordertodo()"
     },
     {
       "label": "TodoInput.tsx",
@@ -243,7 +264,7 @@
       "source_file": "src/app/_components/TodoInput.tsx",
       "source_location": "L1",
       "id": "src_app_components_todoinput_tsx",
-      "community": 16,
+      "community": 9,
       "norm_label": "todoinput.tsx"
     },
     {
@@ -252,7 +273,7 @@
       "source_file": "src/app/_components/TodoInput.tsx",
       "source_location": "L13",
       "id": "components_todoinput_submit",
-      "community": 16,
+      "community": 9,
       "norm_label": "submit()"
     },
     {
@@ -268,7 +289,7 @@
       "label": "subscribeNoop()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L12",
+      "source_location": "L27",
       "id": "components_todolistclient_subscribenoop",
       "community": 4,
       "norm_label": "subscribenoop()"
@@ -277,7 +298,7 @@
       "label": "reduce()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L29",
+      "source_location": "L46",
       "id": "components_todolistclient_reduce",
       "community": 4,
       "norm_label": "reduce()"
@@ -286,7 +307,7 @@
       "label": "handleAdd()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L114",
+      "source_location": "L150",
       "id": "components_todolistclient_handleadd",
       "community": 4,
       "norm_label": "handleadd()"
@@ -295,7 +316,7 @@
       "label": "handleToggle()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L133",
+      "source_location": "L171",
       "id": "components_todolistclient_handletoggle",
       "community": 4,
       "norm_label": "handletoggle()"
@@ -304,7 +325,7 @@
       "label": "handleRename()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L140",
+      "source_location": "L178",
       "id": "components_todolistclient_handlerename",
       "community": 4,
       "norm_label": "handlerename()"
@@ -313,10 +334,19 @@
       "label": "handleRemove()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L147",
+      "source_location": "L185",
       "id": "components_todolistclient_handleremove",
       "community": 4,
       "norm_label": "handleremove()"
+    },
+    {
+      "label": "handleDragEnd()",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L197",
+      "id": "components_todolistclient_handledragend",
+      "community": 4,
+      "norm_label": "handledragend()"
     },
     {
       "label": "TodoItem.tsx",
@@ -324,34 +354,34 @@
       "source_file": "src/app/_components/TodoItem.tsx",
       "source_location": "L1",
       "id": "src_app_components_todoitem_tsx",
-      "community": 9,
+      "community": 5,
       "norm_label": "todoitem.tsx"
     },
     {
       "label": "commit()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L28",
+      "source_location": "L32",
       "id": "components_todoitem_commit",
-      "community": 9,
+      "community": 5,
       "norm_label": "commit()"
     },
     {
       "label": "cancel()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L42",
+      "source_location": "L46",
       "id": "components_todoitem_cancel",
-      "community": 9,
+      "community": 5,
       "norm_label": "cancel()"
     },
     {
       "label": "beginEdit()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L47",
+      "source_location": "L51",
       "id": "components_todoitem_beginedit",
-      "community": 9,
+      "community": 5,
       "norm_label": "beginedit()"
     },
     {
@@ -360,7 +390,7 @@
       "source_file": "src/app/_components/FilterTabs.tsx",
       "source_location": "L1",
       "id": "src_app_components_filtertabs_tsx",
-      "community": 24,
+      "community": 17,
       "norm_label": "filtertabs.tsx"
     },
     {
@@ -369,7 +399,7 @@
       "source_file": "src/app/_components/login/EmailMagicLinkForm.tsx",
       "source_location": "L1",
       "id": "src_app_components_login_emailmagiclinkform_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "emailmagiclinkform.tsx"
     },
     {
@@ -378,7 +408,7 @@
       "source_file": "src/app/_components/login/EmailMagicLinkForm.tsx",
       "source_location": "L16",
       "id": "login_emailmagiclinkform_handlesubmit",
-      "community": 3,
+      "community": 2,
       "norm_label": "handlesubmit()"
     },
     {
@@ -387,7 +417,7 @@
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
       "source_location": "L1",
       "id": "src_app_components_login_googlesigninbutton_tsx",
-      "community": 11,
+      "community": 6,
       "norm_label": "googlesigninbutton.tsx"
     },
     {
@@ -396,7 +426,7 @@
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
       "source_location": "L6",
       "id": "login_googlesigninbutton_googlesigninbutton",
-      "community": 11,
+      "community": 6,
       "norm_label": "googlesigninbutton()"
     },
     {
@@ -405,7 +435,7 @@
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
       "source_location": "L45",
       "id": "login_googlesigninbutton_googlemark",
-      "community": 11,
+      "community": 6,
       "norm_label": "googlemark()"
     },
     {
@@ -414,7 +444,7 @@
       "source_file": "src/app/login/page.tsx",
       "source_location": "L1",
       "id": "src_app_login_page_tsx",
-      "community": 25,
+      "community": 18,
       "norm_label": "page.tsx"
     },
     {
@@ -423,7 +453,7 @@
       "source_file": "src/lib/supabase/client.ts",
       "source_location": "L1",
       "id": "src_lib_supabase_client_ts",
-      "community": 17,
+      "community": 10,
       "norm_label": "client.ts"
     },
     {
@@ -432,7 +462,7 @@
       "source_file": "src/lib/supabase/client.ts",
       "source_location": "L3",
       "id": "supabase_client_createclient",
-      "community": 17,
+      "community": 10,
       "norm_label": "createclient()"
     },
     {
@@ -441,7 +471,7 @@
       "source_file": "src/lib/supabase/server.ts",
       "source_location": "L1",
       "id": "src_lib_supabase_server_ts",
-      "community": 3,
+      "community": 2,
       "norm_label": "server.ts"
     },
     {
@@ -450,7 +480,7 @@
       "source_file": "src/lib/supabase/server.ts",
       "source_location": "L4",
       "id": "supabase_server_createclient",
-      "community": 3,
+      "community": 2,
       "norm_label": "createclient()"
     },
     {
@@ -463,7 +493,7 @@
       "author": null,
       "contributor": null,
       "id": "postcss_config",
-      "community": 26,
+      "community": 19,
       "norm_label": "postcss config (tailwind v4)"
     },
     {
@@ -476,7 +506,7 @@
       "author": null,
       "contributor": null,
       "id": "next_env_dts",
-      "community": 27,
+      "community": 20,
       "norm_label": "next.js type references"
     },
     {
@@ -489,7 +519,7 @@
       "author": null,
       "contributor": null,
       "id": "eslint_config",
-      "community": 28,
+      "community": 21,
       "norm_label": "eslint config"
     },
     {
@@ -502,7 +532,7 @@
       "author": null,
       "contributor": null,
       "id": "next_config_reactcompiler",
-      "community": 29,
+      "community": 22,
       "norm_label": "next.js config (reactcompiler enabled)"
     },
     {
@@ -515,7 +545,7 @@
       "author": null,
       "contributor": null,
       "id": "proxy_proxy",
-      "community": 7,
+      "community": 23,
       "norm_label": "proxy() \u2014 token refresh proxy"
     },
     {
@@ -528,34 +558,8 @@
       "author": null,
       "contributor": null,
       "id": "proxy_config",
-      "community": 30,
+      "community": 24,
       "norm_label": "proxy matcher config"
-    },
-    {
-      "label": "Todo type",
-      "file_type": "code",
-      "source_file": "src/types/todo.ts",
-      "source_location": "L1-L8",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todo_todo_type",
-      "community": 0,
-      "norm_label": "todo type"
-    },
-    {
-      "label": "TodoFilter type (all|active|completed)",
-      "file_type": "code",
-      "source_file": "src/types/todo.ts",
-      "source_location": "L10",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todo_todofilter_type",
-      "community": 0,
-      "norm_label": "todofilter type (all|active|completed)"
     },
     {
       "label": "RootLayout (fonts + html shell)",
@@ -567,21 +571,8 @@
       "author": null,
       "contributor": null,
       "id": "layout_rootlayout",
-      "community": 5,
+      "community": 1,
       "norm_label": "rootlayout (fonts + html shell)"
-    },
-    {
-      "label": "Page (protected todo home)",
-      "file_type": "code",
-      "source_file": "src/app/page.tsx",
-      "source_location": "L6-L26",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "page_page",
-      "community": 0,
-      "norm_label": "page (protected todo home)"
     },
     {
       "label": "signout POST handler",
@@ -593,7 +584,7 @@
       "author": null,
       "contributor": null,
       "id": "route_signout_post",
-      "community": 2,
+      "community": 1,
       "norm_label": "signout post handler"
     },
     {
@@ -606,73 +597,8 @@
       "author": null,
       "contributor": null,
       "id": "route_callback_get",
-      "community": 2,
+      "community": 1,
       "norm_label": "auth callback get handler"
-    },
-    {
-      "label": "getUserOrThrow",
-      "file_type": "code",
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L6-L13",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todos_getuserorthrow",
-      "community": 0,
-      "norm_label": "getuserorthrow"
-    },
-    {
-      "label": "addTodo server action",
-      "file_type": "code",
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L15-L26",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todos_addtodo",
-      "community": 0,
-      "norm_label": "addtodo server action"
-    },
-    {
-      "label": "toggleTodo server action",
-      "file_type": "code",
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L28-L36",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todos_toggletodo",
-      "community": 0,
-      "norm_label": "toggletodo server action"
-    },
-    {
-      "label": "renameTodo server action",
-      "file_type": "code",
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L38-L53",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todos_renametodo",
-      "community": 0,
-      "norm_label": "renametodo server action"
-    },
-    {
-      "label": "removeTodo server action",
-      "file_type": "code",
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L55-L60",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todos_removetodo",
-      "community": 0,
-      "norm_label": "removetodo server action"
     },
     {
       "label": "TodoInput component",
@@ -684,73 +610,8 @@
       "author": null,
       "contributor": null,
       "id": "todoinput_todoinput",
-      "community": 2,
+      "community": 1,
       "norm_label": "todoinput component"
-    },
-    {
-      "label": "TodoListClient component",
-      "file_type": "code",
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L46-L246",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todolistclient_todolistclient",
-      "community": 0,
-      "norm_label": "todolistclient component"
-    },
-    {
-      "label": "reduce (optimistic state reducer)",
-      "file_type": "code",
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L29-L44",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todolistclient_reduce",
-      "community": 0,
-      "norm_label": "reduce (optimistic state reducer)"
-    },
-    {
-      "label": "dayKey",
-      "file_type": "code",
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L261-L266",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todolistclient_daykey",
-      "community": 0,
-      "norm_label": "daykey"
-    },
-    {
-      "label": "SpecCell",
-      "file_type": "code",
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L248-L259",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todolistclient_speccell",
-      "community": 5,
-      "norm_label": "speccell"
-    },
-    {
-      "label": "TodoItem (inline edit)",
-      "file_type": "code",
-      "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L6-L125",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "todoitem_todoitem",
-      "community": 0,
-      "norm_label": "todoitem (inline edit)"
     },
     {
       "label": "FilterTabs",
@@ -762,7 +623,7 @@
       "author": null,
       "contributor": null,
       "id": "filtertabs_filtertabs",
-      "community": 0,
+      "community": 25,
       "norm_label": "filtertabs"
     },
     {
@@ -775,7 +636,7 @@
       "author": null,
       "contributor": null,
       "id": "emailmagiclinkform_emailmagiclinkform",
-      "community": 2,
+      "community": 1,
       "norm_label": "emailmagiclinkform"
     },
     {
@@ -788,7 +649,7 @@
       "author": null,
       "contributor": null,
       "id": "googlesigninbutton_googlesigninbutton",
-      "community": 2,
+      "community": 1,
       "norm_label": "googlesigninbutton"
     },
     {
@@ -801,7 +662,7 @@
       "author": null,
       "contributor": null,
       "id": "page_loginpage",
-      "community": 2,
+      "community": 1,
       "norm_label": "loginpage"
     },
     {
@@ -814,7 +675,7 @@
       "author": null,
       "contributor": null,
       "id": "client_createclient",
-      "community": 2,
+      "community": 1,
       "norm_label": "browser createclient (supabase)"
     },
     {
@@ -827,7 +688,7 @@
       "author": null,
       "contributor": null,
       "id": "server_createclient",
-      "community": 2,
+      "community": 1,
       "norm_label": "server createclient (supabase, cookies)"
     },
     {
@@ -840,7 +701,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_my_todo",
-      "community": 5,
+      "community": 1,
       "norm_label": "my todo (readme overview)"
     },
     {
@@ -853,7 +714,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_db_schema_todos",
-      "community": 0,
+      "community": 26,
       "norm_label": "public.todos schema + rls policies"
     },
     {
@@ -866,7 +727,7 @@
       "author": null,
       "contributor": null,
       "id": "readme_auth_gate_decision",
-      "community": 0,
+      "community": 27,
       "norm_label": "auth gate in server component (not proxy)"
     },
     {
@@ -879,7 +740,7 @@
       "author": null,
       "contributor": null,
       "id": "design_bugatti_system",
-      "community": 5,
+      "community": 1,
       "norm_label": "bugatti austere luxury design system"
     },
     {
@@ -892,7 +753,7 @@
       "author": null,
       "contributor": null,
       "id": "design_typography_trinity",
-      "community": 5,
+      "community": 1,
       "norm_label": "bugatti typography trinity (display/text/mono)"
     },
     {
@@ -905,7 +766,7 @@
       "author": null,
       "contributor": null,
       "id": "design_pill_button",
-      "community": 2,
+      "community": 1,
       "norm_label": "button-primary (transparent pill, white outline)"
     },
     {
@@ -918,7 +779,7 @@
       "author": null,
       "contributor": null,
       "id": "design_hero_photo_band",
-      "community": 5,
+      "community": 1,
       "norm_label": "hero-photo-band component"
     },
     {
@@ -931,7 +792,7 @@
       "author": null,
       "contributor": null,
       "id": "design_spec_cell",
-      "community": 5,
+      "community": 1,
       "norm_label": "spec-cell component"
     },
     {
@@ -944,73 +805,8 @@
       "author": null,
       "contributor": null,
       "id": "design_text_input",
-      "community": 2,
+      "community": 1,
       "norm_label": "text-input (transparent, hairline underline)"
-    },
-    {
-      "label": "Project Agents Rules",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "agents_md_project_rules",
-      "community": 7,
-      "norm_label": "project agents rules"
-    },
-    {
-      "label": "Architecture Conventions Table",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L20-L32",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "agents_architecture_conventions",
-      "community": 2,
-      "norm_label": "architecture conventions table"
-    },
-    {
-      "label": "Auth Flow (5-step)",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L34-L41",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "agents_auth_flow",
-      "community": 7,
-      "norm_label": "auth flow (5-step)"
-    },
-    {
-      "label": "Data Security (RLS + getUserOrThrow)",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L42-L46",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "agents_data_security",
-      "community": 7,
-      "norm_label": "data security (rls + getuserorthrow)"
-    },
-    {
-      "label": "Git Commit Message Convention",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L54-L93",
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "agents_commit_convention",
-      "community": 7,
-      "norm_label": "git commit message convention"
     },
     {
       "label": "CLAUDE.md (delegates to AGENTS.md)",
@@ -1022,7 +818,7 @@
       "author": null,
       "contributor": null,
       "id": "claude_md_pointer",
-      "community": 7,
+      "community": 28,
       "norm_label": "claude.md (delegates to agents.md)"
     },
     {
@@ -1035,277 +831,476 @@
       "author": null,
       "contributor": null,
       "id": "file_svg_icon",
-      "community": 31,
+      "community": 29,
       "norm_label": "file icon"
     },
     {
-      "type": "file",
-      "label": "public/vercel.svg",
-      "path": "/Users/devgrr/dev/devgrr/my-todo/public/vercel.svg",
-      "summary": "Vercel \ub85c\uace0 SVG \ud30c\uc77c. \ud770\uc0c9 \uc0bc\uac01\ud615 (triangle/wedge) \ub9c8\ud06c\ub85c \uad6c\uc131\ub41c Vercel \ube0c\ub79c\ub4dc \uc2ec\ubcfc. Next.js \ud504\ub85c\uc81d\ud2b8\uc758 \uae30\ubcf8 public \uc790\uc0b0 \uc911 \ud558\ub098.",
-      "confidence": "EXTRACTED",
-      "id": "vercel_svg",
-      "community": 12,
-      "norm_label": "public/vercel.svg"
+      "label": "Todo type",
+      "file_type": "code",
+      "source_file": "src/types/todo.ts",
+      "source_location": "L1-9",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todo_todo",
+      "community": 3,
+      "norm_label": "todo type"
     },
     {
-      "type": "brand",
-      "label": "Vercel",
-      "summary": "Next.js\ub97c \ub9cc\ub4e0 \ud074\ub77c\uc6b0\ub4dc \ud50c\ub7ab\ud3fc \ud68c\uc0ac. \uc774 \ud504\ub85c\uc81d\ud2b8\ub294 Next.js 16.2.4 App Router \uae30\ubc18\uc73c\ub85c, vercel.svg\ub294 Next.js create-app \ud15c\ud50c\ub9bf\uc758 \uae30\ubcf8 \ube0c\ub79c\ub4dc \uc790\uc0b0.",
-      "confidence": "INFERRED",
-      "id": "vercel_brand",
-      "community": 12,
-      "norm_label": "vercel"
+      "label": "TodoFilter type",
+      "file_type": "code",
+      "source_file": "src/types/todo.ts",
+      "source_location": "L11",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todo_todofilter",
+      "community": 3,
+      "norm_label": "todofilter type"
     },
     {
-      "type": "directory",
-      "label": "public/",
-      "path": "/Users/devgrr/dev/devgrr/my-todo/public",
-      "summary": "Next.js \uc815\uc801 \uc790\uc0b0 \ub514\ub809\ud130\ub9ac. \ub8e8\ud2b8 URL\uc5d0\uc11c \uc9c1\uc811 \uc11c\ube59\ub418\ub294 SVG/\uc774\ubbf8\uc9c0 \ud30c\uc77c \ubcf4\uad00.",
-      "confidence": "INFERRED",
-      "id": "public_assets",
-      "community": 12,
-      "norm_label": "public/"
+      "label": "Page (Server Component)",
+      "file_type": "code",
+      "source_file": "src/app/page.tsx",
+      "source_location": "L6-26",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_page",
+      "community": 3,
+      "norm_label": "page (server component)"
     },
     {
-      "type": "asset",
-      "label": "next.svg",
-      "path": "/Users/devgrr/dev/devgrr/my-todo/public/next.svg",
-      "description": "Next.js wordmark logo SVG. Vector graphic spelling 'next' in black, on transparent background. Standard branding asset shipped with Next.js starter templates, located in the public/ directory and served as a static asset.",
-      "format": "svg",
-      "kind": "brand_logo",
-      "id": "asset_next_svg",
-      "community": 13,
-      "norm_label": "next.svg"
+      "label": "getUserOrThrow",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L6-13",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todos_getuserorthrow",
+      "community": 0,
+      "norm_label": "getuserorthrow"
     },
     {
-      "type": "brand",
-      "label": "Next.js",
-      "description": "Next.js \u2014 React framework by Vercel. In this project Next.js 16.2.4 is used (App Router, Turbopack) per AGENTS.md.",
-      "role": "framework",
-      "id": "brand_nextjs",
-      "community": 13,
-      "norm_label": "next.js"
+      "label": "addTodo Server Action",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L15-26",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todos_addtodo",
+      "community": 0,
+      "norm_label": "addtodo server action"
     },
     {
-      "type": "directory",
-      "label": "public/",
-      "path": "/Users/devgrr/dev/devgrr/my-todo/public",
-      "description": "Next.js public/ directory. Files here are served as static assets at the site root.",
-      "id": "dir_public",
-      "community": 13,
-      "norm_label": "public/"
+      "label": "toggleTodo Server Action",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L28-36",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todos_toggletodo",
+      "community": 0,
+      "norm_label": "toggletodo server action"
     },
     {
-      "label": "globe.svg",
-      "type": "asset",
-      "description": "Static SVG asset located at public/globe.svg, 16x16 viewBox, monochrome (#666 fill) globe icon depicting Earth with longitude/latitude meridians.",
-      "id": "globe_svg",
-      "community": 10,
-      "norm_label": "globe.svg"
+      "label": "renameTodo Server Action",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L38-53",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todos_renametodo",
+      "community": 0,
+      "norm_label": "renametodo server action"
     },
     {
-      "label": "Globe Icon",
-      "type": "icon",
-      "description": "Vector glyph representing a globe / Earth with curved meridian and parallel lines inside a circular outline. Common UI usage: language/locale switcher, internationalization indicator, web/world link, or geography-related action.",
-      "id": "globe_icon_glyph",
-      "community": 10,
-      "norm_label": "globe icon"
+      "label": "removeTodo Server Action",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L55-60",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todos_removetodo",
+      "community": 0,
+      "norm_label": "removetodo server action"
     },
     {
-      "label": "Likely Purpose: i18n / Web Link",
-      "type": "ui_purpose",
-      "description": "Inferred UI purpose - typically used for language selector, locale toggle, public/world visibility, or external web/site link. AMBIGUOUS without surrounding context.",
-      "id": "icon_purpose_i18n_or_web",
-      "community": 10,
-      "norm_label": "likely purpose: i18n / web link"
+      "label": "reorderTodo Server Action",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L65-104",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todos_reordertodo",
+      "community": 0,
+      "norm_label": "reordertodo server action"
     },
     {
-      "label": "public/",
-      "type": "directory",
-      "description": "Next.js public directory that serves static files at the site root.",
-      "id": "public_assets_dir",
-      "community": 10,
-      "norm_label": "public/"
+      "label": "TodoListClient",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L82-323",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_todolistclient",
+      "community": 3,
+      "norm_label": "todolistclient"
     },
     {
-      "type": "asset",
-      "label": "window.svg",
-      "path": "/Users/devgrr/dev/devgrr/my-todo/public/window.svg",
-      "format": "svg",
-      "viewbox": "0 0 16 16",
-      "fill": "#666",
-      "confidence": "EXTRACTED",
-      "id": "asset_window_svg",
-      "community": 8,
-      "norm_label": "window.svg"
+      "label": "reduce (optimistic reducer)",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L46-80",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_reduce",
+      "community": 0,
+      "norm_label": "reduce (optimistic reducer)"
     },
     {
-      "type": "icon",
-      "label": "Window / Application Window Icon",
-      "description": "16x16 SVG glyph depicting a window or application frame: an outer rounded rectangle with a top title bar containing three small dots representing macOS-style traffic-light controls",
-      "ui_purpose": "Represents an application window, browser/desktop UI, or 'open in window' action; commonly used as a generic placeholder icon in Next.js public assets",
-      "confidence": "INFERRED",
-      "id": "icon_window",
-      "community": 8,
-      "norm_label": "window / application window icon"
+      "label": "handleAdd",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L150-169",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_handleadd",
+      "community": 0,
+      "norm_label": "handleadd"
     },
     {
-      "type": "shape",
-      "label": "Window outer frame",
-      "description": "Rounded rectangle outline forming the window border (path with evenodd fill rule combining outer and inner rectangles)",
-      "confidence": "EXTRACTED",
-      "id": "shape_window_frame",
-      "community": 8,
-      "norm_label": "window outer frame"
+      "label": "handleToggle",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L171-176",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_handletoggle",
+      "community": 0,
+      "norm_label": "handletoggle"
     },
     {
-      "type": "shape",
-      "label": "Three title bar dots",
-      "description": "Three small circles (radius 0.75) along the top of the window representing window controls (close/minimize/maximize)",
-      "count": 3,
-      "confidence": "INFERRED",
-      "id": "shape_titlebar_dots",
-      "community": 8,
-      "norm_label": "three title bar dots"
+      "label": "handleRename",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L178-183",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_handlerename",
+      "community": 0,
+      "norm_label": "handlerename"
     },
     {
-      "type": "context",
-      "label": "Next.js default public asset",
-      "description": "window.svg ships as part of the Next.js create-next-app starter template's /public directory",
-      "confidence": "INFERRED",
-      "id": "asset_origin_nextjs_template",
-      "community": 8,
-      "norm_label": "next.js default public asset"
+      "label": "handleRemove",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L185-190",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_handleremove",
+      "community": 0,
+      "norm_label": "handleremove"
     },
     {
-      "label": "business-hero.png",
-      "type": "asset",
-      "properties": {
-        "path": "/Users/devgrr/dev/devgrr/my-todo/public/images/business-hero.png",
-        "format": "PNG",
-        "purpose": "hero image"
-      },
+      "label": "handleDragEnd",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L197-218",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_handledragend",
+      "community": 0,
+      "norm_label": "handledragend"
+    },
+    {
+      "label": "dayKey helper",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L338-343",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_daykey",
+      "community": 3,
+      "norm_label": "daykey helper"
+    },
+    {
+      "label": "SpecCell subcomponent",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L325-336",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todolistclient_speccell",
+      "community": 3,
+      "norm_label": "speccell subcomponent"
+    },
+    {
+      "label": "TodoItem",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L8-148",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todoitem_todoitem",
+      "community": 0,
+      "norm_label": "todoitem"
+    },
+    {
+      "label": "TodoItem commit (inline edit)",
+      "file_type": "code",
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L32-44",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "todoitem_commit",
+      "community": 0,
+      "norm_label": "todoitem commit (inline edit)"
+    },
+    {
+      "label": "Auth Flow Convention",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L34-40",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agents_authflow",
+      "community": 3,
+      "norm_label": "auth flow convention"
+    },
+    {
+      "label": "Data Security / RLS Convention",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L42-46",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agents_datasecurity",
+      "community": 0,
+      "norm_label": "data security / rls convention"
+    },
+    {
+      "label": "Todo Reorder / Position Convention",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L48-54",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agents_reorderconvention",
+      "community": 0,
+      "norm_label": "todo reorder / position convention"
+    },
+    {
+      "label": "Client State Convention (useOptimistic + Server Action)",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L59",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agents_clientstate",
+      "community": 3,
+      "norm_label": "client state convention (useoptimistic + server action)"
+    },
+    {
+      "label": "Auth Gate at page.tsx Convention",
+      "file_type": "document",
+      "source_file": "AGENTS.md",
+      "source_location": "L31",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "agents_authgate",
+      "community": 3,
+      "norm_label": "auth gate at page.tsx convention"
+    },
+    {
+      "label": "public.todos table",
+      "file_type": "code",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "public_todos_table",
+      "community": 0,
+      "norm_label": "public.todos table"
+    },
+    {
+      "label": "Vercel Logo (Triangle Mark)",
+      "file_type": "image",
+      "source_file": "public/vercel.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "vercel_logo",
+      "community": 30,
+      "norm_label": "vercel logo (triangle mark)"
+    },
+    {
+      "label": "Next.js Wordmark Logo (SVG)",
+      "file_type": "image",
+      "source_file": "public/next.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "next_logo_svg",
+      "community": 31,
+      "norm_label": "next.js wordmark logo (svg)"
+    },
+    {
+      "label": "Globe Icon (globe.svg)",
+      "file_type": "image",
+      "source_file": "public/globe.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "globe_icon",
+      "community": 32,
+      "norm_label": "globe icon (globe.svg)"
+    },
+    {
+      "label": "Window Icon (browser/window UI glyph)",
+      "file_type": "image",
+      "source_file": "public/window.svg",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "window_icon",
+      "community": 33,
+      "norm_label": "window icon (browser/window ui glyph)"
+    },
+    {
+      "label": "Business Hero Image - Modern Executive Office at Night",
+      "file_type": "image",
+      "source_file": "public/images/business-hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
       "id": "business_hero_image",
-      "community": 1,
-      "norm_label": "business-hero.png"
+      "community": 34,
+      "norm_label": "business hero image - modern executive office at night"
     },
     {
-      "label": "Executive Office Night Skyline",
-      "type": "visual_concept",
-      "properties": {
-        "description": "Dark, moody executive office interior at night with floor-to-ceiling windows revealing an illuminated city skyline. A sleek desk with hidden under-glow LED lighting and an ergonomic executive chair occupy the foreground."
-      },
-      "id": "hero_visual_concept",
-      "community": 1,
-      "norm_label": "executive office night skyline"
+      "label": "Subject: Minimalist executive office interior with sleek dark desk, ergonomic leather chair, and floor-to-ceiling windows overlooking a city skyline at night",
+      "file_type": "image",
+      "source_file": "public/images/business-hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "hero_subject_executive_office",
+      "community": 35,
+      "norm_label": "subject: minimalist executive office interior with sleek dark desk, ergonomic leather chair, and floor-to-ceiling windows overlooking a city skyline at night"
     },
     {
-      "label": "Cinematic Wide Composition",
-      "type": "layout",
-      "properties": {
-        "aspect": "wide / landscape",
-        "framing": "wide-angle interior shot",
-        "focal_point": "desk and city skyline through window",
-        "negative_space": "left side dark wall area suitable for headline/CTA overlay"
-      },
-      "id": "hero_layout",
-      "community": 1,
-      "norm_label": "cinematic wide composition"
+      "label": "Mood: Premium, sophisticated, focused, and calm - conveying productivity, professionalism, and quiet ambition through dark cinematic lighting",
+      "file_type": "image",
+      "source_file": "public/images/business-hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "hero_mood_premium_focused",
+      "community": 36,
+      "norm_label": "mood: premium, sophisticated, focused, and calm - conveying productivity, professionalism, and quiet ambition through dark cinematic lighting"
     },
     {
-      "label": "Dark Luxe Cinematic Style",
-      "type": "visual_style",
-      "properties": {
-        "mood": "premium, serious, ambitious, nocturnal",
-        "palette": "near-black, charcoal, cool blue city lights, subtle warm LED accent",
-        "lighting": "low-key, ambient under-desk LED glow, distant city lights",
-        "rendering": "photo-realistic 3D / architectural visualization"
-      },
-      "id": "hero_visual_style",
-      "community": 1,
-      "norm_label": "dark luxe cinematic style"
+      "label": "Color Palette: Dark monochrome with deep blacks, charcoal grays, and subtle warm accent lighting (under-desk LED glow) plus distant city light bokeh",
+      "file_type": "image",
+      "source_file": "public/images/business-hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "hero_palette_dark_monochrome",
+      "community": 37,
+      "norm_label": "color palette: dark monochrome with deep blacks, charcoal grays, and subtle warm accent lighting (under-desk led glow) plus distant city light bokeh"
     },
     {
-      "label": "Floor-to-Ceiling Window",
-      "type": "visual_element",
-      "properties": {
-        "role": "shows night cityscape, conveys high-floor executive setting"
-      },
-      "id": "hero_element_window",
-      "community": 1,
-      "norm_label": "floor-to-ceiling window"
+      "label": "Design Intent: Hero image for a landing page targeting professionals - signals serious business productivity tool, late-night focus, and high-end lifestyle aesthetic suitable for a todo/work-management product",
+      "file_type": "image",
+      "source_file": "public/images/business-hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "hero_design_intent_landing_page",
+      "community": 38,
+      "norm_label": "design intent: hero image for a landing page targeting professionals - signals serious business productivity tool, late-night focus, and high-end lifestyle aesthetic suitable for a todo/work-management product"
     },
     {
-      "label": "Modern Executive Desk",
-      "type": "visual_element",
-      "properties": {
-        "role": "central object, suggests work/productivity",
-        "feature": "hidden LED under-glow"
-      },
-      "id": "hero_element_desk",
-      "community": 1,
-      "norm_label": "modern executive desk"
-    },
-    {
-      "label": "Executive Office Chair",
-      "type": "visual_element",
-      "properties": {
-        "role": "implies the user/decision-maker"
-      },
-      "id": "hero_element_chair",
-      "community": 1,
-      "norm_label": "executive office chair"
-    },
-    {
-      "label": "Night City Skyline",
-      "type": "visual_element",
-      "properties": {
-        "role": "ambition, scale, business-class context"
-      },
-      "id": "hero_element_skyline",
-      "community": 1,
-      "norm_label": "night city skyline"
-    },
-    {
-      "label": "Professional / Executive Users",
-      "type": "audience",
-      "properties": {
-        "description": "Busy professionals, managers, founders who value productivity tools with a premium, focused aesthetic"
-      },
-      "id": "hero_target_audience",
-      "community": 1,
-      "norm_label": "professional / executive users"
-    },
-    {
-      "label": "Premium Productivity Branding",
-      "type": "design_intent",
-      "properties": {
-        "description": "Position the todo app as a serious, premium productivity tool aligned with the Bugatti-style design system: dark mode, luxury, late-night focus."
-      },
-      "id": "hero_design_intent",
-      "community": 1,
-      "norm_label": "premium productivity branding"
-    },
-    {
-      "label": "Bugatti Design System",
-      "type": "design_system",
-      "properties": {
-        "note": "Project-level dark, luxury aesthetic referenced in repo docs"
-      },
-      "id": "bugatti_design_system",
-      "community": 1,
-      "norm_label": "bugatti design system"
-    },
-    {
-      "label": "my-todo App",
-      "type": "project",
-      "properties": {
-        "stack": "Next.js 16, React 19, Tailwind v4, Supabase"
-      },
-      "id": "my_todo_app",
-      "community": 1,
-      "norm_label": "my-todo app"
+      "label": "Composition: Wide cinematic framing with desk on the right, illuminated cityscape visible through large window panels, strong horizontal lines and negative space on the left for text overlay",
+      "file_type": "image",
+      "source_file": "public/images/business-hero.png",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "hero_composition_cityscape_window",
+      "community": 39,
+      "norm_label": "composition: wide cinematic framing with desk on the right, illuminated cityscape visible through large window panels, strong horizontal lines and negative space on the left for text overlay"
     }
   ],
   "links": [
@@ -1442,6 +1437,18 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "src_app_actions_todos_ts",
+      "_tgt": "actions_todos_reordertodo",
+      "source": "src_app_actions_todos_ts",
+      "target": "actions_todos_reordertodo",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_actions/todos.ts",
@@ -1491,6 +1498,18 @@
     },
     {
       "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "actions_todos_reordertodo",
+      "_tgt": "actions_todos_getuserorthrow",
+      "source": "actions_todos_getuserorthrow",
+      "target": "actions_todos_reordertodo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/app/_actions/todos.ts",
@@ -1529,7 +1548,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L12",
+      "source_location": "L27",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_subscribenoop",
@@ -1541,7 +1560,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L29",
+      "source_location": "L46",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_reduce",
@@ -1553,7 +1572,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L114",
+      "source_location": "L150",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handleadd",
@@ -1565,7 +1584,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L133",
+      "source_location": "L171",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handletoggle",
@@ -1577,7 +1596,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L140",
+      "source_location": "L178",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handlerename",
@@ -1589,7 +1608,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L147",
+      "source_location": "L185",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handleremove",
@@ -1600,8 +1619,20 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L197",
+      "weight": 1.0,
+      "_src": "src_app_components_todolistclient_tsx",
+      "_tgt": "components_todolistclient_handledragend",
+      "source": "src_app_components_todolistclient_tsx",
+      "target": "components_todolistclient_handledragend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L28",
+      "source_location": "L32",
       "weight": 1.0,
       "_src": "src_app_components_todoitem_tsx",
       "_tgt": "components_todoitem_commit",
@@ -1613,7 +1644,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L42",
+      "source_location": "L46",
       "weight": 1.0,
       "_src": "src_app_components_todoitem_tsx",
       "_tgt": "components_todoitem_cancel",
@@ -1625,7 +1656,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L47",
+      "source_location": "L51",
       "weight": 1.0,
       "_src": "src_app_components_todoitem_tsx",
       "_tgt": "components_todoitem_beginedit",
@@ -1709,150 +1740,6 @@
       "relation": "implements",
       "confidence": "INFERRED",
       "confidence_score": 0.85,
-      "source_file": "src/proxy.ts",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_src": "proxy_proxy",
-      "_tgt": "agents_auth_flow",
-      "source": "proxy_proxy",
-      "target": "agents_auth_flow"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": "L26",
-      "weight": 1.0,
-      "_src": "agents_architecture_conventions",
-      "_tgt": "proxy_proxy",
-      "source": "proxy_proxy",
-      "target": "agents_architecture_conventions"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.6,
-      "source_file": null,
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "proxy_proxy",
-      "_tgt": "page_page",
-      "source": "proxy_proxy",
-      "target": "page_page"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/page.tsx",
-      "source_location": "L22",
-      "weight": 1.0,
-      "_src": "page_page",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "page_page"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoItem.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "_src": "todoitem_todoitem",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "todoitem_todoitem"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "todos_addtodo",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "todos_addtodo"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "todos_toggletodo",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "todos_toggletodo"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "todos_renametodo",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "todos_renametodo"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "todos_removetodo",
-      "_tgt": "todo_todo_type",
-      "source": "todo_todo_type",
-      "target": "todos_removetodo"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todo_todofilter_type",
-      "source": "todo_todofilter_type",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/FilterTabs.tsx",
-      "source_location": "L3",
-      "weight": 1.0,
-      "_src": "filtertabs_filtertabs",
-      "_tgt": "todo_todofilter_type",
-      "source": "todo_todofilter_type",
-      "target": "filtertabs_filtertabs"
-    },
-    {
-      "relation": "implements",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
       "source_file": "src/app/layout.tsx",
       "source_location": "L9-L28",
       "weight": 1.0,
@@ -1860,54 +1747,6 @@
       "_tgt": "design_typography_trinity",
       "source": "layout_rootlayout",
       "target": "design_typography_trinity"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_src": "page_page",
-      "_tgt": "server_createclient",
-      "source": "page_page",
-      "target": "server_createclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/page.tsx",
-      "source_location": "L21",
-      "weight": 1.0,
-      "_src": "page_page",
-      "_tgt": "todolistclient_todolistclient",
-      "source": "page_page",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "src/app/page.tsx",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "page_page",
-      "_tgt": "readme_db_schema_todos",
-      "source": "page_page",
-      "target": "readme_db_schema_todos"
-    },
-    {
-      "relation": "implements",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "src/app/page.tsx",
-      "source_location": "L11",
-      "weight": 1.0,
-      "_src": "page_page",
-      "_tgt": "readme_auth_gate_decision",
-      "source": "page_page",
-      "target": "readme_auth_gate_decision"
     },
     {
       "relation": "calls",
@@ -1958,174 +1797,6 @@
       "target": "googlesigninbutton_googlesigninbutton"
     },
     {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L20",
-      "weight": 1.0,
-      "_src": "todos_addtodo",
-      "_tgt": "todos_getuserorthrow",
-      "source": "todos_getuserorthrow",
-      "target": "todos_addtodo"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L29",
-      "weight": 1.0,
-      "_src": "todos_toggletodo",
-      "_tgt": "todos_getuserorthrow",
-      "source": "todos_getuserorthrow",
-      "target": "todos_toggletodo"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L46",
-      "weight": 1.0,
-      "_src": "todos_renametodo",
-      "_tgt": "todos_getuserorthrow",
-      "source": "todos_getuserorthrow",
-      "target": "todos_renametodo"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L56",
-      "weight": 1.0,
-      "_src": "todos_removetodo",
-      "_tgt": "todos_getuserorthrow",
-      "source": "todos_getuserorthrow",
-      "target": "todos_removetodo"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "_src": "todos_getuserorthrow",
-      "_tgt": "server_createclient",
-      "source": "todos_getuserorthrow",
-      "target": "server_createclient"
-    },
-    {
-      "relation": "implements",
-      "confidence": "INFERRED",
-      "confidence_score": 0.9,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L6-L13",
-      "weight": 1.0,
-      "_src": "todos_getuserorthrow",
-      "_tgt": "agents_data_security",
-      "source": "todos_getuserorthrow",
-      "target": "agents_data_security"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": "L29",
-      "weight": 1.0,
-      "_src": "agents_architecture_conventions",
-      "_tgt": "todos_getuserorthrow",
-      "source": "todos_getuserorthrow",
-      "target": "agents_architecture_conventions"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L129",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todos_addtodo",
-      "source": "todos_addtodo",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "todos_addtodo",
-      "_tgt": "readme_db_schema_todos",
-      "source": "todos_addtodo",
-      "target": "readme_db_schema_todos"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L136",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todos_toggletodo",
-      "source": "todos_toggletodo",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_actions/todos.ts",
-      "source_location": "L41",
-      "weight": 1.0,
-      "_src": "todos_renametodo",
-      "_tgt": "todos_removetodo",
-      "source": "todos_renametodo",
-      "target": "todos_removetodo"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L143",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todos_renametodo",
-      "source": "todos_renametodo",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L150",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todos_removetodo",
-      "source": "todos_removetodo",
-      "target": "todolistclient_todolistclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L184",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todoinput_todoinput",
-      "source": "todoinput_todoinput",
-      "target": "todolistclient_todolistclient"
-    },
-    {
       "relation": "implements",
       "confidence": "INFERRED",
       "confidence_score": 0.8,
@@ -2148,102 +1819,6 @@
       "_tgt": "design_text_input",
       "source": "todoinput_todoinput",
       "target": "design_text_input"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L229",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todoitem_todoitem",
-      "source": "todolistclient_todolistclient",
-      "target": "todoitem_todoitem"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L208",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "filtertabs_filtertabs",
-      "source": "todolistclient_todolistclient",
-      "target": "filtertabs_filtertabs"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L54",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todolistclient_reduce",
-      "source": "todolistclient_todolistclient",
-      "target": "todolistclient_reduce"
-    },
-    {
-      "relation": "calls",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L92",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todolistclient_daykey",
-      "source": "todolistclient_todolistclient",
-      "target": "todolistclient_daykey"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L191",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "todolistclient_speccell",
-      "source": "todolistclient_todolistclient",
-      "target": "todolistclient_speccell"
-    },
-    {
-      "relation": "implements",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L156",
-      "weight": 1.0,
-      "_src": "todolistclient_todolistclient",
-      "_tgt": "design_hero_photo_band",
-      "source": "todolistclient_todolistclient",
-      "target": "design_hero_photo_band"
-    },
-    {
-      "relation": "implements",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L248-L259",
-      "weight": 1.0,
-      "_src": "todolistclient_speccell",
-      "_tgt": "design_spec_cell",
-      "source": "todolistclient_speccell",
-      "target": "design_spec_cell"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/login/page.tsx",
-      "source_location": "L48",
-      "weight": 1.0,
-      "_src": "page_loginpage",
-      "_tgt": "emailmagiclinkform_emailmagiclinkform",
-      "source": "emailmagiclinkform_emailmagiclinkform",
-      "target": "page_loginpage"
     },
     {
       "relation": "calls",
@@ -2282,27 +1857,15 @@
       "target": "design_text_input"
     },
     {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.85,
-      "source_file": "src/app/_components/login/",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "emailmagiclinkform_emailmagiclinkform",
-      "_tgt": "googlesigninbutton_googlesigninbutton",
-      "source": "emailmagiclinkform_emailmagiclinkform",
-      "target": "googlesigninbutton_googlesigninbutton"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/login/page.tsx",
-      "source_location": "L50",
+      "source_location": "L48",
       "weight": 1.0,
       "_src": "page_loginpage",
-      "_tgt": "googlesigninbutton_googlesigninbutton",
-      "source": "googlesigninbutton_googlesigninbutton",
+      "_tgt": "emailmagiclinkform_emailmagiclinkform",
+      "source": "emailmagiclinkform_emailmagiclinkform",
       "target": "page_loginpage"
     },
     {
@@ -2330,6 +1893,18 @@
       "target": "design_pill_button"
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/login/page.tsx",
+      "source_location": "L50",
+      "weight": 1.0,
+      "_src": "page_loginpage",
+      "_tgt": "googlesigninbutton_googlesigninbutton",
+      "source": "googlesigninbutton_googlesigninbutton",
+      "target": "page_loginpage"
+    },
+    {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -2352,42 +1927,6 @@
       "_tgt": "design_hero_photo_band",
       "source": "page_loginpage",
       "target": "design_hero_photo_band"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": "L28",
-      "weight": 1.0,
-      "_src": "agents_architecture_conventions",
-      "_tgt": "client_createclient",
-      "source": "client_createclient",
-      "target": "agents_architecture_conventions"
-    },
-    {
-      "relation": "semantically_similar_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.8,
-      "source_file": "src/lib/supabase/",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "client_createclient",
-      "_tgt": "server_createclient",
-      "source": "client_createclient",
-      "target": "server_createclient"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": "L27",
-      "weight": 1.0,
-      "_src": "agents_architecture_conventions",
-      "_tgt": "server_createclient",
-      "source": "server_createclient",
-      "target": "agents_architecture_conventions"
     },
     {
       "relation": "cites",
@@ -2462,321 +2001,571 @@
       "target": "design_text_input"
     },
     {
-      "relation": "cites",
+      "relation": "shares_data_with",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "CLAUDE.md",
-      "source_location": "L1",
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L86",
       "weight": 1.0,
-      "_src": "claude_md_pointer",
-      "_tgt": "agents_md_project_rules",
-      "source": "agents_md_project_rules",
-      "target": "claude_md_pointer"
+      "_src": "todolistclient_todolistclient",
+      "_tgt": "todo_todo",
+      "source": "todo_todo",
+      "target": "todolistclient_todolistclient"
     },
     {
-      "relation": "references",
+      "relation": "shares_data_with",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": null,
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L14",
       "weight": 1.0,
-      "_src": "agents_md_project_rules",
-      "_tgt": "agents_architecture_conventions",
-      "source": "agents_md_project_rules",
-      "target": "agents_architecture_conventions"
+      "_src": "todoitem_todoitem",
+      "_tgt": "todo_todo",
+      "source": "todo_todo",
+      "target": "todoitem_todoitem"
     },
     {
-      "relation": "references",
+      "relation": "shares_data_with",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": null,
+      "source_file": "src/app/page.tsx",
+      "source_location": "L22",
       "weight": 1.0,
-      "_src": "agents_md_project_rules",
-      "_tgt": "agents_auth_flow",
-      "source": "agents_md_project_rules",
-      "target": "agents_auth_flow"
+      "_src": "page_page",
+      "_tgt": "todo_todo",
+      "source": "todo_todo",
+      "target": "page_page"
     },
     {
-      "relation": "references",
+      "relation": "shares_data_with",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": null,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L89",
       "weight": 1.0,
-      "_src": "agents_md_project_rules",
-      "_tgt": "agents_data_security",
-      "source": "agents_md_project_rules",
-      "target": "agents_data_security"
+      "_src": "todolistclient_todolistclient",
+      "_tgt": "todo_todofilter",
+      "source": "todo_todofilter",
+      "target": "todolistclient_todolistclient"
     },
     {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "AGENTS.md",
-      "source_location": null,
-      "weight": 1.0,
-      "_src": "agents_md_project_rules",
-      "_tgt": "agents_commit_convention",
-      "source": "agents_md_project_rules",
-      "target": "agents_commit_convention"
-    },
-    {
-      "type": "represents",
-      "summary": "vercel.svg \ud30c\uc77c\uc740 Vercel \ube0c\ub79c\ub4dc\uc758 \ub85c\uace0 \uc790\uc0b0\uc774\ub2e4.",
-      "confidence_score": 1.0,
-      "confidence_label": "EXTRACTED",
-      "_src": "vercel_svg",
-      "_tgt": "vercel_brand",
-      "source": "vercel_svg",
-      "target": "vercel_brand"
-    },
-    {
-      "type": "located_in",
-      "summary": "vercel.svg\ub294 public/ \ub514\ub809\ud130\ub9ac \ub0b4\uc5d0 \uc704\uce58\ud55c\ub2e4.",
-      "confidence_score": 1.0,
-      "confidence_label": "EXTRACTED",
-      "_src": "vercel_svg",
-      "_tgt": "public_assets",
-      "source": "vercel_svg",
-      "target": "public_assets"
-    },
-    {
-      "relation": "default_starter_asset_of",
-      "evidence": "next.svg is shipped by default with Next.js create-next-app starter templates.",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
       "confidence_score": 0.85,
-      "confidence_label": "INFERRED",
-      "_src": "asset_next_svg",
-      "_tgt": "brand_nextjs",
-      "source": "asset_next_svg",
-      "target": "brand_nextjs"
+      "source_file": "src/app/page.tsx",
+      "source_location": "L8-11",
+      "weight": 1.0,
+      "_src": "page_page",
+      "_tgt": "todos_getuserorthrow",
+      "source": "page_page",
+      "target": "todos_getuserorthrow"
     },
     {
-      "relation": "located_in",
-      "evidence": "File path /public/next.svg.",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "confidence_label": "EXTRACTED",
-      "_src": "asset_next_svg",
-      "_tgt": "dir_public",
-      "source": "asset_next_svg",
-      "target": "dir_public"
+      "source_file": "src/app/page.tsx",
+      "source_location": "L13-16",
+      "weight": 1.0,
+      "_src": "page_page",
+      "_tgt": "public_todos_table",
+      "source": "page_page",
+      "target": "public_todos_table"
     },
     {
-      "relation": "depicts",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "globe_svg",
-      "_tgt": "globe_icon_glyph",
-      "source": "globe_svg",
-      "target": "globe_icon_glyph"
+      "source_file": "src/app/page.tsx",
+      "source_location": "L8-11",
+      "weight": 1.0,
+      "_src": "page_page",
+      "_tgt": "agents_authgate",
+      "source": "page_page",
+      "target": "agents_authgate"
     },
     {
-      "relation": "located_in",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "globe_svg",
-      "_tgt": "public_assets_dir",
-      "source": "globe_svg",
-      "target": "public_assets_dir"
+      "source_file": "src/app/page.tsx",
+      "source_location": "L13-16",
+      "weight": 1.0,
+      "_src": "page_page",
+      "_tgt": "agents_reorderconvention",
+      "source": "page_page",
+      "target": "agents_reorderconvention"
     },
     {
-      "relation": "likely_used_for",
-      "confidence_score": 0.3,
-      "evidence": "AMBIGUOUS - no surrounding usage context in this chunk",
-      "_src": "globe_icon_glyph",
-      "_tgt": "icon_purpose_i18n_or_web",
-      "source": "globe_icon_glyph",
-      "target": "icon_purpose_i18n_or_web"
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/page.tsx",
+      "source_location": "L21-25",
+      "weight": 1.0,
+      "_src": "page_page",
+      "_tgt": "todolistclient_todolistclient",
+      "source": "page_page",
+      "target": "todolistclient_todolistclient"
     },
     {
-      "relation": "renders",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "todos_addtodo",
+      "_tgt": "todos_getuserorthrow",
+      "source": "todos_getuserorthrow",
+      "target": "todos_addtodo"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "todos_toggletodo",
+      "_tgt": "todos_getuserorthrow",
+      "source": "todos_getuserorthrow",
+      "target": "todos_toggletodo"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "todos_renametodo",
+      "_tgt": "todos_getuserorthrow",
+      "source": "todos_getuserorthrow",
+      "target": "todos_renametodo"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "todos_removetodo",
+      "_tgt": "todos_getuserorthrow",
+      "source": "todos_getuserorthrow",
+      "target": "todos_removetodo"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "todos_reordertodo",
+      "_tgt": "todos_getuserorthrow",
+      "source": "todos_getuserorthrow",
+      "target": "todos_reordertodo"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L21-23",
+      "weight": 1.0,
+      "_src": "todos_addtodo",
+      "_tgt": "public_todos_table",
+      "source": "todos_addtodo",
+      "target": "public_todos_table"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "todos_addtodo",
+      "_tgt": "agents_datasecurity",
+      "source": "todos_addtodo",
+      "target": "agents_datasecurity"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L167",
+      "weight": 1.0,
+      "_src": "todolistclient_handleadd",
+      "_tgt": "todos_addtodo",
+      "source": "todos_addtodo",
+      "target": "todolistclient_handleadd"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L30-33",
+      "weight": 1.0,
+      "_src": "todos_toggletodo",
+      "_tgt": "public_todos_table",
+      "source": "todos_toggletodo",
+      "target": "public_todos_table"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "_src": "todos_toggletodo",
+      "_tgt": "agents_datasecurity",
+      "source": "todos_toggletodo",
+      "target": "agents_datasecurity"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L174",
+      "weight": 1.0,
+      "_src": "todolistclient_handletoggle",
+      "_tgt": "todos_toggletodo",
+      "source": "todos_toggletodo",
+      "target": "todolistclient_handletoggle"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "todos_renametodo",
+      "_tgt": "todos_removetodo",
+      "source": "todos_renametodo",
+      "target": "todos_removetodo"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L47-50",
+      "weight": 1.0,
+      "_src": "todos_renametodo",
+      "_tgt": "public_todos_table",
+      "source": "todos_renametodo",
+      "target": "public_todos_table"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "todos_renametodo",
+      "_tgt": "agents_datasecurity",
+      "source": "todos_renametodo",
+      "target": "agents_datasecurity"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L181",
+      "weight": 1.0,
+      "_src": "todolistclient_handlerename",
+      "_tgt": "todos_renametodo",
+      "source": "todos_renametodo",
+      "target": "todolistclient_handlerename"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "todos_removetodo",
+      "_tgt": "public_todos_table",
+      "source": "todos_removetodo",
+      "target": "public_todos_table"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "todos_removetodo",
+      "_tgt": "agents_datasecurity",
+      "source": "todos_removetodo",
+      "target": "agents_datasecurity"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L188",
+      "weight": 1.0,
+      "_src": "todolistclient_handleremove",
+      "_tgt": "todos_removetodo",
+      "source": "todos_removetodo",
+      "target": "todolistclient_handleremove"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L76-101",
+      "weight": 1.0,
+      "_src": "todos_reordertodo",
+      "_tgt": "public_todos_table",
+      "source": "todos_reordertodo",
+      "target": "public_todos_table"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_actions/todos.ts",
+      "source_location": "L62-104",
+      "weight": 1.0,
+      "_src": "todos_reordertodo",
+      "_tgt": "agents_reorderconvention",
+      "source": "todos_reordertodo",
+      "target": "agents_reorderconvention"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L215",
+      "weight": 1.0,
+      "_src": "todolistclient_handledragend",
+      "_tgt": "todos_reordertodo",
+      "source": "todos_reordertodo",
+      "target": "todolistclient_handledragend"
+    },
+    {
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.88,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L60-78",
+      "weight": 1.0,
+      "_src": "todolistclient_reduce",
+      "_tgt": "todos_reordertodo",
+      "source": "todos_reordertodo",
+      "target": "todolistclient_reduce"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L122-128",
+      "weight": 1.0,
+      "_src": "todolistclient_todolistclient",
+      "_tgt": "todolistclient_daykey",
+      "source": "todolistclient_todolistclient",
+      "target": "todolistclient_daykey"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L257-260",
+      "weight": 1.0,
+      "_src": "todolistclient_todolistclient",
+      "_tgt": "todolistclient_speccell",
+      "source": "todolistclient_todolistclient",
+      "target": "todolistclient_speccell"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L304-310",
+      "weight": 1.0,
+      "_src": "todolistclient_todolistclient",
+      "_tgt": "todoitem_todoitem",
+      "source": "todolistclient_todolistclient",
+      "target": "todoitem_todoitem"
+    },
+    {
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L90",
+      "weight": 1.0,
+      "_src": "todolistclient_todolistclient",
+      "_tgt": "agents_clientstate",
+      "source": "todolistclient_todolistclient",
+      "target": "agents_clientstate"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
       "confidence_score": 0.9,
-      "evidence": "INFERRED",
-      "_src": "asset_window_svg",
-      "_tgt": "icon_window",
-      "source": "asset_window_svg",
-      "target": "icon_window"
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L155-166",
+      "weight": 1.0,
+      "_src": "todolistclient_handleadd",
+      "_tgt": "todolistclient_reduce",
+      "source": "todolistclient_reduce",
+      "target": "todolistclient_handleadd"
     },
     {
-      "relation": "originates_from",
-      "confidence_score": 0.8,
-      "evidence": "INFERRED",
-      "_src": "asset_window_svg",
-      "_tgt": "asset_origin_nextjs_template",
-      "source": "asset_window_svg",
-      "target": "asset_origin_nextjs_template"
-    },
-    {
-      "relation": "contains",
-      "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "icon_window",
-      "_tgt": "shape_window_frame",
-      "source": "icon_window",
-      "target": "shape_window_frame"
-    },
-    {
-      "relation": "contains",
+      "relation": "calls",
+      "confidence": "INFERRED",
       "confidence_score": 0.9,
-      "evidence": "INFERRED",
-      "_src": "icon_window",
-      "_tgt": "shape_titlebar_dots",
-      "source": "icon_window",
-      "target": "shape_titlebar_dots"
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L173",
+      "weight": 1.0,
+      "_src": "todolistclient_handletoggle",
+      "_tgt": "todolistclient_reduce",
+      "source": "todolistclient_reduce",
+      "target": "todolistclient_handletoggle"
     },
     {
-      "relation": "depicts",
-      "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "business_hero_image",
-      "_tgt": "hero_visual_concept",
-      "source": "business_hero_image",
-      "target": "hero_visual_concept"
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L180",
+      "weight": 1.0,
+      "_src": "todolistclient_handlerename",
+      "_tgt": "todolistclient_reduce",
+      "source": "todolistclient_reduce",
+      "target": "todolistclient_handlerename"
     },
     {
-      "relation": "uses_layout",
-      "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "business_hero_image",
-      "_tgt": "hero_layout",
-      "source": "business_hero_image",
-      "target": "hero_layout"
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L187",
+      "weight": 1.0,
+      "_src": "todolistclient_handleremove",
+      "_tgt": "todolistclient_reduce",
+      "source": "todolistclient_reduce",
+      "target": "todolistclient_handleremove"
     },
     {
-      "relation": "rendered_in_style",
-      "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "business_hero_image",
-      "_tgt": "hero_visual_style",
-      "source": "business_hero_image",
-      "target": "hero_visual_style"
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "src/app/_components/TodoListClient.tsx",
+      "source_location": "L209-214",
+      "weight": 1.0,
+      "_src": "todolistclient_handledragend",
+      "_tgt": "todolistclient_reduce",
+      "source": "todolistclient_reduce",
+      "target": "todolistclient_handledragend"
     },
     {
-      "relation": "targets",
-      "confidence_score": 0.8,
-      "evidence": "INFERRED from imagery cues (executive office, city skyline)",
-      "_src": "business_hero_image",
-      "_tgt": "hero_target_audience",
-      "source": "business_hero_image",
-      "target": "hero_target_audience"
-    },
-    {
-      "relation": "expresses_intent",
+      "relation": "calls",
+      "confidence": "INFERRED",
       "confidence_score": 0.85,
-      "evidence": "INFERRED from filename 'business-hero' and luxury dark styling",
-      "_src": "business_hero_image",
-      "_tgt": "hero_design_intent",
-      "source": "business_hero_image",
-      "target": "hero_design_intent"
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L80",
+      "weight": 1.0,
+      "_src": "todoitem_todoitem",
+      "_tgt": "todolistclient_handletoggle",
+      "source": "todolistclient_handletoggle",
+      "target": "todoitem_todoitem"
     },
     {
-      "relation": "uses_asset",
-      "confidence_score": 0.9,
-      "evidence": "INFERRED from asset path under public/images",
-      "_src": "my_todo_app",
-      "_tgt": "business_hero_image",
-      "source": "business_hero_image",
-      "target": "my_todo_app"
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "todoitem_commit",
+      "_tgt": "todolistclient_handlerename",
+      "source": "todolistclient_handlerename",
+      "target": "todoitem_commit"
     },
     {
-      "relation": "contains_element",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "todoitem_commit",
+      "_tgt": "todolistclient_handleremove",
+      "source": "todolistclient_handleremove",
+      "target": "todoitem_commit"
+    },
+    {
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_src": "todoitem_todoitem",
+      "_tgt": "todolistclient_handleremove",
+      "source": "todolistclient_handleremove",
+      "target": "todoitem_todoitem"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "hero_visual_concept",
-      "_tgt": "hero_element_window",
-      "source": "hero_visual_concept",
-      "target": "hero_element_window"
+      "source_file": "src/app/_components/TodoItem.tsx",
+      "source_location": "L90-92",
+      "weight": 1.0,
+      "_src": "todoitem_todoitem",
+      "_tgt": "todoitem_commit",
+      "source": "todoitem_todoitem",
+      "target": "todoitem_commit"
     },
     {
-      "relation": "contains_element",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "hero_visual_concept",
-      "_tgt": "hero_element_desk",
-      "source": "hero_visual_concept",
-      "target": "hero_element_desk"
+      "source_file": "AGENTS.md",
+      "source_location": "L34-40",
+      "weight": 1.0,
+      "_src": "agents_authflow",
+      "_tgt": "agents_authgate",
+      "source": "agents_authflow",
+      "target": "agents_authgate"
     },
     {
-      "relation": "contains_element",
+      "relation": "references",
+      "confidence": "EXTRACTED",
       "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "hero_visual_concept",
-      "_tgt": "hero_element_chair",
-      "source": "hero_visual_concept",
-      "target": "hero_element_chair"
-    },
-    {
-      "relation": "contains_element",
-      "confidence_score": 1.0,
-      "evidence": "EXTRACTED",
-      "_src": "hero_visual_concept",
-      "_tgt": "hero_element_skyline",
-      "source": "hero_visual_concept",
-      "target": "hero_element_skyline"
-    },
-    {
-      "relation": "matches_palette",
-      "confidence_score": 0.7,
-      "evidence": "INFERRED dark, premium palette consistent with Bugatti design tokens",
-      "_src": "hero_visual_style",
-      "_tgt": "bugatti_design_system",
-      "source": "hero_visual_style",
-      "target": "bugatti_design_system"
-    },
-    {
-      "relation": "frames",
-      "confidence_score": 0.9,
-      "evidence": "INFERRED from composition",
-      "_src": "hero_element_window",
-      "_tgt": "hero_element_skyline",
-      "source": "hero_element_window",
-      "target": "hero_element_skyline"
-    },
-    {
-      "relation": "aligns_with",
-      "confidence_score": 0.8,
-      "evidence": "INFERRED from project Bugatti design system docs and matching dark luxury aesthetic",
-      "_src": "hero_design_intent",
-      "_tgt": "bugatti_design_system",
-      "source": "hero_design_intent",
-      "target": "bugatti_design_system"
+      "source_file": "AGENTS.md",
+      "source_location": "L50-54",
+      "weight": 1.0,
+      "_src": "agents_reorderconvention",
+      "_tgt": "public_todos_table",
+      "source": "agents_reorderconvention",
+      "target": "public_todos_table"
     }
   ],
   "hyperedges": [
-    {
-      "id": "auth_flow_pipeline",
-      "label": "End-to-end Auth Flow",
-      "nodes": [
-        "proxy_proxy",
-        "page_page",
-        "page_loginpage",
-        "emailmagiclinkform_emailmagiclinkform",
-        "googlesigninbutton_googlesigninbutton",
-        "route_callback_get",
-        "route_signout_post",
-        "server_createclient",
-        "client_createclient"
-      ],
-      "relation": "participate_in",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95,
-      "source_file": "AGENTS.md"
-    },
-    {
-      "id": "todo_mutation_actions",
-      "label": "Todo Mutation Server Actions",
-      "nodes": [
-        "todos_addtodo",
-        "todos_toggletodo",
-        "todos_renametodo",
-        "todos_removetodo",
-        "todos_getuserorthrow"
-      ],
-      "relation": "implement",
-      "confidence": "EXTRACTED",
-      "confidence_score": 0.95,
-      "source_file": "src/app/_actions/todos.ts"
-    },
     {
       "id": "bugatti_design_application",
       "label": "Bugatti Design Tokens Applied to Todo UI",
@@ -2793,6 +2582,52 @@
       "confidence": "INFERRED",
       "confidence_score": 0.85,
       "source_file": "DESIGN.md"
+    },
+    {
+      "id": "optimistic_mutation_flow",
+      "label": "Optimistic Mutation Flow (UI -> reducer -> Server Action -> RLS)",
+      "nodes": [
+        "todolistclient_todolistclient",
+        "todolistclient_reduce",
+        "todos_addtodo",
+        "todos_toggletodo",
+        "todos_renametodo",
+        "todos_removetodo",
+        "public_todos_table"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "src/app/_components/TodoListClient.tsx"
+    },
+    {
+      "id": "reorder_fractional_position_pattern",
+      "label": "Fractional Position Reorder Pattern",
+      "nodes": [
+        "todolistclient_handledragend",
+        "todolistclient_reduce",
+        "todos_reordertodo",
+        "agents_reorderconvention",
+        "public_todos_table"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 0.95,
+      "source_file": "src/app/_actions/todos.ts"
+    },
+    {
+      "id": "auth_gate_chain",
+      "label": "Server-side Auth Gate Chain",
+      "nodes": [
+        "page_page",
+        "todos_getuserorthrow",
+        "agents_authgate",
+        "agents_datasecurity"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "AGENTS.md"
     }
   ]
 }
