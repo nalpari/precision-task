@@ -29,6 +29,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 | `src/app/_actions/*.ts` | `'use server'` 서버 액션. 모두 `getUserOrThrow()`로 user 재검증 후 mutate, 끝에 `revalidatePath('/')`. |
 | `src/app/_components/` | 라우팅에서 제외(`_` prefix). UI 컴포넌트 모음. |
 | `src/app/page.tsx` | **인증 게이트는 여기서**. `getUser()` → null이면 `redirect('/login')`. |
+| `src/app/active/page.tsx` | 같은 인증 게이트 패턴. 모든 todos를 페치한 뒤 `ActiveDashboardClient`로 위임 (메트릭 계산을 위해 active만 필터링하지 않음). |
+| `src/app/_components/AppHeader.tsx` | 인증된 두 라우트(`/`, `/active`) 공통 헤더. 로그아웃 폼 + 활성 링크 강조. login에는 사용 금지. |
+| `src/app/_components/TodoListView.tsx` | 그룹 렌더링 + 그룹별 `DndContext`/`SortableContext` 일체. 두 페이지가 같은 list UX를 공유한다. 새 todo list가 필요하면 이 컴포넌트를 호출하고 reducer는 별도로 둘 것. |
+| `src/app/_components/todoReducer.ts` | useOptimistic 리듀서 (add/toggle/rename/remove/reorder). 두 클라이언트가 공유. |
+| `src/app/_components/dashboard/Charts.tsx` | 자체 SVG 대시보드(라이브러리 추가 금지). 차트가 늘어나면 이 파일에 추가. |
 | `src/types/` | 도메인 타입 (`Todo`, `TodoFilter` 등). DB 컬럼 변경 시 함께 수정. |
 
 ### Auth 흐름
@@ -57,7 +62,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - **DB 스키마 변경**: Supabase MCP `execute_sql`로 직접 적용 → 직후 `get_advisors`(security + performance) 둘 다 실행. WARN 이상 lint는 즉시 fix. 필요한 경우 `apply_migration`이 아닌 `execute_sql` 우선.
 - **클라이언트 상태**: `useOptimistic` + Server Action 조합으로 처리. Zustand/Jotai/React Query 추가 금지.
-- **새 라우트 추가 시**: 보호 라우트면 Server Component 진입부에 `getUser()` 검사 패턴을 그대로 복제 (proxy.ts에 추가하지 말 것).
+- **새 라우트 추가 시**: 보호 라우트면 Server Component 진입부에 `getUser()` 검사 패턴을 그대로 복제 (proxy.ts에 추가하지 말 것). 인증된 라우트는 `AppHeader`를 페이지 상단에 둔다 (login은 제외).
+- **차트/시각화**: `_components/dashboard/Charts.tsx`에 자체 SVG로 추가. recharts/visx 등 외부 차트 라이브러리 추가 금지 (austere 디자인 톤 + 번들 절약).
+- **일자 그룹화/타임존**: `dayKey()`는 사용자 로컬 TZ 기준이라 SSR과 클라이언트 결과가 다를 수 있다. 첫 페인트가 빈/스켈레톤이어도 되는 곳은 `useSyncExternalStore` 기반 `isClient` 가드를 둔다 (`TodoListView`, `ActiveDashboardClient` 참고).
 
 ## graphify
 
