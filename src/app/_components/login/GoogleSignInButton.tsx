@@ -33,7 +33,9 @@ export default function GoogleSignInButton() {
         className="flex min-h-11 items-center justify-center gap-3 rounded-full border border-[var(--color-on-dark)] bg-transparent px-8 font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-on-dark)] transition-colors hover:bg-[var(--color-on-dark)] hover:text-[var(--color-canvas)] disabled:opacity-50"
       >
         <GoogleMark />
-        {pending ? "Redirecting" : "Continue With Google"}
+        <span className="whitespace-nowrap">
+          {pending ? "Redirecting" : "Google"}
+        </span>
       </button>
       {error && <p className="font-text text-base text-[var(--color-warning)]">{error}</p>}
     </div>
