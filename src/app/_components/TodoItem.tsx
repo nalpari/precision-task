@@ -44,13 +44,18 @@ export default function TodoItem({
     setEditing(false);
   }
 
+  function beginEdit() {
+    setDraft(todo.title);
+    setEditing(true);
+  }
+
   return (
-    <li className="group flex items-center gap-3 rounded-md border border-zinc-200 bg-white px-3 py-2 dark:border-zinc-800 dark:bg-zinc-950">
+    <li className="group grid grid-cols-[auto_1fr] gap-4 border-b border-[var(--color-hairline)] py-5 md:grid-cols-[auto_1fr_auto]">
       <input
         type="checkbox"
         checked={todo.completed}
         onChange={(event) => onToggle(todo.id, event.target.checked)}
-        className="h-4 w-4 cursor-pointer accent-zinc-900 dark:accent-zinc-100"
+        className="mt-1 h-4 w-4 cursor-pointer accent-[var(--color-on-dark)]"
         aria-label={todo.completed ? "완료 해제" : "완료 표시"}
       />
 
@@ -65,29 +70,56 @@ export default function TodoItem({
             else if (event.key === "Escape") cancel();
           }}
           maxLength={500}
-          className="h-8 flex-1 rounded border border-zinc-300 px-2 text-sm outline-none focus:border-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:focus:border-zinc-100"
+          className="h-9 min-w-0 border-0 border-b border-[var(--color-hairline-strong)] bg-transparent px-0 font-text text-xl text-[var(--color-on-dark)] outline-none focus:border-[var(--color-on-dark)]"
         />
       ) : (
         <span
-          onDoubleClick={() => setEditing(true)}
+          onDoubleClick={beginEdit}
           className={
             todo.completed
-              ? "flex-1 text-sm text-zinc-400 line-through dark:text-zinc-600"
-              : "flex-1 text-sm text-zinc-900 dark:text-zinc-100"
+              ? "min-w-0 font-text text-xl leading-snug text-[var(--color-muted-soft)] line-through"
+              : "min-w-0 font-text text-xl leading-snug text-[var(--color-body-strong)]"
           }
         >
           {todo.title}
         </span>
       )}
 
-      <button
-        type="button"
-        onClick={() => onRemove(todo.id)}
-        aria-label="삭제"
-        className="text-sm text-zinc-400 opacity-0 transition-opacity hover:text-red-600 group-hover:opacity-100 dark:text-zinc-500 dark:hover:text-red-400"
-      >
-        ✕
-      </button>
+      <div className="col-start-2 flex flex-wrap items-center gap-3 md:col-start-auto">
+        {editing ? (
+          <>
+            <button
+              type="button"
+              onClick={commit}
+              className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-on-dark)] underline-offset-4 hover:underline"
+            >
+              Save
+            </button>
+            <button
+              type="button"
+              onClick={cancel}
+              className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)] underline-offset-4 hover:text-[var(--color-on-dark)] hover:underline"
+            >
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button
+            type="button"
+            onClick={beginEdit}
+            className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)] underline-offset-4 hover:text-[var(--color-on-dark)] hover:underline"
+          >
+            Edit
+          </button>
+        )}
+        <button
+          type="button"
+          onClick={() => onRemove(todo.id)}
+          className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted-soft)] underline-offset-4 hover:text-[var(--color-on-dark)] hover:underline"
+        >
+          Delete
+        </button>
+      </div>
     </li>
   );
 }

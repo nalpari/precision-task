@@ -20,21 +20,21 @@ export default function TodoInput({
   }
 
   return (
-    <form onSubmit={submit} className="flex gap-2">
+    <form onSubmit={submit} className="grid gap-4 sm:grid-cols-[1fr_auto]">
       <input
         ref={inputRef}
         type="text"
         value={value}
         onChange={(event) => setValue(event.target.value)}
-        placeholder="할 일을 입력하고 Enter"
+        placeholder="새로운 할 일을 입력하세요"
         maxLength={500}
-        className="h-10 flex-1 rounded-md border border-zinc-300 px-3 text-sm outline-none focus:border-zinc-900 dark:border-zinc-700 dark:bg-zinc-900 dark:focus:border-zinc-100"
+        className="h-12 min-w-0 border-0 border-b border-[var(--color-hairline-strong)] bg-transparent px-0 font-text text-xl text-[var(--color-on-dark)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-on-dark)]"
       />
       <button
         type="submit"
-        className="h-10 rounded-md bg-zinc-900 px-4 text-sm font-medium text-zinc-50 hover:bg-zinc-700 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-300"
+        className="min-h-11 rounded-full border border-[var(--color-on-dark)] bg-transparent px-8 font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-on-dark)] transition-colors hover:bg-[var(--color-on-dark)] hover:text-[var(--color-canvas)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-link)]"
       >
-        추가
+        Add
       </button>
     </form>
   );

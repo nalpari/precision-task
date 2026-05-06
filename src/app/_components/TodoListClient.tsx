@@ -61,6 +61,8 @@ export default function TodoListClient({
     }),
     [optimistic],
   );
+  const completionRate =
+    counts.all === 0 ? 0 : Math.round((counts.completed / counts.all) * 100);
 
   const visible = useMemo(() => {
     if (filter === "active") return optimistic.filter((todo) => !todo.completed);
@@ -150,56 +152,120 @@ export default function TodoListClient({
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-xl flex-col gap-6 px-4 py-10">
-      <header className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold tracking-tight">My Todo</h1>
-        {userEmail && (
-          <form action="/auth/signout" method="post">
-            <span className="mr-3 text-xs text-zinc-500">{userEmail}</span>
-            <button
-              type="submit"
-              className="text-sm text-zinc-600 hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-zinc-100"
+    <main className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
+      <section className="hero-photo-band min-h-[620px] border-b border-[var(--color-hairline)]">
+        <nav className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between px-4 sm:px-8">
+          <span className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)]">
+            Menu
+          </span>
+          <span className="font-display text-sm uppercase tracking-[0.42em] text-[var(--color-on-dark)]">
+            My Todo
+          </span>
+          {userEmail ? (
+            <form
+              action="/auth/signout"
+              method="post"
+              className="flex items-center gap-4"
             >
-              로그아웃
-            </button>
-          </form>
-        )}
-      </header>
+              <span className="hidden max-w-48 truncate font-precision text-[10px] uppercase tracking-[0.16em] text-[var(--color-muted)] sm:inline">
+                {userEmail}
+              </span>
+              <button className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)] transition-colors hover:text-[var(--color-on-dark)]">
+                Logout
+              </button>
+            </form>
+          ) : (
+            <span className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)]">
+              Store
+            </span>
+          )}
+        </nav>
 
-      <TodoInput onAdd={handleAdd} />
+        <div className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-20 pt-24 sm:px-8 md:pt-32">
+          <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+            Private task ledger
+          </p>
+          <h1 className="mt-5 max-w-3xl font-display text-5xl uppercase leading-[1.08] tracking-[0.08em] text-[var(--color-on-dark)] sm:text-6xl md:text-[64px]">
+            Precision Tasks
+          </h1>
+          <p className="mt-6 max-w-xl font-text text-lg leading-7 text-[var(--color-body)]">
+            오늘의 할 일을 조용하게 정렬하고, 진행 상태를 빠르게 갱신하세요.
+          </p>
 
-      <FilterTabs value={filter} onChange={setFilter} counts={counts} />
-
-      {visible.length === 0 ? (
-        <p className="rounded-md border border-dashed border-zinc-300 px-4 py-8 text-center text-sm text-zinc-500 dark:border-zinc-700">
-          {filter === "all"
-            ? "할 일이 없습니다. 위에서 추가해보세요."
-            : filter === "active"
-              ? "진행중인 할 일이 없어요."
-              : "완료된 할 일이 없어요."}
-        </p>
-      ) : (
-        <div className="flex flex-col gap-6">
-          {groups.map((group) => (
-            <section key={group.key} className="flex flex-col gap-2">
-              <h2 className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-                {group.label}
-              </h2>
-              <ul className="flex flex-col gap-2">
-                {group.items.map((todo) => (
-                  <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    onToggle={handleToggle}
-                    onRename={handleRename}
-                    onRemove={handleRemove}
-                  />
-                ))}
-              </ul>
-            </section>
-          ))}
+          <div className="mt-12 max-w-2xl">
+            <TodoInput onAdd={handleAdd} />
+          </div>
         </div>
-      )}
+      </section>
+
+      <section className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-8 md:py-24 lg:grid-cols-[280px_1fr]">
+        <aside className="border-t border-[var(--color-hairline)]">
+          <SpecCell value={counts.all} label="Total" />
+          <SpecCell value={counts.active} label="Active" />
+          <SpecCell value={counts.completed} label="Complete" />
+          <SpecCell value={`${completionRate}%`} label="Completion" />
+        </aside>
+
+        <div className="min-w-0">
+          <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+            <div>
+              <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                Current register
+              </p>
+              <h2 className="mt-3 font-display text-3xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
+                Work Queue
+              </h2>
+            </div>
+            <div className="w-full md:w-[420px]">
+              <FilterTabs value={filter} onChange={setFilter} counts={counts} />
+            </div>
+          </div>
+
+          {visible.length === 0 ? (
+            <p className="border-y border-[var(--color-hairline)] px-0 py-10 text-center font-text text-lg text-[var(--color-muted)]">
+              {filter === "all"
+                ? "아직 등록된 할 일이 없습니다."
+                : filter === "active"
+                  ? "진행중인 할 일이 없습니다."
+                  : "완료된 할 일이 없습니다."}
+            </p>
+          ) : (
+            <div className="flex flex-col gap-12">
+              {groups.map((group) => (
+                <section key={group.key}>
+                  <h3 className="border-b border-[var(--color-hairline)] pb-3 font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+                    {group.label}
+                  </h3>
+                  <ul>
+                    {group.items.map((todo) => (
+                      <TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        onToggle={handleToggle}
+                        onRename={handleRename}
+                        onRemove={handleRemove}
+                      />
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function SpecCell({ value, label }: { value: number | string; label: string }) {
+  return (
+    <div className="border-b border-[var(--color-hairline)] py-6">
+      <div className="font-display text-3xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
+        {value}
+      </div>
+      <div className="mt-2 font-precision text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+        {label}
+      </div>
     </div>
   );
 }
