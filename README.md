@@ -55,49 +55,19 @@ Supabase 대시보드 → **Authentication → URL Configuration**:
 
 ### 5. 데이터베이스 스키마
 
-`public.todos` 테이블 + RLS 정책 + `set_updated_at` 트리거를 생성합니다.
+스키마는 `supabase/migrations/` 디렉터리의 SQL 파일로 관리됩니다. **번호 순서대로** 적용하세요.
 
-**SQL Editor에서 직접 실행**하려면 다음을 붙여넣고 Run:
+| 파일 | 내용 |
+|---|---|
+| `0001_init_todos.sql` | `public.todos` 테이블 + RLS 정책 + `set_updated_at` 트리거 |
+| `0002_add_todos_position.sql` | DnD 정렬용 `position double precision` 컬럼 + 백필 + 인덱스 |
 
-```sql
-create table public.todos (
-  id          uuid primary key default gen_random_uuid(),
-  user_id     uuid not null references auth.users(id) on delete cascade,
-  title       text not null check (char_length(title) between 1 and 500),
-  completed   boolean not null default false,
-  created_at  timestamptz not null default now(),
-  updated_at  timestamptz not null default now()
-);
+**적용 방법** (둘 중 하나):
 
-create index todos_user_created_idx on public.todos (user_id, created_at desc);
+- **Supabase Dashboard → SQL Editor**: 각 파일 내용을 차례로 붙여넣고 Run.
+- **Supabase CLI**: `supabase db push` (CLI가 마이그레이션 파일을 자동 적용).
 
-alter table public.todos enable row level security;
-
-create policy "select own" on public.todos
-  for select using ((select auth.uid()) = user_id);
-create policy "insert own" on public.todos
-  for insert with check ((select auth.uid()) = user_id);
-create policy "update own" on public.todos
-  for update
-  using ((select auth.uid()) = user_id)
-  with check ((select auth.uid()) = user_id);
-create policy "delete own" on public.todos
-  for delete using ((select auth.uid()) = user_id);
-
-create or replace function public.set_updated_at()
-  returns trigger
-  language plpgsql
-  set search_path = ''
-as $$
-begin
-  new.updated_at = now();
-  return new;
-end
-$$;
-
-create trigger todos_set_updated_at before update on public.todos
-  for each row execute function public.set_updated_at();
-```
+새 환경에서는 두 파일을 모두, 기존 환경에서는 새 파일만 적용하세요. 코드는 항상 가장 최신 마이그레이션이 적용된 상태를 가정합니다 — 코드 배포 전에 마이그레이션이 먼저 적용되어야 `column "position" does not exist` 같은 런타임 에러가 발생하지 않습니다.
 
 ## 시작하기
 
@@ -148,6 +118,11 @@ src/
 public/
 └── images/
     └── business-hero.png       # DESIGN.md 톤에 맞춘 비상표 히어로 이미지
+
+supabase/
+└── migrations/                 # 시간순 SQL 마이그레이션 (배포 전 반드시 먼저 적용)
+    ├── 0001_init_todos.sql
+    └── 0002_add_todos_position.sql
 ```
 
 ## 아키텍처 핵심 결정

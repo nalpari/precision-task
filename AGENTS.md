@@ -60,7 +60,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ### 작업 순서 가이드
 
-- **DB 스키마 변경**: Supabase MCP `execute_sql`로 직접 적용 → 직후 `get_advisors`(security + performance) 둘 다 실행. WARN 이상 lint는 즉시 fix. 필요한 경우 `apply_migration`이 아닌 `execute_sql` 우선.
+- **DB 스키마 변경**: Supabase MCP `execute_sql`로 직접 적용 → 직후 `get_advisors`(security + performance) 둘 다 실행. WARN 이상 lint는 즉시 fix. 필요한 경우 `apply_migration`이 아닌 `execute_sql` 우선. **적용 후 같은 SQL을 `supabase/migrations/<NNNN>_<name>.sql`로 커밋**해 새 환경에서 재현 가능하게 둔다 (`execute_sql`은 dev 워크플로우, 마이그레이션 파일은 배포 계약).
 - **클라이언트 상태**: `useOptimistic` + Server Action 조합으로 처리. Zustand/Jotai/React Query 추가 금지.
 - **새 라우트 추가 시**: 보호 라우트면 Server Component 진입부에 `getUser()` 검사 패턴을 그대로 복제 (proxy.ts에 추가하지 말 것). 인증된 라우트는 `AppHeader`를 페이지 상단에 둔다 (login은 제외).
 - **차트/시각화**: `_components/dashboard/Charts.tsx`에 자체 SVG로 추가. recharts/visx 등 외부 차트 라이브러리 추가 금지 (austere 디자인 톤 + 번들 절약).
