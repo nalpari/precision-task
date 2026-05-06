@@ -1,30 +1,7 @@
 "use client";
 
-import {
-  DndContext,
-  type DragEndEvent,
-  KeyboardSensor,
-  PointerSensor,
-  closestCenter,
-  useSensor,
-  useSensors,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  arrayMove,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import {
-  startTransition,
-  useMemo,
-  useOptimistic,
-  useState,
-  useSyncExternalStore,
-} from "react";
+import { startTransition, useMemo, useOptimistic, useState } from "react";
 import type { Todo, TodoFilter } from "@/types/todo";
-
-const subscribeNoop = () => () => {};
 import {
   addTodo,
   removeTodo,
@@ -35,50 +12,8 @@ import {
 import AppHeader from "./AppHeader";
 import FilterTabs from "./FilterTabs";
 import TodoInput from "./TodoInput";
-import TodoItem from "./TodoItem";
-
-type Action =
-  | { kind: "add"; todo: Todo }
-  | { kind: "toggle"; id: string; completed: boolean }
-  | { kind: "rename"; id: string; title: string }
-  | { kind: "remove"; id: string }
-  | { kind: "reorder"; id: string; prevId: string | null; nextId: string | null };
-
-function reduce(state: Todo[], action: Action): Todo[] {
-  switch (action.kind) {
-    case "add":
-      return [action.todo, ...state];
-    case "toggle":
-      return state.map((todo) =>
-        todo.id === action.id ? { ...todo, completed: action.completed } : todo,
-      );
-    case "rename":
-      return state.map((todo) =>
-        todo.id === action.id ? { ...todo, title: action.title } : todo,
-      );
-    case "remove":
-      return state.filter((todo) => todo.id !== action.id);
-    case "reorder": {
-      const moving = state.find((t) => t.id === action.id);
-      if (!moving) return state;
-      const without = state.filter((t) => t.id !== action.id);
-      const prevPos = action.prevId
-        ? (without.find((t) => t.id === action.prevId)?.position ?? null)
-        : null;
-      const nextPos = action.nextId
-        ? (without.find((t) => t.id === action.nextId)?.position ?? null)
-        : null;
-      let newPosition: number;
-      if (prevPos !== null && nextPos !== null)
-        newPosition = (prevPos + nextPos) / 2;
-      else if (prevPos !== null) newPosition = prevPos - 1;
-      else if (nextPos !== null) newPosition = nextPos + 1;
-      else newPosition = moving.position;
-      const updated = { ...moving, position: newPosition };
-      return [...without, updated].sort((a, b) => b.position - a.position);
-    }
-  }
-}
+import TodoListView from "./TodoListView";
+import { reduce } from "./todoReducer";
 
 export default function TodoListClient({
   initial,
@@ -106,47 +41,6 @@ export default function TodoListClient({
     if (filter === "completed") return optimistic.filter((todo) => todo.completed);
     return optimistic;
   }, [optimistic, filter]);
-
-  // SSR snapshot returns false → first paint shows raw date keys, matching
-  // the server render. After hydration, isClient flips to true and the
-  // memo below recomputes "오늘"/"어제" labels in the user's local TZ.
-  const isClient = useSyncExternalStore(
-    subscribeNoop,
-    () => true,
-    () => false,
-  );
-  const todayKeys = useMemo(() => {
-    if (!isClient) return null;
-    const now = new Date();
-    const yesterday = new Date(now);
-    yesterday.setDate(yesterday.getDate() - 1);
-    return { today: dayKey(now), yesterday: dayKey(yesterday) };
-  }, [isClient]);
-
-  const groups = useMemo(() => {
-    const buckets = new Map<string, Todo[]>();
-    for (const todo of visible) {
-      const key = dayKey(new Date(todo.created_at));
-      let bucket = buckets.get(key);
-      if (!bucket) {
-        bucket = [];
-        buckets.set(key, bucket);
-      }
-      bucket.push(todo);
-    }
-    return Array.from(buckets.entries())
-      .sort(([a], [b]) => (a > b ? -1 : 1))
-      .map(([key, items]) => ({
-        key,
-        label:
-          todayKeys && key === todayKeys.today
-            ? "오늘"
-            : todayKeys && key === todayKeys.yesterday
-              ? "어제"
-              : key,
-        items,
-      }));
-  }, [visible, todayKeys]);
 
   function handleAdd(title: string) {
     const tempId = `optimistic-${crypto.randomUUID()}`;
@@ -190,33 +84,23 @@ export default function TodoListClient({
     });
   }
 
-  const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
-    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
-  );
-
-  function handleDragEnd(items: Todo[]) {
-    return (event: DragEndEvent) => {
-      const { active, over } = event;
-      if (!over || active.id === over.id) return;
-      const oldIndex = items.findIndex((t) => t.id === active.id);
-      const newIndex = items.findIndex((t) => t.id === over.id);
-      if (oldIndex === -1 || newIndex === -1) return;
-      const reordered = arrayMove(items, oldIndex, newIndex);
-      const moved = reordered[newIndex];
-      const prev = reordered[newIndex - 1] ?? null;
-      const next = reordered[newIndex + 1] ?? null;
-      startTransition(() => {
-        applyOptimistic({
-          kind: "reorder",
-          id: moved.id,
-          prevId: prev?.id ?? null,
-          nextId: next?.id ?? null,
-        });
-        void reorderTodo(moved.id, prev?.id ?? null, next?.id ?? null);
-      });
-    };
+  function handleReorder(
+    id: string,
+    prevId: string | null,
+    nextId: string | null,
+  ) {
+    startTransition(() => {
+      applyOptimistic({ kind: "reorder", id, prevId, nextId });
+      void reorderTodo(id, prevId, nextId);
+    });
   }
+
+  const emptyMessage =
+    filter === "all"
+      ? "아직 등록된 할 일이 없습니다."
+      : filter === "active"
+        ? "진행중인 할 일이 없습니다."
+        : "완료된 할 일이 없습니다.";
 
   return (
     <main className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
@@ -262,47 +146,14 @@ export default function TodoListClient({
             </div>
           </div>
 
-          {visible.length === 0 ? (
-            <p className="border-y border-[var(--color-hairline)] px-0 py-10 text-center font-text text-lg text-[var(--color-muted)]">
-              {filter === "all"
-                ? "아직 등록된 할 일이 없습니다."
-                : filter === "active"
-                  ? "진행중인 할 일이 없습니다."
-                  : "완료된 할 일이 없습니다."}
-            </p>
-          ) : (
-            <div className="flex flex-col gap-12">
-              {groups.map((group) => (
-                <section key={group.key}>
-                  <h3 className="border-b border-[var(--color-hairline)] pb-3 font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
-                    {group.label}
-                  </h3>
-                  <DndContext
-                    sensors={sensors}
-                    collisionDetection={closestCenter}
-                    onDragEnd={handleDragEnd(group.items)}
-                  >
-                    <SortableContext
-                      items={group.items.map((t) => t.id)}
-                      strategy={verticalListSortingStrategy}
-                    >
-                      <ul>
-                        {group.items.map((todo) => (
-                          <TodoItem
-                            key={todo.id}
-                            todo={todo}
-                            onToggle={handleToggle}
-                            onRename={handleRename}
-                            onRemove={handleRemove}
-                          />
-                        ))}
-                      </ul>
-                    </SortableContext>
-                  </DndContext>
-                </section>
-              ))}
-            </div>
-          )}
+          <TodoListView
+            todos={visible}
+            emptyMessage={emptyMessage}
+            onToggle={handleToggle}
+            onRename={handleRename}
+            onRemove={handleRemove}
+            onReorder={handleReorder}
+          />
         </div>
       </section>
     </main>
@@ -320,11 +171,4 @@ function SpecCell({ value, label }: { value: number | string; label: string }) {
       </div>
     </div>
   );
-}
-
-function dayKey(d: Date): string {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, "0");
-  const day = String(d.getDate()).padStart(2, "0");
-  return `${y}-${m}-${day}`;
 }
