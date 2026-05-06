@@ -56,9 +56,9 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - `public.todos.position`(`double precision`, NOT NULL)이 **단일 정렬 키**. `page.tsx`는 `.order('position', { ascending: false })`만 사용한다 (created_at 정렬은 사용 금지).
 - 새 todo의 `position` 기본값은 `extract(epoch from now())` → 그룹 경계가 epoch 차이로 자연히 유지된다.
 - DnD 순서 변경은 `reorderTodo(id, prevId, nextId, tzOffsetMinutes)` (서버 액션). 두 형제의 `position` 사이 중간값으로 fractional position을 계산하므로 **다른 row를 건드리지 않는 1회 UPDATE**다. 한쪽만 있으면 ±1.
-- "같은 날짜 그룹 안에서만" 제약은 **이중 방어**다:
+- "같은 날짜 그룹 안에서만" 제약은 **클라이언트 1차 + 서버 보강** 두 단계다:
   1. 클라이언트 — 그룹별 `DndContext`/`SortableContext`로 cross-group 드롭 자체를 막는다.
-  2. 서버 — `reorderTodo`가 `tzOffsetMinutes`(`-new Date().getTimezoneOffset()` from client)를 받아 target/prev/next 세 row의 `created_at`에 offset을 적용한 dayKey가 같은지 검증, 다르면 throw. UI 우회 호출도 영구 cross-group이 불가능.
+  2. 서버 — `reorderTodo`가 `tzOffsetMinutes`(`-new Date().getTimezoneOffset()` from client)를 받아 target/prev/next 세 row의 `created_at`에 offset을 적용한 dayKey가 같은지 검증, 다르면 throw. **단 offset이 client-controlled이므로 self-attack 방지가 아니라 정상 클라이언트의 우발적 cross-group 호출 방어가 목적**이다 — 본인이 의도적으로 다른 offset을 보내면 자정 근처 그룹 경계를 흐릴 수 있고, 이는 본인 ordering만 손상시키므로 받아들인다 (RLS/cross-tenant isolation은 영향 없음). 더 강한 보장이 필요하면 사용자 TZ를 DB에 저장하거나 서버 측 `day_key` 컬럼을 도입한다.
 - 모든 mutation 액션은 `revalidateTodoRoutes()` 헬퍼로 `/`와 `/active`를 함께 invalidate한다. 새 라우트가 추가되면 이 헬퍼에 추가할 것.
 - 정밀도 한계로 같은 위치를 수만 번 끼워넣으면 position이 수렴 가능 → 운영 중 `unused_index` 경고 외에 `todos_user_position_idx`의 fractional collision이 보이면 그룹 단위 재정렬 함수를 추가할 것 (현재는 미구현).
 
