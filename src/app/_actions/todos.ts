@@ -12,6 +12,24 @@ async function getUserOrThrow() {
   return { supabase, user };
 }
 
+function revalidateTodoRoutes() {
+  revalidatePath("/");
+  revalidatePath("/active");
+}
+
+// `Date#getTimezoneOffset()`는 UTC - local(분) 부호이므로
+// 호출부에서 `-getTimezoneOffset()`을 보내면 local - UTC(분).
+// 그 값을 created_at(UTC ms)에 더한 뒤 UTC* 메서드로 잘라 사용자
+// 로컬 캘린더 일자 키를 얻는다 (Asia/Seoul = +540 등).
+function localDayKey(iso: string, tzOffsetMinutes: number): string {
+  const t = new Date(iso).getTime();
+  const local = new Date(t + tzOffsetMinutes * 60_000);
+  const y = local.getUTCFullYear();
+  const m = String(local.getUTCMonth() + 1).padStart(2, "0");
+  const d = String(local.getUTCDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
 export async function addTodo(title: string) {
   const trimmed = title.trim();
   if (!trimmed) return;
@@ -22,7 +40,7 @@ export async function addTodo(title: string) {
     .from("todos")
     .insert({ title: trimmed, user_id: user.id });
   if (error) throw error;
-  revalidatePath("/");
+  revalidateTodoRoutes();
 }
 
 export async function toggleTodo(id: string, completed: boolean) {
@@ -32,7 +50,7 @@ export async function toggleTodo(id: string, completed: boolean) {
     .update({ completed })
     .eq("id", id);
   if (error) throw error;
-  revalidatePath("/");
+  revalidateTodoRoutes();
 }
 
 export async function renameTodo(id: string, title: string) {
@@ -49,50 +67,64 @@ export async function renameTodo(id: string, title: string) {
     .update({ title: trimmed })
     .eq("id", id);
   if (error) throw error;
-  revalidatePath("/");
+  revalidateTodoRoutes();
 }
 
 export async function removeTodo(id: string) {
   const { supabase } = await getUserOrThrow();
   const { error } = await supabase.from("todos").delete().eq("id", id);
   if (error) throw error;
-  revalidatePath("/");
+  revalidateTodoRoutes();
 }
 
-// 같은-날짜-그룹 제약은 클라이언트 SortableContext가 차단한다.
-// 서버는 RLS + getUserOrThrow로 본인 todo만 다루도록 보장하고,
-// 두 형제의 position 사이값(없으면 ±1)으로 fractional position을 계산한다.
+// 같은-날짜-그룹 제약을 서버에서도 강제한다. 클라이언트가 SortableContext를
+// 우회해 직접 호출하더라도 cross-group 이동은 차단된다.
+// 사용자 로컬 TZ를 서버는 모르므로 호출부에서 `tzOffsetMinutes`를 전달한다
+// (`-new Date().getTimezoneOffset()`).
 export async function reorderTodo(
   id: string,
   prevId: string | null,
   nextId: string | null,
+  tzOffsetMinutes: number,
 ) {
   if (id === prevId || id === nextId) return;
   if (prevId === null && nextId === null) return;
+  if (!Number.isFinite(tzOffsetMinutes) || Math.abs(tzOffsetMinutes) > 14 * 60) {
+    throw new Error("Invalid timezone offset");
+  }
 
   const { supabase } = await getUserOrThrow();
 
-  const siblingIds = [prevId, nextId].filter((v): v is string => v !== null);
+  const ids = [id, ...(prevId ? [prevId] : []), ...(nextId ? [nextId] : [])];
   const { data: rows, error: fetchErr } = await supabase
     .from("todos")
-    .select("id, position")
-    .in("id", siblingIds);
+    .select("id, created_at, position")
+    .in("id", ids);
   if (fetchErr) throw fetchErr;
-  if ((rows?.length ?? 0) !== siblingIds.length) {
-    throw new Error("Sibling not found");
+  if ((rows?.length ?? 0) !== ids.length) {
+    throw new Error("Todo or sibling not found");
   }
 
-  const byId = new Map(rows!.map((r) => [r.id, r.position] as const));
-  const prevPos = prevId ? byId.get(prevId)! : null;
-  const nextPos = nextId ? byId.get(nextId)! : null;
+  const byId = new Map(rows!.map((r) => [r.id, r] as const));
+  const target = byId.get(id)!;
+  const prev = prevId ? byId.get(prevId)! : null;
+  const next = nextId ? byId.get(nextId)! : null;
+
+  const targetDay = localDayKey(target.created_at, tzOffsetMinutes);
+  if (prev && localDayKey(prev.created_at, tzOffsetMinutes) !== targetDay) {
+    throw new Error("Cross-group reorder is not allowed");
+  }
+  if (next && localDayKey(next.created_at, tzOffsetMinutes) !== targetDay) {
+    throw new Error("Cross-group reorder is not allowed");
+  }
 
   let newPosition: number;
-  if (prevPos !== null && nextPos !== null) {
-    newPosition = (prevPos + nextPos) / 2;
-  } else if (prevPos !== null) {
-    newPosition = prevPos - 1;
+  if (prev !== null && next !== null) {
+    newPosition = (prev.position + next.position) / 2;
+  } else if (prev !== null) {
+    newPosition = prev.position - 1;
   } else {
-    newPosition = nextPos! + 1;
+    newPosition = next!.position + 1;
   }
 
   const { error } = await supabase
@@ -100,5 +132,5 @@ export async function reorderTodo(
     .update({ position: newPosition })
     .eq("id", id);
   if (error) throw error;
-  revalidatePath("/");
+  revalidateTodoRoutes();
 }

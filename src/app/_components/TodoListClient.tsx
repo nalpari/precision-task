@@ -89,9 +89,10 @@ export default function TodoListClient({
     prevId: string | null,
     nextId: string | null,
   ) {
+    const tzOffsetMinutes = -new Date().getTimezoneOffset();
     startTransition(() => {
       applyOptimistic({ kind: "reorder", id, prevId, nextId });
-      void reorderTodo(id, prevId, nextId);
+      void reorderTodo(id, prevId, nextId, tzOffsetMinutes);
     });
   }
 
