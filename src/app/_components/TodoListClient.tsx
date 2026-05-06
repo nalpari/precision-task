@@ -1,6 +1,21 @@
 "use client";
 
 import {
+  DndContext,
+  type DragEndEvent,
+  KeyboardSensor,
+  PointerSensor,
+  closestCenter,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  arrayMove,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import {
   startTransition,
   useMemo,
   useOptimistic,
@@ -174,6 +189,34 @@ export default function TodoListClient({
     });
   }
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
+
+  function handleDragEnd(items: Todo[]) {
+    return (event: DragEndEvent) => {
+      const { active, over } = event;
+      if (!over || active.id === over.id) return;
+      const oldIndex = items.findIndex((t) => t.id === active.id);
+      const newIndex = items.findIndex((t) => t.id === over.id);
+      if (oldIndex === -1 || newIndex === -1) return;
+      const reordered = arrayMove(items, oldIndex, newIndex);
+      const moved = reordered[newIndex];
+      const prev = reordered[newIndex - 1] ?? null;
+      const next = reordered[newIndex + 1] ?? null;
+      startTransition(() => {
+        applyOptimistic({
+          kind: "reorder",
+          id: moved.id,
+          prevId: prev?.id ?? null,
+          nextId: next?.id ?? null,
+        });
+        void reorderTodo(moved.id, prev?.id ?? null, next?.id ?? null);
+      });
+    };
+  }
+
   return (
     <main className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
       <section className="hero-photo-band relative min-h-[620px] border-b border-[var(--color-hairline)]">
@@ -247,17 +290,28 @@ export default function TodoListClient({
                   <h3 className="border-b border-[var(--color-hairline)] pb-3 font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
                     {group.label}
                   </h3>
-                  <ul>
-                    {group.items.map((todo) => (
-                      <TodoItem
-                        key={todo.id}
-                        todo={todo}
-                        onToggle={handleToggle}
-                        onRename={handleRename}
-                        onRemove={handleRemove}
-                      />
-                    ))}
-                  </ul>
+                  <DndContext
+                    sensors={sensors}
+                    collisionDetection={closestCenter}
+                    onDragEnd={handleDragEnd(group.items)}
+                  >
+                    <SortableContext
+                      items={group.items.map((t) => t.id)}
+                      strategy={verticalListSortingStrategy}
+                    >
+                      <ul>
+                        {group.items.map((todo) => (
+                          <TodoItem
+                            key={todo.id}
+                            todo={todo}
+                            onToggle={handleToggle}
+                            onRename={handleRename}
+                            onRemove={handleRemove}
+                          />
+                        ))}
+                      </ul>
+                    </SortableContext>
+                  </DndContext>
                 </section>
               ))}
             </div>

@@ -1,5 +1,7 @@
 "use client";
 
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { useEffect, useRef, useState } from "react";
 import type { Todo } from "@/types/todo";
 
@@ -17,6 +19,8 @@ export default function TodoItem({
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState(todo.title);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } =
+    useSortable({ id: todo.id, disabled: editing });
 
   useEffect(() => {
     if (editing) {
@@ -49,8 +53,27 @@ export default function TodoItem({
     setEditing(true);
   }
 
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
   return (
-    <li className="group grid grid-cols-[auto_1fr] gap-4 border-b border-[var(--color-hairline)] py-5 md:grid-cols-[auto_1fr_auto]">
+    <li
+      ref={setNodeRef}
+      style={style}
+      className="group grid grid-cols-[auto_auto_1fr] gap-4 border-b border-[var(--color-hairline)] py-5 md:grid-cols-[auto_auto_1fr_auto]"
+    >
+      <button
+        type="button"
+        aria-label="순서 변경"
+        {...attributes}
+        {...listeners}
+        className="-ml-1 mt-0.5 cursor-grab touch-none px-1 font-precision text-base leading-none text-[var(--color-muted-soft)] hover:text-[var(--color-on-dark)] active:cursor-grabbing"
+      >
+        ⋮⋮
+      </button>
       <input
         type="checkbox"
         checked={todo.completed}
@@ -85,7 +108,7 @@ export default function TodoItem({
         </span>
       )}
 
-      <div className="col-start-2 flex flex-wrap items-center gap-3 md:col-start-auto">
+      <div className="col-start-3 flex flex-wrap items-center gap-3 md:col-start-auto">
         {editing ? (
           <>
             <button
