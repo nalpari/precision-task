@@ -8,7 +8,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - task를 수행할때 항상 karpathy-guidelines 를 따른다.
 - 모든 답변과 추론과정 및 질문은 한국어로 해줘.
 - task 를 진행하면서 중간중간 흐름에 따라 뚜렷한 단락별로 commit을 진행해.
-- task를 마무리 할때마다 필요에 따라 AGENTS.md, README.md 문서를 업데이트 해줘.
+- task를 마무리 할때마다 필요에 따라 AGENTS.md, README.md 문서를 업데이트 하고, graphify graph 도 현재 상태에 맞게 업데이트 해줘.
 
 ## Project Snapshot
 
@@ -50,6 +50,19 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - **DB 스키마 변경**: Supabase MCP `execute_sql`로 직접 적용 → 직후 `get_advisors`(security + performance) 둘 다 실행. WARN 이상 lint는 즉시 fix. 필요한 경우 `apply_migration`이 아닌 `execute_sql` 우선.
 - **클라이언트 상태**: `useOptimistic` + Server Action 조합으로 처리. Zustand/Jotai/React Query 추가 금지.
 - **새 라우트 추가 시**: 보호 라우트면 Server Component 진입부에 `getUser()` 검사 패턴을 그대로 복제 (proxy.ts에 추가하지 말 것).
+
+## graphify
+
+이 프로젝트는 `graphify-out/`에 지식 그래프를 보유한다.
+
+- **아키텍처/코드베이스 질문에 답하기 전에** `graphify-out/GRAPH_REPORT.md`의 god nodes와 community 구조를 먼저 읽는다.
+- **"X와 Y가 어떻게 엮여있나" 같은 크로스 모듈 질문**은 raw 파일을 grep하기보다 다음을 우선 사용한다:
+  - `graphify query "<질문>"` — BFS 탐색, 넓은 컨텍스트
+  - `graphify path "<A>" "<B>"` — 두 개념 사이 최단 경로
+  - `graphify explain "<concept>"` — 단일 노드의 모든 연결 설명
+- **INFERRED/AMBIGUOUS 엣지는 검증 대상**이다 — 그래프가 보여주는 연결을 인용할 때는 confidence 태그를 같이 본다.
+- **코드 파일을 수정한 세션 끝에는** `graphify update .`을 실행해 그래프를 최신 상태로 유지한다 (코드만 변경됐다면 AST-only, LLM 비용 0).
+- **docs/이미지를 변경했다면** `/graphify` 풀 파이프라인 재실행이 필요하다.
 
 ## Git Commit Message
 
