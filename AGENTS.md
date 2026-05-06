@@ -45,6 +45,14 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Server Action에서도 `getUserOrThrow()`로 한 번 더 user를 검증한다 (RLS는 마지막 안전장치이지 1차 방어선이 아님).
 - `NEXT_PUBLIC_*`만 클라이언트 노출. **`service_role` 키 사용 금지**.
 
+### Todo 정렬 / 순서 변경
+
+- `public.todos.position`(`double precision`, NOT NULL)이 **단일 정렬 키**. `page.tsx`는 `.order('position', { ascending: false })`만 사용한다 (created_at 정렬은 사용 금지).
+- 새 todo의 `position` 기본값은 `extract(epoch from now())` → 그룹 경계가 epoch 차이로 자연히 유지된다.
+- DnD 순서 변경은 `reorderTodo(id, prevId, nextId)` (서버 액션). 두 형제의 `position` 사이 중간값으로 fractional position을 계산하므로 **다른 row를 건드리지 않는 1회 UPDATE**다. 한쪽만 있으면 ±1.
+- "같은 날짜 그룹 안에서만" 제약은 **클라이언트의 그룹별 `DndContext` + `SortableContext`** 가 강제한다. 서버는 이 UX 규칙을 알 필요가 없다 (RLS가 본인 row 한정으로 충분). 따라서 서버 TZ ≠ 사용자 TZ 문제도 회피된다.
+- 정밀도 한계로 같은 위치를 수만 번 끼워넣으면 position이 수렴 가능 → 운영 중 `unused_index` 경고 외에 `todos_user_position_idx`의 fractional collision이 보이면 그룹 단위 재정렬 함수를 추가할 것 (현재는 미구현).
+
 ### 작업 순서 가이드
 
 - **DB 스키마 변경**: Supabase MCP `execute_sql`로 직접 적용 → 직후 `get_advisors`(security + performance) 둘 다 실행. WARN 이상 lint는 즉시 fix. 필요한 경우 `apply_migration`이 아닌 `execute_sql` 우선.
