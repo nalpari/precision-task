@@ -26,7 +26,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 | `src/proxy.ts` | **토큰 리프레시 전용**. 인증 게이팅·리다이렉트 로직 추가 금지 (Next.js 16 가이드: Proxy를 풀 세션 관리에 쓰지 말 것). |
 | `src/lib/supabase/server.ts` | Server Component / Server Action / Route Handler용 클라이언트. `cookies()` 사용. |
 | `src/lib/supabase/client.ts` | Client Component용 브라우저 클라이언트. |
-| `src/app/_actions/*.ts` | `'use server'` 서버 액션. 모두 `getUserOrThrow()`로 user 재검증 후 mutate, 끝에 `revalidatePath('/')`. |
+| `src/app/_actions/*.ts` | `'use server'` 서버 액션. 모두 `getUserOrThrow()`로 user 재검증 후 mutate, 끝에 `revalidateTodoRoutes()` 헬퍼로 `/`와 `/active` 동시 invalidate. |
+| `supabase/migrations/` | 시간순 SQL 마이그레이션. **`execute_sql`로 직접 적용한 변경은 같은 SQL을 새 마이그레이션 파일로 커밋**해 새 환경 재현이 가능하게 한다. |
 | `src/app/_components/` | 라우팅에서 제외(`_` prefix). UI 컴포넌트 모음. |
 | `src/app/page.tsx` | **인증 게이트는 여기서**. `getUser()` → null이면 `redirect('/login')`. |
 | `src/app/active/page.tsx` | 같은 인증 게이트 패턴. 모든 todos를 페치한 뒤 `ActiveDashboardClient`로 위임 (메트릭 계산을 위해 active만 필터링하지 않음). |
@@ -54,8 +55,11 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 - `public.todos.position`(`double precision`, NOT NULL)이 **단일 정렬 키**. `page.tsx`는 `.order('position', { ascending: false })`만 사용한다 (created_at 정렬은 사용 금지).
 - 새 todo의 `position` 기본값은 `extract(epoch from now())` → 그룹 경계가 epoch 차이로 자연히 유지된다.
-- DnD 순서 변경은 `reorderTodo(id, prevId, nextId)` (서버 액션). 두 형제의 `position` 사이 중간값으로 fractional position을 계산하므로 **다른 row를 건드리지 않는 1회 UPDATE**다. 한쪽만 있으면 ±1.
-- "같은 날짜 그룹 안에서만" 제약은 **클라이언트의 그룹별 `DndContext` + `SortableContext`** 가 강제한다. 서버는 이 UX 규칙을 알 필요가 없다 (RLS가 본인 row 한정으로 충분). 따라서 서버 TZ ≠ 사용자 TZ 문제도 회피된다.
+- DnD 순서 변경은 `reorderTodo(id, prevId, nextId, tzOffsetMinutes)` (서버 액션). 두 형제의 `position` 사이 중간값으로 fractional position을 계산하므로 **다른 row를 건드리지 않는 1회 UPDATE**다. 한쪽만 있으면 ±1.
+- "같은 날짜 그룹 안에서만" 제약은 **이중 방어**다:
+  1. 클라이언트 — 그룹별 `DndContext`/`SortableContext`로 cross-group 드롭 자체를 막는다.
+  2. 서버 — `reorderTodo`가 `tzOffsetMinutes`(`-new Date().getTimezoneOffset()` from client)를 받아 target/prev/next 세 row의 `created_at`에 offset을 적용한 dayKey가 같은지 검증, 다르면 throw. UI 우회 호출도 영구 cross-group이 불가능.
+- 모든 mutation 액션은 `revalidateTodoRoutes()` 헬퍼로 `/`와 `/active`를 함께 invalidate한다. 새 라우트가 추가되면 이 헬퍼에 추가할 것.
 - 정밀도 한계로 같은 위치를 수만 번 끼워넣으면 position이 수렴 가능 → 운영 중 `unused_index` 경고 외에 `todos_user_position_idx`의 fractional collision이 보이면 그룹 단위 재정렬 함수를 추가할 것 (현재는 미구현).
 
 ### 작업 순서 가이드
