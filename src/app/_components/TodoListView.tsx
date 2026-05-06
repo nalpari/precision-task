@@ -60,7 +60,16 @@ export default function TodoListView({
     return { today: dayKey(now), yesterday: dayKey(yesterday) };
   }, [isClient]);
 
-  const groups = useMemo(() => {
+  // SSR과 첫 hydration에서는 그룹화하지 않는다. dayKey()는 사용자 로컬 TZ에
+  // 의존하므로 서버에서 계산하면 자정 근처 todo가 클라이언트와 다른 그룹으로
+  // 떨어져 hydration mismatch가 난다. isClient가 true가 된 두 번째 render에서만
+  // 실제 그룹화한다 (label === null인 그룹은 헤더 없이 렌더된다).
+  const groups = useMemo<
+    { key: string; label: string | null; items: Todo[] }[]
+  >(() => {
+    if (!isClient) {
+      return [{ key: "ssr", label: null, items: todos }];
+    }
     const buckets = new Map<string, Todo[]>();
     for (const todo of todos) {
       const key = dayKey(new Date(todo.created_at));
@@ -83,7 +92,7 @@ export default function TodoListView({
               : key,
         items,
       }));
-  }, [todos, todayKeys]);
+  }, [todos, todayKeys, isClient]);
 
   function handleDragEnd(items: Todo[]) {
     return (event: DragEndEvent) => {
@@ -112,9 +121,11 @@ export default function TodoListView({
     <div className="flex flex-col gap-12">
       {groups.map((group) => (
         <section key={group.key}>
-          <h3 className="border-b border-[var(--color-hairline)] pb-3 font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
-            {group.label}
-          </h3>
+          {group.label !== null && (
+            <h3 className="border-b border-[var(--color-hairline)] pb-3 font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+              {group.label}
+            </h3>
+          )}
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
