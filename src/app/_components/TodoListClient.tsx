@@ -32,6 +32,7 @@ import {
   reorderTodo,
   toggleTodo,
 } from "../_actions/todos";
+import AppHeader from "./AppHeader";
 import FilterTabs from "./FilterTabs";
 import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
@@ -219,23 +220,9 @@ export default function TodoListClient({
 
   return (
     <main className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
-      <section className="hero-photo-band relative min-h-[620px] border-b border-[var(--color-hairline)]">
-        {userEmail && (
-          <form
-            action="/auth/signout"
-            method="post"
-            className="absolute right-4 top-5 flex items-center gap-4 sm:right-8"
-          >
-            <span className="hidden max-w-48 truncate font-precision text-[10px] uppercase tracking-[0.16em] text-[var(--color-muted)] sm:inline">
-              {userEmail}
-            </span>
-            <button className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)] transition-colors hover:text-[var(--color-on-dark)]">
-              Logout
-            </button>
-          </form>
-        )}
-
-        <div className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-20 pt-28 sm:px-8 md:pt-36">
+      <AppHeader userEmail={userEmail} />
+      <section className="hero-photo-band relative min-h-[560px] border-b border-[var(--color-hairline)]">
+        <div className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-20 pt-20 sm:px-8 md:pt-28">
           <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
             Private task ledger
           </p>
