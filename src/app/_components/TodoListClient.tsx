@@ -14,6 +14,7 @@ import {
   addTodo,
   removeTodo,
   renameTodo,
+  reorderTodo,
   toggleTodo,
 } from "../_actions/todos";
 import FilterTabs from "./FilterTabs";
@@ -24,7 +25,8 @@ type Action =
   | { kind: "add"; todo: Todo }
   | { kind: "toggle"; id: string; completed: boolean }
   | { kind: "rename"; id: string; title: string }
-  | { kind: "remove"; id: string };
+  | { kind: "remove"; id: string }
+  | { kind: "reorder"; id: string; prevId: string | null; nextId: string | null };
 
 function reduce(state: Todo[], action: Action): Todo[] {
   switch (action.kind) {
@@ -40,6 +42,25 @@ function reduce(state: Todo[], action: Action): Todo[] {
       );
     case "remove":
       return state.filter((todo) => todo.id !== action.id);
+    case "reorder": {
+      const moving = state.find((t) => t.id === action.id);
+      if (!moving) return state;
+      const without = state.filter((t) => t.id !== action.id);
+      const prevPos = action.prevId
+        ? (without.find((t) => t.id === action.prevId)?.position ?? null)
+        : null;
+      const nextPos = action.nextId
+        ? (without.find((t) => t.id === action.nextId)?.position ?? null)
+        : null;
+      let newPosition: number;
+      if (prevPos !== null && nextPos !== null)
+        newPosition = (prevPos + nextPos) / 2;
+      else if (prevPos !== null) newPosition = prevPos - 1;
+      else if (nextPos !== null) newPosition = nextPos + 1;
+      else newPosition = moving.position;
+      const updated = { ...moving, position: newPosition };
+      return [...without, updated].sort((a, b) => b.position - a.position);
+    }
   }
 }
 
