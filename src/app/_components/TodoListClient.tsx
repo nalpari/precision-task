@@ -1,7 +1,15 @@
 "use client";
 
-import { startTransition, useMemo, useOptimistic, useState } from "react";
+import {
+  startTransition,
+  useMemo,
+  useOptimistic,
+  useState,
+  useSyncExternalStore,
+} from "react";
 import type { Todo, TodoFilter } from "@/types/todo";
+
+const subscribeNoop = () => () => {};
 import {
   addTodo,
   removeTodo,
@@ -59,6 +67,47 @@ export default function TodoListClient({
     if (filter === "completed") return optimistic.filter((todo) => todo.completed);
     return optimistic;
   }, [optimistic, filter]);
+
+  // SSR snapshot returns false → first paint shows raw date keys, matching
+  // the server render. After hydration, isClient flips to true and the
+  // memo below recomputes "오늘"/"어제" labels in the user's local TZ.
+  const isClient = useSyncExternalStore(
+    subscribeNoop,
+    () => true,
+    () => false,
+  );
+  const todayKeys = useMemo(() => {
+    if (!isClient) return null;
+    const now = new Date();
+    const yesterday = new Date(now);
+    yesterday.setDate(yesterday.getDate() - 1);
+    return { today: dayKey(now), yesterday: dayKey(yesterday) };
+  }, [isClient]);
+
+  const groups = useMemo(() => {
+    const buckets = new Map<string, Todo[]>();
+    for (const todo of visible) {
+      const key = dayKey(new Date(todo.created_at));
+      let bucket = buckets.get(key);
+      if (!bucket) {
+        bucket = [];
+        buckets.set(key, bucket);
+      }
+      bucket.push(todo);
+    }
+    return Array.from(buckets.entries())
+      .sort(([a], [b]) => (a > b ? -1 : 1))
+      .map(([key, items]) => ({
+        key,
+        label:
+          todayKeys && key === todayKeys.today
+            ? "오늘"
+            : todayKeys && key === todayKeys.yesterday
+              ? "어제"
+              : key,
+        items,
+      }));
+  }, [visible, todayKeys]);
 
   function handleAdd(title: string) {
     const tempId = `optimistic-${crypto.randomUUID()}`;
@@ -130,18 +179,34 @@ export default function TodoListClient({
               : "완료된 할 일이 없어요."}
         </p>
       ) : (
-        <ul className="flex flex-col gap-2">
-          {visible.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={handleToggle}
-              onRename={handleRename}
-              onRemove={handleRemove}
-            />
+        <div className="flex flex-col gap-6">
+          {groups.map((group) => (
+            <section key={group.key} className="flex flex-col gap-2">
+              <h2 className="text-xs font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+                {group.label}
+              </h2>
+              <ul className="flex flex-col gap-2">
+                {group.items.map((todo) => (
+                  <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    onToggle={handleToggle}
+                    onRename={handleRename}
+                    onRemove={handleRemove}
+                  />
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );
+}
+
+function dayKey(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
