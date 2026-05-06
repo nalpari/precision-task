@@ -113,7 +113,8 @@ export default function TodoListClient({
 
   function handleAdd(title: string) {
     const tempId = `optimistic-${crypto.randomUUID()}`;
-    const now = new Date().toISOString();
+    const nowDate = new Date();
+    const now = nowDate.toISOString();
     startTransition(() => {
       applyOptimistic({
         kind: "add",
@@ -124,6 +125,7 @@ export default function TodoListClient({
           completed: false,
           created_at: now,
           updated_at: now,
+          position: nowDate.getTime() / 1000,
         },
       });
       void addTodo(title);

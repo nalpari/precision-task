@@ -13,7 +13,7 @@ export default async function Page() {
   const { data, error } = await supabase
     .from("todos")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("position", { ascending: false });
 
   if (error) throw error;
 
