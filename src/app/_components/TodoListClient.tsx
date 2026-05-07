@@ -158,7 +158,7 @@ export default function TodoListClient({
             </p>
 
             <div
-              className="motion-rise mt-8 max-w-2xl rounded-[8px] border border-[var(--color-brand-border)] bg-[rgba(15,15,15,0.78)] p-4 backdrop-blur-sm sm:p-5"
+              className="motion-rise mt-8 max-w-2xl rounded-[8px] border border-[var(--color-brand-border)] bg-[var(--color-surface-soft)] p-4 backdrop-blur-sm sm:p-5"
               style={{ "--motion-delay": "280ms" } as CSSProperties}
             >
               <TodoInput onAdd={handleAdd} />
