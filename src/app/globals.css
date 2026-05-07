@@ -112,21 +112,6 @@ button:disabled {
   font-family: var(--font-code), "Office Code Pro", Menlo, monospace;
 }
 
-.hero-photo-panel {
-  background-color: var(--color-deep);
-  background-image:
-    linear-gradient(
-      90deg,
-      rgba(23, 23, 23, 0.92) 0%,
-      rgba(23, 23, 23, 0.42) 34%,
-      rgba(23, 23, 23, 0.08) 100%
-    ),
-    url("/images/supabase-hero.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .hero-photo-band {
   background-color: var(--color-canvas);
   background-image:
