@@ -24,7 +24,7 @@ export default function AppHeader({ userEmail }: { userEmail: string | null }) {
           >
             <span className="h-2.5 w-2.5 rounded-[3px] bg-[var(--color-brand)]" />
           </span>
-          <span className="truncate">My Todo</span>
+          <span className="truncate">Precision Task</span>
         </Link>
 
         <nav className="order-3 flex w-full items-center gap-1 sm:order-none sm:w-auto">
