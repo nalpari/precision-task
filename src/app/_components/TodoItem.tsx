@@ -97,11 +97,12 @@ export default function TodoItem({
         />
       ) : (
         <span
+          onClick={() => onToggle(todo.id, !todo.completed)}
           onDoubleClick={beginEdit}
           className={
             todo.completed
-              ? "min-w-0 break-words font-text text-base leading-6 text-[var(--color-muted)] line-through"
-              : "min-w-0 break-words font-text text-base leading-6 text-[var(--color-body-strong)]"
+              ? "min-w-0 break-words font-text text-base leading-6 text-[var(--color-muted)] line-through cursor-pointer"
+              : "min-w-0 break-words font-text text-base leading-6 text-[var(--color-body-strong)] cursor-pointer"
           }
         >
           {todo.title}

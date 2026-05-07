@@ -57,17 +57,7 @@ export default function TodoListClient({
       });
     }
 
-    const uniqueKeys = [
-      ...new Set(
-        base
-          .map((todo) => dayKey(new Date(todo.created_at)))
-          .sort((a, b) => (a > b ? -1 : 1)),
-      ),
-    ].slice(0, 5);
-
-    return base.filter((todo) =>
-      uniqueKeys.includes(dayKey(new Date(todo.created_at))),
-    );
+    return base;
   }, [optimistic, filter, selectedDate]);
 
   function handleAdd(title: string) {
