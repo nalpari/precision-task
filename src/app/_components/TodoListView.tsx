@@ -15,7 +15,7 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { useMemo, useSyncExternalStore } from "react";
+import { useId, useMemo, useSyncExternalStore } from "react";
 import type { Todo } from "@/types/todo";
 import TodoItem from "./TodoItem";
 
@@ -46,6 +46,7 @@ export default function TodoListView({
     useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
+  const dndIdBase = useId();
 
   const isClient = useSyncExternalStore(
     subscribeNoop,
@@ -127,7 +128,7 @@ export default function TodoListView({
             </h3>
           )}
           <DndContext
-            id={`todo-list-${group.key}`}
+            id={`${dndIdBase}-${group.key}`}
             sensors={sensors}
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd(group.items)}
