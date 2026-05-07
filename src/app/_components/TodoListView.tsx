@@ -127,6 +127,7 @@ export default function TodoListView({
             </h3>
           )}
           <DndContext
+            id={`todo-list-${group.key}`}
             sensors={sensors}
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd(group.items)}
