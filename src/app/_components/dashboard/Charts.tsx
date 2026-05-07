@@ -1,5 +1,7 @@
 "use client";
 
+import type { CSSProperties } from "react";
+
 export function CompletionRing({
   active,
   completed,
@@ -42,6 +44,7 @@ export function CompletionRing({
             strokeDashoffset={c / 4}
             transform="rotate(-90)"
             strokeLinecap="butt"
+            className="chart-ring-value"
           />
         </svg>
         <div className="min-w-0">
@@ -77,15 +80,16 @@ export function WeeklyActivity({
             <div key={i} className="flex min-w-0 flex-1 flex-col items-center gap-2">
               <div className="flex h-[100px] w-full items-end">
                 <div
-                  className="w-full"
+                  className="motion-chart-y w-full"
                   style={{
+                    "--motion-delay": `${120 + i * 45}ms`,
                     height: `${h}%`,
                     minHeight: n > 0 ? "2px" : "0",
                     background: isLast
                       ? "var(--color-on-dark)"
                       : "var(--color-body)",
                     opacity: isLast ? 1 : 0.4,
-                  }}
+                  } as CSSProperties}
                   aria-label={`${labels[i]}: ${n}`}
                 />
               </div>
@@ -118,7 +122,7 @@ export function AgeBuckets({
   return (
     <DashboardCard label="In-Progress · By Age">
       <div className="flex flex-col gap-4">
-        {rows.map((row) => {
+        {rows.map((row, i) => {
           const w = Math.round((row.value / max) * 100);
           return (
             <div key={row.key} className="flex flex-col gap-1.5">
@@ -128,8 +132,11 @@ export function AgeBuckets({
               </div>
               <div className="h-[3px] w-full bg-[var(--color-hairline)]">
                 <div
-                  className="h-full bg-[var(--color-on-dark)]"
-                  style={{ width: `${w}%` }}
+                  className="chart-age-bar h-full bg-[var(--color-on-dark)]"
+                  style={{
+                    "--motion-delay": `${160 + i * 70}ms`,
+                    width: `${w}%`,
+                  } as CSSProperties}
                 />
               </div>
             </div>
@@ -148,7 +155,7 @@ function DashboardCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col border-t border-[var(--color-hairline)] pt-6">
+    <div className="chart-card flex flex-col border-t border-[var(--color-hairline)] pt-6">
       <p className="font-precision text-[10px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
         {label}
       </p>
