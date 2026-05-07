@@ -134,8 +134,8 @@ export default function TodoListClient({
   return (
     <main className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
       <AppHeader userEmail={userEmail} />
-      <section className="border-b border-[var(--color-hairline)] bg-[var(--color-canvas)]">
-        <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-14 pt-12 sm:px-8 md:grid-cols-[minmax(0,0.9fr)_minmax(320px,1.1fr)] md:items-center md:gap-12 md:pb-20 md:pt-20">
+      <section className="hero-photo-band border-b border-[var(--color-hairline)]">
+        <div className="mx-auto flex min-h-[620px] w-full max-w-7xl items-center px-4 py-14 sm:px-8 md:py-20">
           <div className="min-w-0">
             <p
               className="motion-rise font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]"
@@ -158,18 +158,12 @@ export default function TodoListClient({
             </p>
 
             <div
-              className="motion-rise mt-8 max-w-2xl rounded-[8px] border border-[var(--color-brand-border)] bg-[var(--color-surface-soft)] p-4 sm:p-5"
+              className="motion-rise mt-8 max-w-2xl rounded-[8px] border border-[var(--color-brand-border)] bg-[rgba(15,15,15,0.78)] p-4 backdrop-blur-sm sm:p-5"
               style={{ "--motion-delay": "280ms" } as CSSProperties}
             >
               <TodoInput onAdd={handleAdd} />
             </div>
           </div>
-
-          <div
-            className="motion-rise hero-photo-panel min-h-[260px] rounded-[8px] border border-[var(--color-hairline)] md:min-h-[420px]"
-            style={{ "--motion-delay": "180ms" } as CSSProperties}
-            aria-hidden="true"
-          />
         </div>
       </section>
 
