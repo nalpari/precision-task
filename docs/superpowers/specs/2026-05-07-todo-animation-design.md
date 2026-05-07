@@ -53,7 +53,7 @@
 공통 모션 토큰과 keyframes는 `src/app/globals.css`에 둔다.
 
 - `--motion-fast`, `--motion-medium`, `--motion-ease-out` 같은 CSS custom property를 정의한다.
-- `@keyframes rise-in`, `@keyframes line-reveal`, `@keyframes bar-grow-y`처럼 작고 범용적인 keyframe만 추가한다.
+- `@keyframes rise-in`, `@keyframes line-reveal`, `@keyframes chart-grow-y`, `@keyframes ring-grow`처럼 작고 범용적인 keyframe만 추가한다.
 - `@media (prefers-reduced-motion: reduce)`에서 animation과 transition을 제거한다.
 
 컴포넌트 변경은 className 추가 중심으로 제한한다.
