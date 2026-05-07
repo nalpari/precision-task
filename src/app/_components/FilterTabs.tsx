@@ -21,7 +21,7 @@ export default function FilterTabs({
     <div
       role="tablist"
       aria-label="필터"
-      className="grid grid-cols-3 border-y border-[var(--color-hairline)]"
+      className="grid grid-cols-3 gap-1 rounded-full border border-[var(--color-hairline)] bg-[var(--color-deep)] p-1"
     >
       {TABS.map((tab) => {
         const active = tab.value === value;
@@ -33,12 +33,12 @@ export default function FilterTabs({
             onClick={() => onChange(tab.value)}
             className={
               active
-                ? "border-b border-[var(--color-on-dark)] px-3 py-4 font-precision text-[11px] uppercase tracking-[0.2em] text-[var(--color-on-dark)]"
-                : "border-b border-transparent px-3 py-4 font-precision text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-on-dark)]"
+                ? "rounded-full border border-[var(--color-brand-border)] bg-[rgba(62,207,142,0.08)] px-3 py-2.5 font-display text-sm font-medium text-[var(--color-on-dark)]"
+                : "rounded-full border border-transparent px-3 py-2.5 font-display text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-on-dark)]"
             }
           >
             {tab.label}
-            <span className="ml-2 text-[10px] text-[var(--color-muted-soft)]">
+            <span className="ml-2 text-xs text-[var(--color-muted)]">
               {counts[tab.value]}
             </span>
           </button>

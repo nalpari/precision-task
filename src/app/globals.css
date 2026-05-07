@@ -1,20 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --color-canvas: #000000;
-  --color-surface-soft: #0d0d0d;
-  --color-surface-card: #141414;
-  --color-surface-elevated: #1f1f1f;
-  --color-hairline: #262626;
-  --color-hairline-strong: #3a3a3a;
-  --color-on-dark: #ffffff;
-  --color-body: #cccccc;
-  --color-body-strong: #e6e6e6;
-  --color-muted: #999999;
-  --color-muted-soft: #666666;
-  --color-link: #c3d9f3;
-  --color-warning: #d4a017;
-  --color-success: #5fa657;
+  --color-canvas: #171717;
+  --color-deep: #0f0f0f;
+  --color-surface-soft: hsla(0, 0%, 16%, 0.84);
+  --color-surface-card: #1f1f1f;
+  --color-surface-elevated: #242424;
+  --color-hairline: #2e2e2e;
+  --color-hairline-strong: #363636;
+  --color-hairline-light: #393939;
+  --color-on-dark: #fafafa;
+  --color-body: #b4b4b4;
+  --color-body-strong: #efefef;
+  --color-muted: #898989;
+  --color-muted-soft: #4d4d4d;
+  --color-link: #00c573;
+  --color-brand: #3ecf8e;
+  --color-brand-border: rgba(62, 207, 142, 0.3);
+  --color-warning: hsl(42 100% 62% / 0.92);
+  --color-success: #00c573;
+  --color-error: hsl(10 78% 62% / 0.92);
   --background: var(--color-canvas);
   --foreground: var(--color-on-dark);
   --motion-fast: 180ms;
@@ -55,10 +60,10 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-text);
-  --font-serif: var(--font-text);
-  --font-mono: var(--font-precision);
-  --font-display: var(--font-display);
+  --font-sans: var(--font-primary);
+  --font-serif: var(--font-primary);
+  --font-mono: var(--font-code);
+  --font-display: var(--font-primary);
 }
 
 html {
@@ -69,8 +74,8 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family:
-    var(--font-text), Garamond, "Times New Roman", "Apple SD Gothic Neo",
-    "Malgun Gothic", serif;
+    var(--font-primary), "Helvetica Neue", Helvetica, Arial,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   font-weight: 400;
 }
 
@@ -88,32 +93,51 @@ button:disabled {
 }
 
 ::selection {
-  background: var(--color-on-dark);
-  color: var(--color-canvas);
+  background: var(--color-brand);
+  color: var(--color-deep);
 }
 
 .font-display {
   font-family:
-    var(--font-display), -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+    var(--font-primary), "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .font-text {
   font-family:
-    var(--font-text), Garamond, "Times New Roman", "Apple SD Gothic Neo",
-    "Malgun Gothic", serif;
+    var(--font-primary), "Helvetica Neue", Helvetica, Arial,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
 .font-precision {
-  font-family:
-    var(--font-precision), ui-monospace, "SF Mono", "Cascadia Mono",
-    monospace;
+  font-family: var(--font-code), "Office Code Pro", Menlo, monospace;
+}
+
+.hero-photo-panel {
+  background-color: var(--color-deep);
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(23, 23, 23, 0.92) 0%,
+      rgba(23, 23, 23, 0.42) 34%,
+      rgba(23, 23, 23, 0.08) 100%
+    ),
+    url("/images/supabase-hero.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .hero-photo-band {
   background-color: var(--color-canvas);
-  background-image: url("/images/business-hero.png");
-  background-position: center top;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(23, 23, 23, 0.98) 0%,
+      rgba(23, 23, 23, 0.86) 42%,
+      rgba(23, 23, 23, 0.42) 100%
+    ),
+    url("/images/supabase-hero.png");
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -165,7 +189,7 @@ button:disabled {
 @media (hover: hover) {
   .motion-hover-line:hover {
     border-color: var(--color-hairline-strong);
-    background-color: rgba(255, 255, 255, 0.025);
+    background-color: hsla(200, 90.3%, 93.4%, 0.035);
   }
 
   .chart-card:hover {

@@ -63,14 +63,14 @@ export default function TodoItem({
     <li
       ref={setNodeRef}
       style={style}
-      className="group grid grid-cols-[auto_auto_1fr] gap-4 border-b border-[var(--color-hairline)] py-5 md:grid-cols-[auto_auto_1fr_auto]"
+      className="group grid grid-cols-[auto_auto_1fr] gap-3 border-b border-[var(--color-hairline)] px-3 py-4 transition-colors last:border-b-0 hover:bg-[hsla(200,90.3%,93.4%,0.031)] md:grid-cols-[auto_auto_1fr_auto]"
     >
       <button
         type="button"
         aria-label="순서 변경"
         {...attributes}
         {...listeners}
-        className="-ml-1 mt-0.5 cursor-grab touch-none px-1 font-precision text-base leading-none text-[var(--color-muted-soft)] hover:text-[var(--color-on-dark)] active:cursor-grabbing"
+        className="-ml-1 mt-0.5 cursor-grab touch-none rounded-[6px] border border-transparent px-1 font-precision text-base leading-none text-[var(--color-muted-soft)] hover:border-[var(--color-hairline)] hover:text-[var(--color-body)] active:cursor-grabbing"
       >
         ⋮⋮
       </button>
@@ -78,7 +78,7 @@ export default function TodoItem({
         type="checkbox"
         checked={todo.completed}
         onChange={(event) => onToggle(todo.id, event.target.checked)}
-        className="mt-1 h-4 w-4 cursor-pointer accent-[var(--color-on-dark)]"
+        className="mt-1 h-4 w-4 cursor-pointer accent-[var(--color-brand)]"
         aria-label={todo.completed ? "완료 해제" : "완료 표시"}
       />
 
@@ -93,15 +93,15 @@ export default function TodoItem({
             else if (event.key === "Escape") cancel();
           }}
           maxLength={500}
-          className="h-9 min-w-0 border-0 border-b border-[var(--color-hairline-strong)] bg-transparent px-0 font-text text-xl text-[var(--color-on-dark)] outline-none focus:border-[var(--color-on-dark)]"
+          className="h-9 min-w-0 rounded-[6px] border border-[var(--color-hairline)] bg-[var(--color-deep)] px-3 font-text text-base text-[var(--color-on-dark)] outline-none focus:border-[var(--color-brand-border)]"
         />
       ) : (
         <span
           onDoubleClick={beginEdit}
           className={
             todo.completed
-              ? "min-w-0 font-text text-xl leading-snug text-[var(--color-muted-soft)] line-through"
-              : "min-w-0 font-text text-xl leading-snug text-[var(--color-body-strong)]"
+              ? "min-w-0 break-words font-text text-base leading-6 text-[var(--color-muted)] line-through"
+              : "min-w-0 break-words font-text text-base leading-6 text-[var(--color-body-strong)]"
           }
         >
           {todo.title}
@@ -114,14 +114,14 @@ export default function TodoItem({
             <button
               type="button"
               onClick={commit}
-              className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-on-dark)] underline-offset-4 hover:underline"
+              className="rounded-[6px] px-2 py-1 font-display text-sm font-medium text-[var(--color-link)] hover:bg-[rgba(62,207,142,0.08)]"
             >
               Save
             </button>
             <button
               type="button"
               onClick={cancel}
-              className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)] underline-offset-4 hover:text-[var(--color-on-dark)] hover:underline"
+              className="rounded-[6px] px-2 py-1 font-display text-sm font-medium text-[var(--color-muted)] hover:bg-[var(--color-surface-elevated)] hover:text-[var(--color-on-dark)]"
             >
               Cancel
             </button>
@@ -130,7 +130,7 @@ export default function TodoItem({
           <button
             type="button"
             onClick={beginEdit}
-            className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted)] underline-offset-4 hover:text-[var(--color-on-dark)] hover:underline"
+            className="rounded-[6px] px-2 py-1 font-display text-sm font-medium text-[var(--color-muted)] hover:bg-[var(--color-surface-elevated)] hover:text-[var(--color-on-dark)]"
           >
             Edit
           </button>
@@ -138,7 +138,7 @@ export default function TodoItem({
         <button
           type="button"
           onClick={() => onRemove(todo.id)}
-          className="font-precision text-[10px] uppercase tracking-[0.2em] text-[var(--color-muted-soft)] underline-offset-4 hover:text-[var(--color-on-dark)] hover:underline"
+          className="rounded-[6px] px-2 py-1 font-display text-sm font-medium text-[var(--color-muted)] hover:bg-[var(--color-surface-elevated)] hover:text-[var(--color-on-dark)]"
         >
           Delete
         </button>

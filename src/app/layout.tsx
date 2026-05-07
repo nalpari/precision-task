@@ -1,35 +1,24 @@
 import type { Metadata } from "next";
-import {
-  Cormorant_Garamond,
-  JetBrains_Mono,
-  Saira_Condensed,
-} from "next/font/google";
+import { Nunito_Sans, Source_Code_Pro } from "next/font/google";
 import "./globals.css";
 
-const display = Saira_Condensed({
-  weight: "400",
+const primary = Nunito_Sans({
+  weight: ["400", "500"],
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-primary",
   display: "swap",
 });
 
-const text = Cormorant_Garamond({
+const code = Source_Code_Pro({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-text",
-  display: "swap",
-});
-
-const precision = JetBrains_Mono({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-precision",
+  variable: "--font-code",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "My Todo | Precision Task Ledger",
-  description: "Austere multi-user todo app built with Supabase and Next.js.",
+  title: "My Todo | Developer Task Console",
+  description: "Dark-mode multi-user todo app built with Supabase and Next.js.",
 };
 
 export default function RootLayout({
@@ -40,7 +29,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${display.variable} ${text.variable} ${precision.variable} h-full antialiased`}
+      className={`${primary.variable} ${code.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

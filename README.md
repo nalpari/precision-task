@@ -9,7 +9,7 @@ Supabase로 인증·데이터를 처리하는 Next.js 16 / React 19 기반의 �
 - 상태 필터 (전체 / 진행중 / 완료)
 - `useOptimistic` 기반 즉시 반영 UX
 - RLS로 사용자별 데이터 격리
-- `DESIGN.md` 기반 austere luxury black UI (사진 히어로, outline pill CTA, 헤어라인 목록)
+- `DESIGN.md` 기반 Supabase식 다크 UI (에메랄드 액센트, pill 탭/CTA, 경계선 중심 표면)
 - reduced-motion-aware CSS reveal 애니메이션 (hero, todo 카운트, active 차트)
 
 ## 기술 스택
@@ -123,7 +123,8 @@ src/
             └── GoogleSignInButton.tsx
 public/
 └── images/
-    └── business-hero.png       # DESIGN.md 톤에 맞춘 비상표 히어로 이미지
+    ├── business-hero.png       # 이전 히어로 이미지
+    └── supabase-hero.png       # Supabase식 다크 생산성 히어로 이미지
 
 supabase/
 └── migrations/                 # 시간순 SQL 마이그레이션 (배포 전 반드시 먼저 적용)
@@ -137,7 +138,7 @@ supabase/
 - **데이터 격리 다층 방어**: ① RLS(`(select auth.uid()) = user_id`) ② Server Action 내 `getUserOrThrow()` 재검증.
 - **클라이언트 상태**: `useOptimistic`만 사용. 별도 상태 라이브러리(Zustand/Jotai/React Query) 불필요.
 - **뮤테이션**: 모든 변경은 Server Action을 통과 → 끝에 `revalidatePath('/')`로 캐시 갱신.
-- **디자인 시스템 적용**: `DESIGN.md`의 Bugatti식 토큰을 앱 용도에 맞춰 차용합니다. 검정 단일 모드, `Saira Condensed`/`Cormorant Garamond`/`JetBrains Mono` 3계열 폰트, 투명 outline pill 버튼, 카드 대신 헤어라인 행을 기본값으로 둡니다.
+- **디자인 시스템 적용**: `DESIGN.md`의 Supabase식 토큰을 앱 용도에 맞춰 차용합니다. `#171717` 기반 다크 모드, 에메랄드 액센트, `Nunito Sans`/`Source Code Pro` 폰트 조합, pill CTA와 탭, 경계선 중심의 차분한 표면을 기본값으로 둡니다.
 
 ## 라이선스
 

@@ -53,558 +53,576 @@
       "file_type": "code",
       "source_file": "postcss.config.mjs",
       "source_location": "L1",
-      "id": "postcss_config_mjs",
-      "community": 25,
-      "norm_label": "postcss.config.mjs"
+      "community": 26,
+      "norm_label": "postcss.config.mjs",
+      "id": "postcss_config_mjs"
     },
     {
       "label": "next-env.d.ts",
       "file_type": "code",
       "source_file": "next-env.d.ts",
       "source_location": "L1",
-      "id": "next_env_d_ts",
-      "community": 26,
-      "norm_label": "next-env.d.ts"
+      "community": 27,
+      "norm_label": "next-env.d.ts",
+      "id": "next_env_d_ts"
     },
     {
       "label": "eslint.config.mjs",
       "file_type": "code",
       "source_file": "eslint.config.mjs",
       "source_location": "L1",
-      "id": "eslint_config_mjs",
-      "community": 27,
-      "norm_label": "eslint.config.mjs"
+      "community": 28,
+      "norm_label": "eslint.config.mjs",
+      "id": "eslint_config_mjs"
     },
     {
       "label": "next.config.ts",
       "file_type": "code",
       "source_file": "next.config.ts",
       "source_location": "L1",
-      "id": "next_config_ts",
-      "community": 28,
-      "norm_label": "next.config.ts"
+      "community": 29,
+      "norm_label": "next.config.ts",
+      "id": "next_config_ts"
     },
     {
       "label": "proxy.ts",
       "file_type": "code",
       "source_file": "src/proxy.ts",
       "source_location": "L1",
-      "id": "src_proxy_ts",
       "community": 18,
-      "norm_label": "proxy.ts"
+      "norm_label": "proxy.ts",
+      "id": "src_proxy_ts"
     },
     {
       "label": "proxy()",
       "file_type": "code",
       "source_file": "src/proxy.ts",
       "source_location": "L4",
-      "id": "src_proxy_proxy",
       "community": 18,
-      "norm_label": "proxy()"
+      "norm_label": "proxy()",
+      "id": "src_proxy_proxy"
     },
     {
       "label": "todo.ts",
       "file_type": "code",
       "source_file": "src/types/todo.ts",
       "source_location": "L1",
-      "id": "src_types_todo_ts",
-      "community": 29,
-      "norm_label": "todo.ts"
+      "community": 30,
+      "norm_label": "todo.ts",
+      "id": "src_types_todo_ts"
     },
     {
       "label": "layout.tsx",
       "file_type": "code",
       "source_file": "src/app/layout.tsx",
       "source_location": "L1",
-      "id": "src_app_layout_tsx",
       "community": 19,
-      "norm_label": "layout.tsx"
+      "norm_label": "layout.tsx",
+      "id": "src_app_layout_tsx"
     },
     {
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "src/app/layout.tsx",
-      "source_location": "L35",
-      "id": "app_layout_rootlayout",
+      "source_location": "L24",
       "community": 19,
-      "norm_label": "rootlayout()"
+      "norm_label": "rootlayout()",
+      "id": "app_layout_rootlayout"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "src/app/page.tsx",
       "source_location": "L1",
-      "id": "src_app_page_tsx",
-      "community": 30,
-      "norm_label": "page.tsx"
+      "community": 31,
+      "norm_label": "page.tsx",
+      "id": "src_app_page_tsx"
     },
     {
       "label": "route.ts",
       "file_type": "code",
       "source_file": "src/app/auth/signout/route.ts",
       "source_location": "L1",
-      "id": "src_app_auth_signout_route_ts",
-      "community": 5,
-      "norm_label": "route.ts"
+      "community": 4,
+      "norm_label": "route.ts",
+      "id": "src_app_auth_signout_route_ts"
     },
     {
       "label": "POST()",
       "file_type": "code",
       "source_file": "src/app/auth/signout/route.ts",
       "source_location": "L4",
-      "id": "signout_route_post",
-      "community": 5,
-      "norm_label": "post()"
+      "community": 4,
+      "norm_label": "post()",
+      "id": "signout_route_post"
     },
     {
       "label": "route.ts",
       "file_type": "code",
       "source_file": "src/app/auth/callback/route.ts",
       "source_location": "L1",
-      "id": "src_app_auth_callback_route_ts",
-      "community": 5,
-      "norm_label": "route.ts"
+      "community": 4,
+      "norm_label": "route.ts",
+      "id": "src_app_auth_callback_route_ts"
     },
     {
       "label": "GET()",
       "file_type": "code",
       "source_file": "src/app/auth/callback/route.ts",
       "source_location": "L4",
-      "id": "callback_route_get",
-      "community": 5,
-      "norm_label": "get()"
+      "community": 4,
+      "norm_label": "get()",
+      "id": "callback_route_get"
     },
     {
       "label": "todos.ts",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L1",
-      "id": "src_app_actions_todos_ts",
-      "community": 4,
-      "norm_label": "todos.ts"
+      "community": 5,
+      "norm_label": "todos.ts",
+      "id": "src_app_actions_todos_ts"
     },
     {
       "label": "getUserOrThrow()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L6",
-      "id": "actions_todos_getuserorthrow",
-      "community": 4,
-      "norm_label": "getuserorthrow()"
+      "community": 5,
+      "norm_label": "getuserorthrow()",
+      "id": "actions_todos_getuserorthrow"
     },
     {
       "label": "revalidateTodoRoutes()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L15",
-      "id": "actions_todos_revalidatetodoroutes",
-      "community": 4,
-      "norm_label": "revalidatetodoroutes()"
+      "community": 5,
+      "norm_label": "revalidatetodoroutes()",
+      "id": "actions_todos_revalidatetodoroutes"
     },
     {
       "label": "localDayKey()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L24",
-      "id": "actions_todos_localdaykey",
-      "community": 4,
-      "norm_label": "localdaykey()"
+      "community": 5,
+      "norm_label": "localdaykey()",
+      "id": "actions_todos_localdaykey"
     },
     {
       "label": "addTodo()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L33",
-      "id": "actions_todos_addtodo",
-      "community": 4,
-      "norm_label": "addtodo()"
+      "community": 5,
+      "norm_label": "addtodo()",
+      "id": "actions_todos_addtodo"
     },
     {
       "label": "toggleTodo()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L46",
-      "id": "actions_todos_toggletodo",
-      "community": 4,
-      "norm_label": "toggletodo()"
+      "community": 5,
+      "norm_label": "toggletodo()",
+      "id": "actions_todos_toggletodo"
     },
     {
       "label": "renameTodo()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L56",
-      "id": "actions_todos_renametodo",
-      "community": 4,
-      "norm_label": "renametodo()"
+      "community": 5,
+      "norm_label": "renametodo()",
+      "id": "actions_todos_renametodo"
     },
     {
       "label": "removeTodo()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L73",
-      "id": "actions_todos_removetodo",
-      "community": 4,
-      "norm_label": "removetodo()"
+      "community": 5,
+      "norm_label": "removetodo()",
+      "id": "actions_todos_removetodo"
     },
     {
       "label": "reorderTodo()",
       "file_type": "code",
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L84",
-      "id": "actions_todos_reordertodo",
-      "community": 4,
-      "norm_label": "reordertodo()"
+      "community": 5,
+      "norm_label": "reordertodo()",
+      "id": "actions_todos_reordertodo"
     },
     {
       "label": "ActiveDashboardClient.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/ActiveDashboardClient.tsx",
       "source_location": "L1",
-      "id": "src_app_components_activedashboardclient_tsx",
-      "community": 6,
-      "norm_label": "activedashboardclient.tsx"
+      "community": 7,
+      "norm_label": "activedashboardclient.tsx",
+      "id": "src_app_components_activedashboardclient_tsx"
     },
     {
       "label": "subscribeNoop()",
       "file_type": "code",
       "source_file": "src/app/_components/ActiveDashboardClient.tsx",
       "source_location": "L22",
-      "id": "components_activedashboardclient_subscribenoop",
-      "community": 6,
-      "norm_label": "subscribenoop()"
+      "community": 7,
+      "norm_label": "subscribenoop()",
+      "id": "components_activedashboardclient_subscribenoop"
     },
     {
       "label": "handleToggle()",
       "file_type": "code",
       "source_file": "src/app/_components/ActiveDashboardClient.tsx",
       "source_location": "L69",
-      "id": "components_activedashboardclient_handletoggle",
-      "community": 6,
-      "norm_label": "handletoggle()"
+      "community": 7,
+      "norm_label": "handletoggle()",
+      "id": "components_activedashboardclient_handletoggle"
     },
     {
       "label": "handleRename()",
       "file_type": "code",
       "source_file": "src/app/_components/ActiveDashboardClient.tsx",
       "source_location": "L76",
-      "id": "components_activedashboardclient_handlerename",
-      "community": 6,
-      "norm_label": "handlerename()"
+      "community": 7,
+      "norm_label": "handlerename()",
+      "id": "components_activedashboardclient_handlerename"
     },
     {
       "label": "handleRemove()",
       "file_type": "code",
       "source_file": "src/app/_components/ActiveDashboardClient.tsx",
       "source_location": "L83",
-      "id": "components_activedashboardclient_handleremove",
-      "community": 6,
-      "norm_label": "handleremove()"
+      "community": 7,
+      "norm_label": "handleremove()",
+      "id": "components_activedashboardclient_handleremove"
     },
     {
       "label": "handleReorder()",
       "file_type": "code",
       "source_file": "src/app/_components/ActiveDashboardClient.tsx",
       "source_location": "L90",
-      "id": "components_activedashboardclient_handlereorder",
-      "community": 6,
-      "norm_label": "handlereorder()"
+      "community": 7,
+      "norm_label": "handlereorder()",
+      "id": "components_activedashboardclient_handlereorder"
+    },
+    {
+      "label": "CalendarWidget.tsx",
+      "file_type": "code",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L1",
+      "community": 10,
+      "norm_label": "calendarwidget.tsx",
+      "id": "src_app_components_calendarwidget_tsx"
+    },
+    {
+      "label": "dayKey()",
+      "file_type": "code",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L6",
+      "community": 10,
+      "norm_label": "daykey()",
+      "id": "components_calendarwidget_daykey"
+    },
+    {
+      "label": "prevMonth()",
+      "file_type": "code",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L56",
+      "community": 10,
+      "norm_label": "prevmonth()",
+      "id": "components_calendarwidget_prevmonth"
+    },
+    {
+      "label": "nextMonth()",
+      "file_type": "code",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L60",
+      "community": 10,
+      "norm_label": "nextmonth()",
+      "id": "components_calendarwidget_nextmonth"
     },
     {
       "label": "TodoInput.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/TodoInput.tsx",
       "source_location": "L1",
-      "id": "src_app_components_todoinput_tsx",
       "community": 20,
-      "norm_label": "todoinput.tsx"
+      "norm_label": "todoinput.tsx",
+      "id": "src_app_components_todoinput_tsx"
     },
     {
       "label": "submit()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoInput.tsx",
       "source_location": "L13",
-      "id": "components_todoinput_submit",
       "community": 20,
-      "norm_label": "submit()"
+      "norm_label": "submit()",
+      "id": "components_todoinput_submit"
     },
     {
       "label": "TodoListClient.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
       "source_location": "L1",
-      "id": "src_app_components_todolistclient_tsx",
-      "community": 7,
-      "norm_label": "todolistclient.tsx"
+      "community": 8,
+      "norm_label": "todolistclient.tsx",
+      "id": "src_app_components_todolistclient_tsx"
     },
     {
       "label": "handleAdd()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L51",
-      "id": "components_todolistclient_handleadd",
-      "community": 7,
-      "norm_label": "handleadd()"
+      "source_location": "L73",
+      "community": 8,
+      "norm_label": "handleadd()",
+      "id": "components_todolistclient_handleadd"
     },
     {
       "label": "handleToggle()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L72",
-      "id": "components_todolistclient_handletoggle",
-      "community": 7,
-      "norm_label": "handletoggle()"
+      "source_location": "L94",
+      "community": 8,
+      "norm_label": "handletoggle()",
+      "id": "components_todolistclient_handletoggle"
     },
     {
       "label": "handleRename()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L79",
-      "id": "components_todolistclient_handlerename",
-      "community": 7,
-      "norm_label": "handlerename()"
+      "source_location": "L101",
+      "community": 8,
+      "norm_label": "handlerename()",
+      "id": "components_todolistclient_handlerename"
     },
     {
       "label": "handleRemove()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L86",
-      "id": "components_todolistclient_handleremove",
-      "community": 7,
-      "norm_label": "handleremove()"
+      "source_location": "L108",
+      "community": 8,
+      "norm_label": "handleremove()",
+      "id": "components_todolistclient_handleremove"
     },
     {
       "label": "handleReorder()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L93",
-      "id": "components_todolistclient_handlereorder",
-      "community": 7,
-      "norm_label": "handlereorder()"
+      "source_location": "L115",
+      "community": 8,
+      "norm_label": "handlereorder()",
+      "id": "components_todolistclient_handlereorder"
     },
     {
       "label": "TodoItem.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
       "source_location": "L1",
-      "id": "src_app_components_todoitem_tsx",
-      "community": 10,
-      "norm_label": "todoitem.tsx"
+      "community": 11,
+      "norm_label": "todoitem.tsx",
+      "id": "src_app_components_todoitem_tsx"
     },
     {
       "label": "commit()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
       "source_location": "L32",
-      "id": "components_todoitem_commit",
-      "community": 10,
-      "norm_label": "commit()"
+      "community": 11,
+      "norm_label": "commit()",
+      "id": "components_todoitem_commit"
     },
     {
       "label": "cancel()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
       "source_location": "L46",
-      "id": "components_todoitem_cancel",
-      "community": 10,
-      "norm_label": "cancel()"
+      "community": 11,
+      "norm_label": "cancel()",
+      "id": "components_todoitem_cancel"
     },
     {
       "label": "beginEdit()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoItem.tsx",
       "source_location": "L51",
-      "id": "components_todoitem_beginedit",
-      "community": 10,
-      "norm_label": "beginedit()"
+      "community": 11,
+      "norm_label": "beginedit()",
+      "id": "components_todoitem_beginedit"
     },
     {
       "label": "AppHeader.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/AppHeader.tsx",
       "source_location": "L1",
-      "id": "src_app_components_appheader_tsx",
-      "community": 31,
-      "norm_label": "appheader.tsx"
+      "community": 32,
+      "norm_label": "appheader.tsx",
+      "id": "src_app_components_appheader_tsx"
     },
     {
       "label": "FilterTabs.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/FilterTabs.tsx",
       "source_location": "L1",
-      "id": "src_app_components_filtertabs_tsx",
-      "community": 32,
-      "norm_label": "filtertabs.tsx"
+      "community": 33,
+      "norm_label": "filtertabs.tsx",
+      "id": "src_app_components_filtertabs_tsx"
     },
     {
       "label": "TodoListView.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListView.tsx",
       "source_location": "L1",
-      "id": "src_app_components_todolistview_tsx",
-      "community": 13,
-      "norm_label": "todolistview.tsx"
+      "community": 15,
+      "norm_label": "todolistview.tsx",
+      "id": "src_app_components_todolistview_tsx"
     },
     {
       "label": "subscribeNoop()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListView.tsx",
       "source_location": "L22",
-      "id": "components_todolistview_subscribenoop",
-      "community": 13,
-      "norm_label": "subscribenoop()"
+      "community": 15,
+      "norm_label": "subscribenoop()",
+      "id": "components_todolistview_subscribenoop"
     },
     {
       "label": "handleDragEnd()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListView.tsx",
       "source_location": "L98",
-      "id": "components_todolistview_handledragend",
-      "community": 13,
-      "norm_label": "handledragend()"
+      "community": 15,
+      "norm_label": "handledragend()",
+      "id": "components_todolistview_handledragend"
     },
     {
       "label": "todoReducer.ts",
       "file_type": "code",
       "source_file": "src/app/_components/todoReducer.ts",
       "source_location": "L1",
-      "id": "src_app_components_todoreducer_ts",
       "community": 21,
-      "norm_label": "todoreducer.ts"
+      "norm_label": "todoreducer.ts",
+      "id": "src_app_components_todoreducer_ts"
     },
     {
       "label": "reduce()",
       "file_type": "code",
       "source_file": "src/app/_components/todoReducer.ts",
       "source_location": "L15",
-      "id": "components_todoreducer_reduce",
       "community": 21,
-      "norm_label": "reduce()"
+      "norm_label": "reduce()",
+      "id": "components_todoreducer_reduce"
     },
     {
       "label": "Charts.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/dashboard/Charts.tsx",
       "source_location": "L1",
-      "id": "src_app_components_dashboard_charts_tsx",
-      "community": 14,
-      "norm_label": "charts.tsx"
+      "community": 22,
+      "norm_label": "charts.tsx",
+      "id": "src_app_components_dashboard_charts_tsx"
     },
     {
       "label": "CompletionRing()",
       "file_type": "code",
       "source_file": "src/app/_components/dashboard/Charts.tsx",
       "source_location": "L5",
-      "id": "dashboard_charts_completionring",
-      "community": 14,
-      "norm_label": "completionring()"
-    },
-    {
-      "label": "WeeklyActivity()",
-      "file_type": "code",
-      "source_file": "src/app/_components/dashboard/Charts.tsx",
-      "source_location": "L63",
-      "id": "dashboard_charts_weeklyactivity",
-      "community": 14,
-      "norm_label": "weeklyactivity()"
+      "community": 22,
+      "norm_label": "completionring()",
+      "id": "dashboard_charts_completionring"
     },
     {
       "label": "EmailMagicLinkForm.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/login/EmailMagicLinkForm.tsx",
       "source_location": "L1",
-      "id": "src_app_components_login_emailmagiclinkform_tsx",
-      "community": 5,
-      "norm_label": "emailmagiclinkform.tsx"
+      "community": 4,
+      "norm_label": "emailmagiclinkform.tsx",
+      "id": "src_app_components_login_emailmagiclinkform_tsx"
     },
     {
       "label": "handleSubmit()",
       "file_type": "code",
       "source_file": "src/app/_components/login/EmailMagicLinkForm.tsx",
       "source_location": "L16",
-      "id": "login_emailmagiclinkform_handlesubmit",
-      "community": 5,
-      "norm_label": "handlesubmit()"
+      "community": 4,
+      "norm_label": "handlesubmit()",
+      "id": "login_emailmagiclinkform_handlesubmit"
     },
     {
       "label": "GoogleSignInButton.tsx",
       "file_type": "code",
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
       "source_location": "L1",
-      "id": "src_app_components_login_googlesigninbutton_tsx",
-      "community": 15,
-      "norm_label": "googlesigninbutton.tsx"
+      "community": 4,
+      "norm_label": "googlesigninbutton.tsx",
+      "id": "src_app_components_login_googlesigninbutton_tsx"
     },
     {
-      "label": "GoogleSignInButton()",
+      "label": "handleClick()",
       "file_type": "code",
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
-      "source_location": "L6",
-      "id": "login_googlesigninbutton_googlesigninbutton",
-      "community": 15,
-      "norm_label": "googlesigninbutton()"
-    },
-    {
-      "label": "GoogleMark()",
-      "file_type": "code",
-      "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
-      "source_location": "L45",
-      "id": "login_googlesigninbutton_googlemark",
-      "community": 15,
-      "norm_label": "googlemark()"
+      "source_location": "L10",
+      "community": 4,
+      "norm_label": "handleclick()",
+      "id": "login_googlesigninbutton_handleclick"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "src/app/active/page.tsx",
       "source_location": "L1",
-      "id": "src_app_active_page_tsx",
-      "community": 33,
-      "norm_label": "page.tsx"
+      "community": 34,
+      "norm_label": "page.tsx",
+      "id": "src_app_active_page_tsx"
     },
     {
       "label": "page.tsx",
       "file_type": "code",
       "source_file": "src/app/login/page.tsx",
       "source_location": "L1",
-      "id": "src_app_login_page_tsx",
-      "community": 34,
-      "norm_label": "page.tsx"
+      "community": 35,
+      "norm_label": "page.tsx",
+      "id": "src_app_login_page_tsx"
     },
     {
       "label": "client.ts",
       "file_type": "code",
       "source_file": "src/lib/supabase/client.ts",
       "source_location": "L1",
-      "id": "src_lib_supabase_client_ts",
-      "community": 22,
-      "norm_label": "client.ts"
+      "community": 23,
+      "norm_label": "client.ts",
+      "id": "src_lib_supabase_client_ts"
     },
     {
       "label": "createClient()",
       "file_type": "code",
       "source_file": "src/lib/supabase/client.ts",
       "source_location": "L3",
-      "id": "supabase_client_createclient",
-      "community": 22,
-      "norm_label": "createclient()"
+      "community": 23,
+      "norm_label": "createclient()",
+      "id": "supabase_client_createclient"
     },
     {
       "label": "server.ts",
       "file_type": "code",
       "source_file": "src/lib/supabase/server.ts",
       "source_location": "L1",
-      "id": "src_lib_supabase_server_ts",
-      "community": 5,
-      "norm_label": "server.ts"
+      "community": 4,
+      "norm_label": "server.ts",
+      "id": "src_lib_supabase_server_ts"
     },
     {
       "label": "createClient()",
       "file_type": "code",
       "source_file": "src/lib/supabase/server.ts",
       "source_location": "L4",
-      "id": "supabase_server_createclient",
-      "community": 5,
-      "norm_label": "createclient()"
+      "community": 4,
+      "norm_label": "createclient()",
+      "id": "supabase_server_createclient"
     },
     {
       "label": "Bugatti Austere Luxury Design System",
@@ -615,7 +633,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "bugatti austere luxury design system",
       "id": "design_bugatti_system"
     },
@@ -628,7 +646,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "bugatti typography trinity (display/text/mono)",
       "id": "design_typography_trinity"
     },
@@ -641,7 +659,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "button-primary (transparent pill, white outline)",
       "id": "design_pill_button"
     },
@@ -654,7 +672,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "hero-photo-band component",
       "id": "design_hero_photo_band"
     },
@@ -667,7 +685,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "spec-cell component",
       "id": "design_spec_cell"
     },
@@ -680,7 +698,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 8,
+      "community": 9,
       "norm_label": "text-input (transparent, hairline underline)",
       "id": "design_text_input"
     },
@@ -693,7 +711,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 35,
+      "community": 36,
       "norm_label": "claude.md (delegates to agents.md)",
       "id": "claude_md_pointer"
     },
@@ -706,7 +724,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 36,
+      "community": 37,
       "norm_label": "file icon",
       "id": "file_svg_icon"
     },
@@ -719,7 +737,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 37,
+      "community": 38,
       "norm_label": "vercel logo (triangle mark)",
       "id": "vercel_logo"
     },
@@ -732,7 +750,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 38,
+      "community": 39,
       "norm_label": "next.js wordmark logo (svg)",
       "id": "next_logo_svg"
     },
@@ -745,7 +763,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 39,
+      "community": 40,
       "norm_label": "globe icon (globe.svg)",
       "id": "globe_icon"
     },
@@ -758,7 +776,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 40,
+      "community": 41,
       "norm_label": "window icon (browser/window ui glyph)",
       "id": "window_icon"
     },
@@ -771,7 +789,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 41,
+      "community": 42,
       "norm_label": "business hero image - modern executive office at night",
       "id": "business_hero_image"
     },
@@ -784,7 +802,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 43,
       "norm_label": "subject: minimalist executive office interior with sleek dark desk, ergonomic leather chair, and floor-to-ceiling windows overlooking a city skyline at night",
       "id": "hero_subject_executive_office"
     },
@@ -797,7 +815,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 43,
+      "community": 44,
       "norm_label": "mood: premium, sophisticated, focused, and calm - conveying productivity, professionalism, and quiet ambition through dark cinematic lighting",
       "id": "hero_mood_premium_focused"
     },
@@ -810,7 +828,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 44,
+      "community": 45,
       "norm_label": "color palette: dark monochrome with deep blacks, charcoal grays, and subtle warm accent lighting (under-desk led glow) plus distant city light bokeh",
       "id": "hero_palette_dark_monochrome"
     },
@@ -823,7 +841,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 45,
+      "community": 46,
       "norm_label": "design intent: hero image for a landing page targeting professionals - signals serious business productivity tool, late-night focus, and high-end lifestyle aesthetic suitable for a todo/work-management product",
       "id": "hero_design_intent_landing_page"
     },
@@ -836,7 +854,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 46,
+      "community": 47,
       "norm_label": "composition: wide cinematic framing with desk on the right, illuminated cityscape visible through large window panels, strong horizontal lines and negative space on the left for text overlay",
       "id": "hero_composition_cityscape_window"
     },
@@ -940,7 +958,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "rls\u1105\u1169 \u1109\u1161\u110b\u116d\u11bc\u110c\u1161\u1107\u1167\u11af \u1103\u1166\u110b\u1175\u1110\u1165 \u1100\u1167\u11a8\u1105\u1175",
       "id": "readme_rls_isolation"
     },
@@ -953,7 +971,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 12,
       "norm_label": "austere luxury black ui",
       "id": "readme_austere_luxury_black_ui"
     },
@@ -966,7 +984,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 12,
       "norm_label": "design.md",
       "id": "readme_design_md"
     },
@@ -1070,7 +1088,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 13,
       "norm_label": "2. \u1112\u116a\u11ab\u1100\u1167\u11bc\u1107\u1167\u11ab\u1109\u116e (.env.local)",
       "id": "readme_setup_env_vars"
     },
@@ -1083,7 +1101,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 13,
       "norm_label": "next_public_supabase_url",
       "id": "readme_next_public_supabase_url"
     },
@@ -1096,7 +1114,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 13,
       "norm_label": "next_public_supabase_publishable_key",
       "id": "readme_next_public_supabase_publishable_key"
     },
@@ -1109,7 +1127,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 11,
+      "community": 13,
       "norm_label": "service_role \u110f\u1175 \u1109\u1161\u110b\u116d\u11bc \u1100\u1173\u11b7\u110c\u1175",
       "id": "readme_no_service_role"
     },
@@ -1161,7 +1179,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "5. \u1103\u1166\u110b\u1175\u1110\u1165\u1107\u1166\u110b\u1175\u1109\u1173 \u1109\u1173\u110f\u1175\u1106\u1161 \u1106\u1161\u110b\u1175\u1100\u1173\u1105\u1166\u110b\u1175\u1109\u1167\u11ab \u110c\u1165\u11a8\u110b\u116d\u11bc",
       "id": "readme_setup_db_schema"
     },
@@ -1174,7 +1192,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "supabase/migrations/ \u1103\u1175\u1105\u1166\u11a8\u1110\u1165\u1105\u1175",
       "id": "readme_supabase_migrations_dir"
     },
@@ -1187,7 +1205,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "0001_init_todos.sql",
       "id": "readme_migration_0001_init_todos"
     },
@@ -1200,7 +1218,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "0002_add_todos_position.sql",
       "id": "readme_migration_0002_add_todos_position"
     },
@@ -1213,7 +1231,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "public.todos \u1110\u1166\u110b\u1175\u1107\u1173\u11af",
       "id": "readme_todos_table"
     },
@@ -1226,7 +1244,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "rls \u110c\u1165\u11bc\u110e\u1162\u11a8",
       "id": "readme_rls_policy"
     },
@@ -1239,7 +1257,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "set_updated_at \u1110\u1173\u1105\u1175\u1100\u1165",
       "id": "readme_set_updated_at_trigger"
     },
@@ -1252,7 +1270,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "position double precision \u110f\u1165\u11af\u1105\u1165\u11b7 (dnd \u110c\u1165\u11bc\u1105\u1167\u11af)",
       "id": "readme_position_column"
     },
@@ -1265,7 +1283,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "supabase dashboard sql editor \u110c\u1165\u11a8\u110b\u116d\u11bc",
       "id": "readme_apply_via_sql_editor"
     },
@@ -1278,7 +1296,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "supabase db push (cli \u110c\u1165\u11a8\u110b\u116d\u11bc)",
       "id": "readme_apply_via_supabase_cli"
     },
@@ -1291,7 +1309,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "\u110f\u1169\u1103\u1173 \u1107\u1162\u1111\u1169 \u110c\u1165\u11ab \u1106\u1161\u110b\u1175\u1100\u1173\u1105\u1166\u110b\u1175\u1109\u1167\u11ab \u1109\u1165\u11ab\u110c\u1165\u11a8\u110b\u116d\u11bc \u110b\u116d\u1100\u116e\u1109\u1161\u1112\u1161\u11bc",
       "id": "readme_migrations_before_deploy"
     },
@@ -1486,7 +1504,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "app/_actions/todos.ts (server actions)",
       "id": "readme_actions_todos"
     },
@@ -1577,7 +1595,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 12,
       "norm_label": "public/images/business-hero.png",
       "id": "readme_business_hero_image"
     },
@@ -1603,7 +1621,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "\u1103\u1166\u110b\u1175\u1110\u1165 \u1100\u1167\u11a8\u1105\u1175 \u1103\u1161\u110e\u1173\u11bc \u1107\u1161\u11bc\u110b\u1165 (rls + getuserorthrow)",
       "id": "readme_data_isolation_layered"
     },
@@ -1629,7 +1647,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 2,
+      "community": 1,
       "norm_label": "revalidatepath('/') \u110f\u1162\u1109\u1175 \u1100\u1162\u11bc\u1109\u1175\u11ab",
       "id": "readme_revalidate_path"
     },
@@ -1642,7 +1660,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 0,
+      "community": 12,
       "norm_label": "\u1103\u1175\u110c\u1161\u110b\u1175\u11ab \u1109\u1175\u1109\u1173\u1110\u1166\u11b7 \u110c\u1165\u11a8\u110b\u116d\u11bc (bugatti\u1109\u1175\u11a8 \u1110\u1169\u110f\u1173\u11ab \u110e\u1161\u110b\u116d\u11bc)",
       "id": "readme_design_system_application"
     },
@@ -1694,7 +1712,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 47,
+      "community": 48,
       "norm_label": "korean language reasoning policy",
       "id": "agents_korean_language_policy"
     },
@@ -1733,7 +1751,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 14,
       "norm_label": "multi-user todo app purpose",
       "id": "agents_project_purpose"
     },
@@ -1746,7 +1764,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 14,
       "norm_label": "tech stack (next 16.2.4 / react 19.2.4 / tailwind v4 / ts / supabase)",
       "id": "agents_stack"
     },
@@ -1759,7 +1777,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 14,
       "norm_label": "pnpm package manager",
       "id": "agents_pnpm"
     },
@@ -1772,7 +1790,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 12,
+      "community": 14,
       "norm_label": "supabase project ref tprewdmslvayiihukefg",
       "id": "agents_supabase_project_ref"
     },
@@ -1798,7 +1816,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "src/lib/supabase/server.ts",
       "id": "agents_supabase_server_client"
     },
@@ -1811,7 +1829,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 48,
+      "community": 49,
       "norm_label": "src/lib/supabase/client.ts",
       "id": "agents_supabase_browser_client"
     },
@@ -1824,7 +1842,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "src/app/_actions/*.ts server actions",
       "id": "agents_actions_dir"
     },
@@ -1837,7 +1855,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "getuserorthrow() helper",
       "id": "agents_get_user_or_throw"
     },
@@ -1863,7 +1881,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 23,
+      "community": 25,
       "norm_label": "supabase/migrations/ ordered sql",
       "id": "agents_supabase_migrations_dir"
     },
@@ -1876,7 +1894,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 49,
+      "community": 50,
       "norm_label": "src/app/_components/ ui components",
       "id": "agents_components_dir"
     },
@@ -1915,7 +1933,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 6,
       "norm_label": "activedashboardclient",
       "id": "agents_active_dashboard_client"
     },
@@ -1941,7 +1959,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 6,
       "norm_label": "todolistview (dndcontext + sortablecontext per group)",
       "id": "agents_todo_list_view"
     },
@@ -1954,7 +1972,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 6,
       "norm_label": "todoreducer (useoptimistic add/toggle/rename/remove/reorder)",
       "id": "agents_todo_reducer"
     },
@@ -1980,7 +1998,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 50,
+      "community": 51,
       "norm_label": "src/types/ domain types",
       "id": "agents_types_dir"
     },
@@ -2058,7 +2076,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "public.todos rls with (select auth.uid()) = user_id",
       "id": "agents_rls_policy"
     },
@@ -2071,7 +2089,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "service_role key forbidden in client",
       "id": "agents_service_role_ban"
     },
@@ -2084,7 +2102,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "public.todos.position (double precision not null, single sort key)",
       "id": "agents_position_column"
     },
@@ -2097,7 +2115,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "position default extract(epoch from now())",
       "id": "agents_position_default_epoch"
     },
@@ -2110,7 +2128,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "reordertodo(id, previd, nextid, tzoffsetminutes) server action",
       "id": "agents_reorder_todo"
     },
@@ -2123,7 +2141,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "tzoffsetminutes parameter (client-controlled)",
       "id": "agents_tz_offset_minutes"
     },
@@ -2137,7 +2155,7 @@
       "author": null,
       "contributor": null,
       "rationale": "\ud074\ub77c\uc774\uc5b8\ud2b8 1\ucc28 (per-group SortableContext) + \uc11c\ubc84 \ubcf4\uac15 (dayKey \uac80\uc99d) \ub450 \ub2e8\uacc4\ub85c cross-group reorder\ub97c \ub9c9\ub294\ub2e4.",
-      "community": 1,
+      "community": 2,
       "norm_label": "same-day group reorder invariant",
       "id": "agents_same_day_group_invariant"
     },
@@ -2150,7 +2168,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 6,
       "norm_label": "client-first cross-group block (per-group dndcontext)",
       "id": "agents_client_first_defense"
     },
@@ -2164,7 +2182,7 @@
       "author": null,
       "contributor": null,
       "rationale": "\uc138 row(target/prev/next)\uc758 dayKey\uac00 \uac19\uc9c0 \uc54a\uc73c\uba74 throw \u2014 \uc815\uc0c1 \ud074\ub77c\uc774\uc5b8\ud2b8\uc758 \uc6b0\ubc1c\uc801 cross-group \ud638\ucd9c\uc744 \ubc29\uc5b4\ud55c\ub2e4.",
-      "community": 1,
+      "community": 2,
       "norm_label": "server-side localdaykey verification (offset-applied created_at)",
       "id": "agents_server_local_day_key"
     },
@@ -2178,7 +2196,7 @@
       "author": null,
       "contributor": null,
       "rationale": "offset\uc774 client-controlled\uc774\ubbc0\ub85c \uc0ac\uc6a9\uc790\uac00 \uc758\ub3c4\uc801\uc73c\ub85c \ub2e4\ub978 offset\uc744 \ubcf4\ub0b4\uba74 \uc790\uc815 \uadfc\ucc98 \uadf8\ub8f9 \uacbd\uacc4\uac00 \ud750\ub824\uc9c8 \uc218 \uc788\uc9c0\ub9cc, \ubcf8\uc778 ordering\ub9cc \uc190\uc0c1\ub418\uace0 RLS/cross-tenant isolation\uc740 \uc601\ud5a5 \uc5c6\uc73c\ubbc0\ub85c \ubc1b\uc544\ub4e4\uc778\ub2e4.",
-      "community": 1,
+      "community": 2,
       "norm_label": "self-attack acceptance (tz offset)",
       "id": "agents_self_attack_acceptance"
     },
@@ -2192,7 +2210,7 @@
       "author": null,
       "contributor": null,
       "rationale": "\ub354 \uac15\ud55c \ubcf4\uc7a5\uc774 \ud544\uc694\ud558\uba74 \uc0ac\uc6a9\uc790 TZ\ub97c DB\uc5d0 \uc800\uc7a5\ud558\uac70\ub098 \uc11c\ubc84 \uce21 day_key \uceec\ub7fc\uc744 \ub3c4\uc785\ud55c\ub2e4.",
-      "community": 1,
+      "community": 2,
       "norm_label": "stronger guarantee options (db user tz / day_key column)",
       "id": "agents_stronger_guarantee_options"
     },
@@ -2206,7 +2224,7 @@
       "author": null,
       "contributor": null,
       "rationale": "\uc218\ub9cc \ubc88 \uac19\uc740 \uc704\uce58 \uc0bd\uc785 \uc2dc position \uc218\ub834 \uac00\ub2a5 \u2014 \uadf8\ub8f9 \ub2e8\uc704 \uc7ac\uc815\ub82c \ud568\uc218\uac00 \ud5a5\ud6c4 \ud544\uc694\ud560 \uc218 \uc788\ub2e4 (\ud604\uc7ac \ubbf8\uad6c\ud604).",
-      "community": 1,
+      "community": 2,
       "norm_label": "fractional position precision collision risk",
       "id": "agents_fractional_position_collision"
     },
@@ -2219,7 +2237,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 1,
+      "community": 2,
       "norm_label": "todos_user_position_idx index",
       "id": "agents_todos_user_position_idx"
     },
@@ -2233,7 +2251,7 @@
       "author": null,
       "contributor": null,
       "rationale": "dev \uc6cc\ud06c\ud50c\ub85c\uc6b0\ub294 execute_sql, \ubc30\ud3ec \uacc4\uc57d\uc740 \ub9c8\uc774\uadf8\ub808\uc774\uc158 \ud30c\uc77c \u2014 \uc9c1\ud6c4 \ubcf4\uc548/\uc131\ub2a5 advisor\ub97c \ubaa8\ub450 \ub3cc\ub824 WARN \uc774\uc0c1\uc740 \uc989\uc2dc fix.",
-      "community": 23,
+      "community": 25,
       "norm_label": "execute_sql + get_advisors workflow",
       "id": "agents_execute_sql_workflow"
     },
@@ -2247,7 +2265,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Zustand/Jotai/React Query \ucd94\uac00 \uae08\uc9c0.",
-      "community": 9,
+      "community": 6,
       "norm_label": "useoptimistic + server action client state",
       "id": "agents_use_optimistic_pattern"
     },
@@ -2275,7 +2293,7 @@
       "author": null,
       "contributor": null,
       "rationale": "\uc0ac\uc6a9\uc790 \ub85c\uceec TZ \uae30\uc900\uc774\ub77c SSR\uacfc \ud074\ub77c\uc774\uc5b8\ud2b8 \uacb0\uacfc\uac00 \ub2e4\ub97c \uc218 \uc788\uc5b4 useSyncExternalStore \uae30\ubc18 isClient \uac00\ub4dc \ud544\uc694.",
-      "community": 9,
+      "community": 6,
       "norm_label": "daykey() ssr/client tz drift",
       "id": "agents_day_key_ssr_drift"
     },
@@ -2288,7 +2306,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 9,
+      "community": 6,
       "norm_label": "isclient guard (usesyncexternalstore)",
       "id": "agents_is_client_guard"
     },
@@ -2341,21 +2359,21 @@
       "weight": 1.0,
       "_src": "src_proxy_ts",
       "_tgt": "src_proxy_proxy",
+      "confidence_score": 1.0,
       "source": "src_proxy_ts",
-      "target": "src_proxy_proxy",
-      "confidence_score": 1.0
+      "target": "src_proxy_proxy"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/layout.tsx",
-      "source_location": "L35",
+      "source_location": "L24",
       "weight": 1.0,
       "_src": "src_app_layout_tsx",
       "_tgt": "app_layout_rootlayout",
+      "confidence_score": 1.0,
       "source": "src_app_layout_tsx",
-      "target": "app_layout_rootlayout",
-      "confidence_score": 1.0
+      "target": "app_layout_rootlayout"
     },
     {
       "relation": "contains",
@@ -2365,9 +2383,9 @@
       "weight": 1.0,
       "_src": "src_app_auth_signout_route_ts",
       "_tgt": "signout_route_post",
+      "confidence_score": 1.0,
       "source": "src_app_auth_signout_route_ts",
-      "target": "signout_route_post",
-      "confidence_score": 1.0
+      "target": "signout_route_post"
     },
     {
       "relation": "calls",
@@ -2389,9 +2407,9 @@
       "weight": 1.0,
       "_src": "src_app_auth_callback_route_ts",
       "_tgt": "callback_route_get",
+      "confidence_score": 1.0,
       "source": "src_app_auth_callback_route_ts",
-      "target": "callback_route_get",
-      "confidence_score": 1.0
+      "target": "callback_route_get"
     },
     {
       "relation": "calls",
@@ -2413,9 +2431,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_getuserorthrow",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_getuserorthrow",
-      "confidence_score": 1.0
+      "target": "actions_todos_getuserorthrow"
     },
     {
       "relation": "contains",
@@ -2425,9 +2443,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_revalidatetodoroutes",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_revalidatetodoroutes",
-      "confidence_score": 1.0
+      "target": "actions_todos_revalidatetodoroutes"
     },
     {
       "relation": "contains",
@@ -2437,9 +2455,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_localdaykey",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_localdaykey",
-      "confidence_score": 1.0
+      "target": "actions_todos_localdaykey"
     },
     {
       "relation": "contains",
@@ -2449,9 +2467,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_addtodo",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_addtodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_addtodo"
     },
     {
       "relation": "contains",
@@ -2461,9 +2479,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_toggletodo",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_toggletodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_toggletodo"
     },
     {
       "relation": "contains",
@@ -2473,9 +2491,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_renametodo",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_renametodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_renametodo"
     },
     {
       "relation": "contains",
@@ -2485,9 +2503,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_removetodo",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_removetodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_removetodo"
     },
     {
       "relation": "contains",
@@ -2497,9 +2515,9 @@
       "weight": 1.0,
       "_src": "src_app_actions_todos_ts",
       "_tgt": "actions_todos_reordertodo",
+      "confidence_score": 1.0,
       "source": "src_app_actions_todos_ts",
-      "target": "actions_todos_reordertodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_reordertodo"
     },
     {
       "relation": "calls",
@@ -2507,11 +2525,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L38",
       "weight": 1.0,
-      "_src": "actions_todos_addtodo",
-      "_tgt": "actions_todos_getuserorthrow",
+      "_src": "actions_todos_getuserorthrow",
+      "_tgt": "actions_todos_addtodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_getuserorthrow",
-      "target": "actions_todos_addtodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_addtodo"
     },
     {
       "relation": "calls",
@@ -2519,11 +2537,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L47",
       "weight": 1.0,
-      "_src": "actions_todos_toggletodo",
-      "_tgt": "actions_todos_getuserorthrow",
+      "_src": "actions_todos_getuserorthrow",
+      "_tgt": "actions_todos_toggletodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_getuserorthrow",
-      "target": "actions_todos_toggletodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_toggletodo"
     },
     {
       "relation": "calls",
@@ -2531,11 +2549,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L64",
       "weight": 1.0,
-      "_src": "actions_todos_renametodo",
-      "_tgt": "actions_todos_getuserorthrow",
+      "_src": "actions_todos_getuserorthrow",
+      "_tgt": "actions_todos_renametodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_getuserorthrow",
-      "target": "actions_todos_renametodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_renametodo"
     },
     {
       "relation": "calls",
@@ -2543,11 +2561,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L74",
       "weight": 1.0,
-      "_src": "actions_todos_removetodo",
-      "_tgt": "actions_todos_getuserorthrow",
+      "_src": "actions_todos_getuserorthrow",
+      "_tgt": "actions_todos_removetodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_getuserorthrow",
-      "target": "actions_todos_removetodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_removetodo"
     },
     {
       "relation": "calls",
@@ -2555,11 +2573,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L96",
       "weight": 1.0,
-      "_src": "actions_todos_reordertodo",
-      "_tgt": "actions_todos_getuserorthrow",
+      "_src": "actions_todos_getuserorthrow",
+      "_tgt": "actions_todos_reordertodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_getuserorthrow",
-      "target": "actions_todos_reordertodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_reordertodo"
     },
     {
       "relation": "calls",
@@ -2579,11 +2597,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L43",
       "weight": 1.0,
-      "_src": "actions_todos_addtodo",
-      "_tgt": "actions_todos_revalidatetodoroutes",
+      "_src": "actions_todos_revalidatetodoroutes",
+      "_tgt": "actions_todos_addtodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_revalidatetodoroutes",
-      "target": "actions_todos_addtodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_addtodo"
     },
     {
       "relation": "calls",
@@ -2591,11 +2609,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L53",
       "weight": 1.0,
-      "_src": "actions_todos_toggletodo",
-      "_tgt": "actions_todos_revalidatetodoroutes",
+      "_src": "actions_todos_revalidatetodoroutes",
+      "_tgt": "actions_todos_toggletodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_revalidatetodoroutes",
-      "target": "actions_todos_toggletodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_toggletodo"
     },
     {
       "relation": "calls",
@@ -2603,11 +2621,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L70",
       "weight": 1.0,
-      "_src": "actions_todos_renametodo",
-      "_tgt": "actions_todos_revalidatetodoroutes",
+      "_src": "actions_todos_revalidatetodoroutes",
+      "_tgt": "actions_todos_renametodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_revalidatetodoroutes",
-      "target": "actions_todos_renametodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_renametodo"
     },
     {
       "relation": "calls",
@@ -2615,11 +2633,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L77",
       "weight": 1.0,
-      "_src": "actions_todos_removetodo",
-      "_tgt": "actions_todos_revalidatetodoroutes",
+      "_src": "actions_todos_revalidatetodoroutes",
+      "_tgt": "actions_todos_removetodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_revalidatetodoroutes",
-      "target": "actions_todos_removetodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_removetodo"
     },
     {
       "relation": "calls",
@@ -2627,11 +2645,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L135",
       "weight": 1.0,
-      "_src": "actions_todos_reordertodo",
-      "_tgt": "actions_todos_revalidatetodoroutes",
+      "_src": "actions_todos_revalidatetodoroutes",
+      "_tgt": "actions_todos_reordertodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_revalidatetodoroutes",
-      "target": "actions_todos_reordertodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_reordertodo"
     },
     {
       "relation": "calls",
@@ -2639,11 +2657,11 @@
       "source_file": "src/app/_actions/todos.ts",
       "source_location": "L113",
       "weight": 1.0,
-      "_src": "actions_todos_reordertodo",
-      "_tgt": "actions_todos_localdaykey",
+      "_src": "actions_todos_localdaykey",
+      "_tgt": "actions_todos_reordertodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_localdaykey",
-      "target": "actions_todos_reordertodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_reordertodo"
     },
     {
       "relation": "calls",
@@ -2653,9 +2671,9 @@
       "weight": 1.0,
       "_src": "actions_todos_renametodo",
       "_tgt": "actions_todos_removetodo",
+      "confidence_score": 1.0,
       "source": "actions_todos_renametodo",
-      "target": "actions_todos_removetodo",
-      "confidence_score": 1.0
+      "target": "actions_todos_removetodo"
     },
     {
       "relation": "contains",
@@ -2665,9 +2683,9 @@
       "weight": 1.0,
       "_src": "src_app_components_activedashboardclient_tsx",
       "_tgt": "components_activedashboardclient_subscribenoop",
+      "confidence_score": 1.0,
       "source": "src_app_components_activedashboardclient_tsx",
-      "target": "components_activedashboardclient_subscribenoop",
-      "confidence_score": 1.0
+      "target": "components_activedashboardclient_subscribenoop"
     },
     {
       "relation": "contains",
@@ -2677,9 +2695,9 @@
       "weight": 1.0,
       "_src": "src_app_components_activedashboardclient_tsx",
       "_tgt": "components_activedashboardclient_handletoggle",
+      "confidence_score": 1.0,
       "source": "src_app_components_activedashboardclient_tsx",
-      "target": "components_activedashboardclient_handletoggle",
-      "confidence_score": 1.0
+      "target": "components_activedashboardclient_handletoggle"
     },
     {
       "relation": "contains",
@@ -2689,9 +2707,9 @@
       "weight": 1.0,
       "_src": "src_app_components_activedashboardclient_tsx",
       "_tgt": "components_activedashboardclient_handlerename",
+      "confidence_score": 1.0,
       "source": "src_app_components_activedashboardclient_tsx",
-      "target": "components_activedashboardclient_handlerename",
-      "confidence_score": 1.0
+      "target": "components_activedashboardclient_handlerename"
     },
     {
       "relation": "contains",
@@ -2701,9 +2719,9 @@
       "weight": 1.0,
       "_src": "src_app_components_activedashboardclient_tsx",
       "_tgt": "components_activedashboardclient_handleremove",
+      "confidence_score": 1.0,
       "source": "src_app_components_activedashboardclient_tsx",
-      "target": "components_activedashboardclient_handleremove",
-      "confidence_score": 1.0
+      "target": "components_activedashboardclient_handleremove"
     },
     {
       "relation": "contains",
@@ -2713,9 +2731,45 @@
       "weight": 1.0,
       "_src": "src_app_components_activedashboardclient_tsx",
       "_tgt": "components_activedashboardclient_handlereorder",
+      "confidence_score": 1.0,
       "source": "src_app_components_activedashboardclient_tsx",
-      "target": "components_activedashboardclient_handlereorder",
-      "confidence_score": 1.0
+      "target": "components_activedashboardclient_handlereorder"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "_src": "src_app_components_calendarwidget_tsx",
+      "_tgt": "components_calendarwidget_daykey",
+      "confidence_score": 1.0,
+      "source": "src_app_components_calendarwidget_tsx",
+      "target": "components_calendarwidget_daykey"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L56",
+      "weight": 1.0,
+      "_src": "src_app_components_calendarwidget_tsx",
+      "_tgt": "components_calendarwidget_prevmonth",
+      "confidence_score": 1.0,
+      "source": "src_app_components_calendarwidget_tsx",
+      "target": "components_calendarwidget_prevmonth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/_components/CalendarWidget.tsx",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "src_app_components_calendarwidget_tsx",
+      "_tgt": "components_calendarwidget_nextmonth",
+      "confidence_score": 1.0,
+      "source": "src_app_components_calendarwidget_tsx",
+      "target": "components_calendarwidget_nextmonth"
     },
     {
       "relation": "contains",
@@ -2725,69 +2779,69 @@
       "weight": 1.0,
       "_src": "src_app_components_todoinput_tsx",
       "_tgt": "components_todoinput_submit",
+      "confidence_score": 1.0,
       "source": "src_app_components_todoinput_tsx",
-      "target": "components_todoinput_submit",
-      "confidence_score": 1.0
+      "target": "components_todoinput_submit"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L51",
+      "source_location": "L73",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handleadd",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistclient_tsx",
-      "target": "components_todolistclient_handleadd",
-      "confidence_score": 1.0
+      "target": "components_todolistclient_handleadd"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L72",
+      "source_location": "L94",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handletoggle",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistclient_tsx",
-      "target": "components_todolistclient_handletoggle",
-      "confidence_score": 1.0
+      "target": "components_todolistclient_handletoggle"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L79",
+      "source_location": "L101",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handlerename",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistclient_tsx",
-      "target": "components_todolistclient_handlerename",
-      "confidence_score": 1.0
+      "target": "components_todolistclient_handlerename"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L86",
+      "source_location": "L108",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handleremove",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistclient_tsx",
-      "target": "components_todolistclient_handleremove",
-      "confidence_score": 1.0
+      "target": "components_todolistclient_handleremove"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListClient.tsx",
-      "source_location": "L93",
+      "source_location": "L115",
       "weight": 1.0,
       "_src": "src_app_components_todolistclient_tsx",
       "_tgt": "components_todolistclient_handlereorder",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistclient_tsx",
-      "target": "components_todolistclient_handlereorder",
-      "confidence_score": 1.0
+      "target": "components_todolistclient_handlereorder"
     },
     {
       "relation": "contains",
@@ -2797,9 +2851,9 @@
       "weight": 1.0,
       "_src": "src_app_components_todoitem_tsx",
       "_tgt": "components_todoitem_commit",
+      "confidence_score": 1.0,
       "source": "src_app_components_todoitem_tsx",
-      "target": "components_todoitem_commit",
-      "confidence_score": 1.0
+      "target": "components_todoitem_commit"
     },
     {
       "relation": "contains",
@@ -2809,9 +2863,9 @@
       "weight": 1.0,
       "_src": "src_app_components_todoitem_tsx",
       "_tgt": "components_todoitem_cancel",
+      "confidence_score": 1.0,
       "source": "src_app_components_todoitem_tsx",
-      "target": "components_todoitem_cancel",
-      "confidence_score": 1.0
+      "target": "components_todoitem_cancel"
     },
     {
       "relation": "contains",
@@ -2821,9 +2875,9 @@
       "weight": 1.0,
       "_src": "src_app_components_todoitem_tsx",
       "_tgt": "components_todoitem_beginedit",
+      "confidence_score": 1.0,
       "source": "src_app_components_todoitem_tsx",
-      "target": "components_todoitem_beginedit",
-      "confidence_score": 1.0
+      "target": "components_todoitem_beginedit"
     },
     {
       "relation": "contains",
@@ -2833,9 +2887,9 @@
       "weight": 1.0,
       "_src": "src_app_components_todolistview_tsx",
       "_tgt": "components_todolistview_subscribenoop",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistview_tsx",
-      "target": "components_todolistview_subscribenoop",
-      "confidence_score": 1.0
+      "target": "components_todolistview_subscribenoop"
     },
     {
       "relation": "contains",
@@ -2845,9 +2899,9 @@
       "weight": 1.0,
       "_src": "src_app_components_todolistview_tsx",
       "_tgt": "components_todolistview_handledragend",
+      "confidence_score": 1.0,
       "source": "src_app_components_todolistview_tsx",
-      "target": "components_todolistview_handledragend",
-      "confidence_score": 1.0
+      "target": "components_todolistview_handledragend"
     },
     {
       "relation": "contains",
@@ -2857,9 +2911,9 @@
       "weight": 1.0,
       "_src": "src_app_components_todoreducer_ts",
       "_tgt": "components_todoreducer_reduce",
+      "confidence_score": 1.0,
       "source": "src_app_components_todoreducer_ts",
-      "target": "components_todoreducer_reduce",
-      "confidence_score": 1.0
+      "target": "components_todoreducer_reduce"
     },
     {
       "relation": "contains",
@@ -2869,21 +2923,9 @@
       "weight": 1.0,
       "_src": "src_app_components_dashboard_charts_tsx",
       "_tgt": "dashboard_charts_completionring",
+      "confidence_score": 1.0,
       "source": "src_app_components_dashboard_charts_tsx",
-      "target": "dashboard_charts_completionring",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/_components/dashboard/Charts.tsx",
-      "source_location": "L63",
-      "weight": 1.0,
-      "_src": "src_app_components_dashboard_charts_tsx",
-      "_tgt": "dashboard_charts_weeklyactivity",
-      "source": "src_app_components_dashboard_charts_tsx",
-      "target": "dashboard_charts_weeklyactivity",
-      "confidence_score": 1.0
+      "target": "dashboard_charts_completionring"
     },
     {
       "relation": "contains",
@@ -2893,9 +2935,9 @@
       "weight": 1.0,
       "_src": "src_app_components_login_emailmagiclinkform_tsx",
       "_tgt": "login_emailmagiclinkform_handlesubmit",
+      "confidence_score": 1.0,
       "source": "src_app_components_login_emailmagiclinkform_tsx",
-      "target": "login_emailmagiclinkform_handlesubmit",
-      "confidence_score": 1.0
+      "target": "login_emailmagiclinkform_handlesubmit"
     },
     {
       "relation": "calls",
@@ -2913,25 +2955,25 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
-      "source_location": "L6",
+      "source_location": "L10",
       "weight": 1.0,
       "_src": "src_app_components_login_googlesigninbutton_tsx",
-      "_tgt": "login_googlesigninbutton_googlesigninbutton",
+      "_tgt": "login_googlesigninbutton_handleclick",
+      "confidence_score": 1.0,
       "source": "src_app_components_login_googlesigninbutton_tsx",
-      "target": "login_googlesigninbutton_googlesigninbutton",
-      "confidence_score": 1.0
+      "target": "login_googlesigninbutton_handleclick"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
       "source_file": "src/app/_components/login/GoogleSignInButton.tsx",
-      "source_location": "L45",
+      "source_location": "L14",
       "weight": 1.0,
-      "_src": "src_app_components_login_googlesigninbutton_tsx",
-      "_tgt": "login_googlesigninbutton_googlemark",
-      "source": "src_app_components_login_googlesigninbutton_tsx",
-      "target": "login_googlesigninbutton_googlemark",
-      "confidence_score": 1.0
+      "_src": "login_googlesigninbutton_handleclick",
+      "_tgt": "supabase_server_createclient",
+      "source": "login_googlesigninbutton_handleclick",
+      "target": "supabase_server_createclient"
     },
     {
       "relation": "contains",
@@ -2941,9 +2983,9 @@
       "weight": 1.0,
       "_src": "src_lib_supabase_client_ts",
       "_tgt": "supabase_client_createclient",
+      "confidence_score": 1.0,
       "source": "src_lib_supabase_client_ts",
-      "target": "supabase_client_createclient",
-      "confidence_score": 1.0
+      "target": "supabase_client_createclient"
     },
     {
       "relation": "contains",
@@ -2953,9 +2995,9 @@
       "weight": 1.0,
       "_src": "src_lib_supabase_server_ts",
       "_tgt": "supabase_server_createclient",
+      "confidence_score": 1.0,
       "source": "src_lib_supabase_server_ts",
-      "target": "supabase_server_createclient",
-      "confidence_score": 1.0
+      "target": "supabase_server_createclient"
     },
     {
       "relation": "conceptually_related_to",

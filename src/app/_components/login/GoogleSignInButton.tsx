@@ -30,14 +30,18 @@ export default function GoogleSignInButton() {
         type="button"
         onClick={handleClick}
         disabled={pending}
-        className="flex min-h-11 items-center justify-center gap-3 rounded-full border border-[var(--color-on-dark)] bg-transparent px-8 font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-on-dark)] transition-colors hover:bg-[var(--color-on-dark)] hover:text-[var(--color-canvas)] disabled:opacity-50"
+        className="flex min-h-11 items-center justify-center gap-3 rounded-full border border-[var(--color-hairline-strong)] bg-[var(--color-deep)] px-8 font-display text-sm font-medium text-[var(--color-on-dark)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:opacity-50"
       >
         <GoogleMark />
         <span className="whitespace-nowrap">
           {pending ? "Redirecting" : "Google"}
         </span>
       </button>
-      {error && <p className="font-text text-base text-[var(--color-warning)]">{error}</p>}
+      {error && (
+        <p className="font-text text-base text-[var(--color-error)]">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
@@ -46,7 +50,7 @@ function GoogleMark() {
   return (
     <span
       aria-hidden="true"
-      className="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[10px]"
+      className="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[10px] font-medium"
     >
       G
     </span>

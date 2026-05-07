@@ -32,7 +32,7 @@ export default function EmailMagicLinkForm() {
 
   if (status.kind === "sent") {
     return (
-      <p className="border-y border-[var(--color-success)] py-3 font-text text-base text-[var(--color-success)]">
+      <p className="rounded-[6px] border border-[var(--color-brand-border)] bg-[rgba(62,207,142,0.08)] p-3 font-text text-base text-[var(--color-success)]">
         매직링크를 <span className="text-[var(--color-on-dark)]">{email}</span>로 보냈어요.
         메일함을 확인하세요.
       </p>
@@ -43,7 +43,7 @@ export default function EmailMagicLinkForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <label
         htmlFor="email"
-        className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]"
+        className="font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]"
       >
         Email
       </label>
@@ -55,17 +55,17 @@ export default function EmailMagicLinkForm() {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
         placeholder="you@example.com"
-        className="h-12 border-0 border-b border-[var(--color-hairline-strong)] bg-transparent px-0 font-text text-xl text-[var(--color-on-dark)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-on-dark)]"
+        className="h-11 rounded-[6px] border border-[var(--color-hairline)] bg-[var(--color-deep)] px-3 font-text text-base text-[var(--color-on-dark)] outline-none transition-colors placeholder:text-[var(--color-muted)] focus:border-[var(--color-brand-border)]"
       />
       <button
         type="submit"
         disabled={status.kind === "sending"}
-        className="min-h-11 rounded-full border border-[var(--color-on-dark)] bg-transparent px-8 font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-on-dark)] transition-colors hover:bg-[var(--color-on-dark)] hover:text-[var(--color-canvas)] disabled:opacity-50"
+        className="min-h-11 rounded-full border border-[var(--color-on-dark)] bg-[var(--color-deep)] px-8 font-display text-sm font-medium text-[var(--color-on-dark)] transition-colors hover:border-[var(--color-brand)] hover:text-[var(--color-brand)] disabled:opacity-50"
       >
         {status.kind === "sending" ? "Sending" : "Send Magic Link"}
       </button>
       {status.kind === "error" && (
-        <p className="font-text text-base text-[var(--color-warning)]">
+        <p className="font-text text-base text-[var(--color-error)]">
           {status.message}
         </p>
       )}

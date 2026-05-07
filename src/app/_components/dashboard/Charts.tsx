@@ -38,7 +38,7 @@ export function CompletionRing({
             cx="0"
             cy="0"
             fill="none"
-            stroke="var(--color-on-dark)"
+            stroke="var(--color-brand)"
             strokeWidth="1.5"
             strokeDasharray={`${dash} ${c - dash}`}
             strokeDashoffset={c / 4}
@@ -48,10 +48,10 @@ export function CompletionRing({
           />
         </svg>
         <div className="min-w-0">
-          <div className="font-display text-4xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
+          <div className="font-display text-4xl font-normal leading-none text-[var(--color-on-dark)]">
             {Math.round(pct * 100)}%
           </div>
-          <div className="mt-2 font-precision text-[10px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+          <div className="mt-2 font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
             {active} active · {completed} done
           </div>
         </div>
@@ -77,7 +77,10 @@ export function WeeklyActivity({
           const h = Math.round((n / max) * 100);
           const isLast = i === counts.length - 1;
           return (
-            <div key={i} className="flex min-w-0 flex-1 flex-col items-center gap-2">
+            <div
+              key={i}
+              className="flex min-w-0 flex-1 flex-col items-center gap-2"
+            >
               <div className="flex h-[100px] w-full items-end">
                 <div
                   className="motion-chart-y w-full"
@@ -86,21 +89,21 @@ export function WeeklyActivity({
                     height: `${h}%`,
                     minHeight: n > 0 ? "2px" : "0",
                     background: isLast
-                      ? "var(--color-on-dark)"
+                      ? "var(--color-brand)"
                       : "var(--color-body)",
                     opacity: isLast ? 1 : 0.4,
                   } as CSSProperties}
                   aria-label={`${labels[i]}: ${n}`}
                 />
               </div>
-              <div className="font-precision text-[9px] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+              <div className="font-precision text-[9px] uppercase tracking-[1.2px] text-[var(--color-muted)]">
                 {labels[i]}
               </div>
             </div>
           );
         })}
       </div>
-      <div className="mt-4 font-precision text-[10px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+      <div className="mt-4 font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
         {total} total · peak {max}
       </div>
     </DashboardCard>
@@ -126,13 +129,13 @@ export function AgeBuckets({
           const w = Math.round((row.value / max) * 100);
           return (
             <div key={row.key} className="flex flex-col gap-1.5">
-              <div className="flex items-baseline justify-between font-precision text-[10px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+              <div className="flex items-baseline justify-between font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
                 <span>{row.label}</span>
                 <span className="text-[var(--color-on-dark)]">{row.value}</span>
               </div>
               <div className="h-[3px] w-full bg-[var(--color-hairline)]">
                 <div
-                  className="chart-age-bar h-full bg-[var(--color-on-dark)]"
+                  className="chart-age-bar h-full bg-[var(--color-brand)]"
                   style={{
                     "--motion-delay": `${160 + i * 70}ms`,
                     width: `${w}%`,
@@ -155,8 +158,8 @@ function DashboardCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="chart-card flex flex-col border-t border-[var(--color-hairline)] pt-6">
-      <p className="font-precision text-[10px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+    <div className="chart-card flex flex-col rounded-[8px] border border-[var(--color-hairline)] bg-[var(--color-deep)] p-5">
+      <p className="font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
         {label}
       </p>
       <div className="mt-6">{children}</div>

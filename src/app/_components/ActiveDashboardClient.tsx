@@ -104,22 +104,22 @@ export default function ActiveDashboardClient({
       <AppHeader userEmail={userEmail} />
 
       <section className="border-b border-[var(--color-hairline)]">
-        <div className="mx-auto w-full max-w-7xl px-4 pb-16 pt-12 sm:px-8 md:pt-16">
+        <div className="mx-auto w-full max-w-7xl px-4 pb-14 pt-12 sm:px-8 md:pb-20 md:pt-16">
           <p
-            className="motion-rise font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]"
+            className="motion-rise font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]"
             style={{ "--motion-delay": "40ms" } as CSSProperties}
           >
             Active register
           </p>
           <h1
-            className="motion-rise mt-3 max-w-3xl font-display text-4xl uppercase leading-[1.08] tracking-[0.08em] text-[var(--color-on-dark)] sm:text-5xl"
+            className="motion-rise mt-3 max-w-3xl font-display text-5xl font-normal leading-none text-[var(--color-on-dark)] sm:text-6xl md:text-[72px]"
             style={{ "--motion-delay": "120ms" } as CSSProperties}
           >
             In Progress
           </h1>
 
           <div
-            className="motion-rise mt-12 grid gap-10 md:grid-cols-3"
+            className="motion-rise mt-10 grid gap-4 md:grid-cols-3"
             style={{ "--motion-delay": "200ms" } as CSSProperties}
           >
             <CompletionRing
@@ -135,12 +135,12 @@ export default function ActiveDashboardClient({
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-7xl px-4 py-16 sm:px-8 md:py-20">
+      <section className="mx-auto w-full max-w-7xl px-4 py-12 sm:px-8 md:py-20">
         <div className="mb-10">
-          <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+          <p className="font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
             Current register
           </p>
-          <h2 className="mt-3 font-display text-3xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
+          <h2 className="mt-3 font-display text-4xl font-normal leading-tight text-[var(--color-on-dark)]">
             진행중
           </h2>
         </div>

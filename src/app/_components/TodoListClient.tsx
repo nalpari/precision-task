@@ -16,6 +16,7 @@ import {
   toggleTodo,
 } from "../_actions/todos";
 import AppHeader from "./AppHeader";
+import CalendarWidget from "./CalendarWidget";
 import FilterTabs from "./FilterTabs";
 import TodoInput from "./TodoInput";
 import TodoListView from "./TodoListView";
@@ -29,6 +30,7 @@ export default function TodoListClient({
   userEmail: string | null;
 }) {
   const [filter, setFilter] = useState<TodoFilter>("all");
+  const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [optimistic, applyOptimistic] = useOptimistic(initial, reduce);
 
   const counts = useMemo(
@@ -43,10 +45,30 @@ export default function TodoListClient({
     counts.all === 0 ? 0 : Math.round((counts.completed / counts.all) * 100);
 
   const visible = useMemo(() => {
-    if (filter === "active") return optimistic.filter((todo) => !todo.completed);
-    if (filter === "completed") return optimistic.filter((todo) => todo.completed);
-    return optimistic;
-  }, [optimistic, filter]);
+    let base = optimistic;
+    if (filter === "active") base = base.filter((todo) => !todo.completed);
+    else if (filter === "completed")
+      base = base.filter((todo) => todo.completed);
+
+    if (selectedDate) {
+      return base.filter((todo) => {
+        const d = new Date(todo.created_at);
+        return dayKey(d) === selectedDate;
+      });
+    }
+
+    const uniqueKeys = [
+      ...new Set(
+        base
+          .map((todo) => dayKey(new Date(todo.created_at)))
+          .sort((a, b) => (a > b ? -1 : 1)),
+      ),
+    ].slice(0, 5);
+
+    return base.filter((todo) =>
+      uniqueKeys.includes(dayKey(new Date(todo.created_at))),
+    );
+  }, [optimistic, filter, selectedDate]);
 
   function handleAdd(title: string) {
     const tempId = `optimistic-${crypto.randomUUID()}`;
@@ -112,59 +134,87 @@ export default function TodoListClient({
   return (
     <main className="min-h-screen bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
       <AppHeader userEmail={userEmail} />
-      <section className="hero-photo-band relative min-h-[560px] border-b border-[var(--color-hairline)]">
-        <div className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-20 pt-20 sm:px-8 md:pt-28">
-          <p
-            className="motion-rise font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]"
-            style={{ "--motion-delay": "40ms" } as CSSProperties}
-          >
-            Private task ledger
-          </p>
-          <h1
-            className="motion-rise mt-5 max-w-3xl font-display text-5xl uppercase leading-[1.08] tracking-[0.08em] text-[var(--color-on-dark)] sm:text-6xl md:text-[64px]"
-            style={{ "--motion-delay": "120ms" } as CSSProperties}
-          >
-            Precision Tasks
-          </h1>
-          <p
-            className="motion-rise mt-6 max-w-xl font-text text-lg leading-7 text-[var(--color-body)]"
-            style={{ "--motion-delay": "200ms" } as CSSProperties}
-          >
-            오늘의 할 일을 조용하게 정렬하고, 진행 상태를 빠르게 갱신하세요.
-          </p>
+      <section className="border-b border-[var(--color-hairline)] bg-[var(--color-canvas)]">
+        <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-14 pt-12 sm:px-8 md:grid-cols-[minmax(0,0.9fr)_minmax(320px,1.1fr)] md:items-center md:gap-12 md:pb-20 md:pt-20">
+          <div className="min-w-0">
+            <p
+              className="motion-rise font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]"
+              style={{ "--motion-delay": "40ms" } as CSSProperties}
+            >
+              Private task console
+            </p>
+            <h1
+              className="motion-rise mt-5 max-w-3xl font-display text-5xl font-normal leading-none text-[var(--color-on-dark)] sm:text-6xl md:text-[72px]"
+              style={{ "--motion-delay": "120ms" } as CSSProperties}
+            >
+              Ship today&apos;s work from one quiet queue.
+            </h1>
+            <p
+              className="motion-rise mt-6 max-w-xl font-text text-base leading-6 text-[var(--color-body)]"
+              style={{ "--motion-delay": "200ms" } as CSSProperties}
+            >
+              오늘의 할 일을 등록하고, 상태를 빠르게 갱신하고, 흐름을 잃지 않게
+              정렬하세요.
+            </p>
+
+            <div
+              className="motion-rise mt-8 max-w-2xl rounded-[8px] border border-[var(--color-brand-border)] bg-[var(--color-surface-soft)] p-4 sm:p-5"
+              style={{ "--motion-delay": "280ms" } as CSSProperties}
+            >
+              <TodoInput onAdd={handleAdd} />
+            </div>
+          </div>
 
           <div
-            className="motion-rise mt-12 max-w-2xl"
-            style={{ "--motion-delay": "280ms" } as CSSProperties}
-          >
-            <TodoInput onAdd={handleAdd} />
-          </div>
+            className="motion-rise hero-photo-panel min-h-[260px] rounded-[8px] border border-[var(--color-hairline)] md:min-h-[420px]"
+            style={{ "--motion-delay": "180ms" } as CSSProperties}
+            aria-hidden="true"
+          />
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-8 md:py-24 lg:grid-cols-[280px_1fr]">
-        <aside className="border-t border-[var(--color-hairline)]">
-          <SpecCell value={counts.all} label="Total" delay="0ms" />
-          <SpecCell value={counts.active} label="Active" delay="80ms" />
-          <SpecCell
-            value={counts.completed}
-            label="Complete"
-            delay="160ms"
-          />
-          <SpecCell
-            value={`${completionRate}%`}
-            label="Completion"
-            delay="240ms"
+      <section className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-12 sm:px-8 md:py-20 lg:grid-cols-[300px_1fr]">
+        <aside>
+          <div className="grid grid-cols-2 overflow-hidden rounded-[8px] border border-[var(--color-hairline)] bg-[var(--color-deep)] lg:grid-cols-1">
+            <SpecCell
+              value={counts.all}
+              label="Total"
+              delay="0ms"
+              dividerClass="border-b border-r lg:border-r-0"
+            />
+            <SpecCell
+              value={counts.active}
+              label="Active"
+              delay="80ms"
+              dividerClass="border-b"
+            />
+            <SpecCell
+              value={counts.completed}
+              label="Complete"
+              delay="160ms"
+              dividerClass="border-r lg:border-b lg:border-r-0"
+            />
+            <SpecCell
+              value={`${completionRate}%`}
+              label="Completion"
+              delay="240ms"
+              dividerClass=""
+            />
+          </div>
+          <CalendarWidget
+            todos={optimistic}
+            selectedDate={selectedDate}
+            onSelectDate={setSelectedDate}
           />
         </aside>
 
         <div className="min-w-0">
-          <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+              <p className="font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
                 Current register
               </p>
-              <h2 className="mt-3 font-display text-3xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
+              <h2 className="mt-3 font-display text-4xl font-normal leading-tight text-[var(--color-on-dark)]">
                 Work Queue
               </h2>
             </div>
@@ -191,22 +241,31 @@ function SpecCell({
   value,
   label,
   delay,
+  dividerClass,
 }: {
   value: number | string;
   label: string;
   delay: string;
+  dividerClass: string;
 }) {
   return (
     <div
-      className="motion-rise motion-hover-line border-b border-[var(--color-hairline)] py-6"
+      className={`motion-rise motion-hover-line border-[var(--color-hairline)] p-5 ${dividerClass}`}
       style={{ "--motion-delay": delay } as CSSProperties}
     >
-      <div className="font-display text-3xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
+      <div className="font-display text-3xl font-normal leading-none text-[var(--color-on-dark)]">
         {value}
       </div>
-      <div className="mt-2 font-precision text-[11px] uppercase tracking-[0.2em] text-[var(--color-muted)]">
+      <div className="mt-2 font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
         {label}
       </div>
     </div>
   );
+}
+
+function dayKey(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }

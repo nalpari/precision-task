@@ -112,7 +112,7 @@ export default function TodoListView({
 
   if (todos.length === 0) {
     return (
-      <p className="border-y border-[var(--color-hairline)] px-0 py-10 text-center font-text text-lg text-[var(--color-muted)]">
+      <p className="rounded-[8px] border border-[var(--color-hairline)] bg-[var(--color-deep)] px-4 py-10 text-center font-text text-base text-[var(--color-muted)]">
         {emptyMessage}
       </p>
     );
@@ -123,7 +123,7 @@ export default function TodoListView({
       {groups.map((group) => (
         <section key={group.key}>
           {group.label !== null && (
-            <h3 className="border-b border-[var(--color-hairline)] pb-3 font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+            <h3 className="mb-3 font-precision text-xs uppercase tracking-[1.2px] text-[var(--color-muted)]">
               {group.label}
             </h3>
           )}
@@ -137,7 +137,7 @@ export default function TodoListView({
               items={group.items.map((t) => t.id)}
               strategy={verticalListSortingStrategy}
             >
-              <ul>
+              <ul className="overflow-hidden rounded-[8px] border border-[var(--color-hairline)] bg-[var(--color-deep)]">
                 {group.items.map((todo) => (
                   <TodoItem
                     key={todo.id}

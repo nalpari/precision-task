@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/", label: "Work Queue" },
+  { href: "/", label: "Todos" },
   { href: "/active", label: "Active" },
 ];
 
@@ -12,16 +12,22 @@ export default function AppHeader({ userEmail }: { userEmail: string | null }) {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-[var(--color-hairline)] bg-[var(--color-canvas)] text-[var(--color-on-dark)]">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-5 sm:px-8">
+    <header className="sticky top-0 z-20 border-b border-[var(--color-hairline)] bg-[rgba(23,23,23,0.88)] text-[var(--color-on-dark)] backdrop-blur">
+      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:flex-nowrap sm:px-8">
         <Link
           href="/"
-          className="font-display text-base uppercase tracking-[0.22em] text-[var(--color-on-dark)]"
+          className="flex min-w-0 items-center gap-2 font-display text-sm font-medium leading-none text-[var(--color-on-dark)]"
         >
-          Precision Tasks
+          <span
+            aria-hidden="true"
+            className="grid h-5 w-5 place-items-center rounded-[6px] border border-[var(--color-brand-border)] bg-[rgba(62,207,142,0.08)]"
+          >
+            <span className="h-2.5 w-2.5 rounded-[3px] bg-[var(--color-brand)]" />
+          </span>
+          <span className="truncate">My Todo</span>
         </Link>
 
-        <nav className="flex items-center gap-6">
+        <nav className="order-3 flex w-full items-center gap-1 sm:order-none sm:w-auto">
           {links.map((link) => {
             const active =
               link.href === "/"
@@ -33,8 +39,8 @@ export default function AppHeader({ userEmail }: { userEmail: string | null }) {
                 href={link.href}
                 className={
                   active
-                    ? "font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-on-dark)] underline underline-offset-[6px]"
-                    : "font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)] hover:text-[var(--color-on-dark)]"
+                    ? "rounded-full border border-[var(--color-brand-border)] bg-[rgba(62,207,142,0.08)] px-3 py-2 font-display text-sm font-medium leading-none text-[var(--color-on-dark)]"
+                    : "rounded-full border border-transparent px-3 py-2 font-display text-sm font-medium leading-none text-[var(--color-body)] transition-colors hover:text-[var(--color-on-dark)]"
                 }
               >
                 {link.label}
@@ -47,12 +53,12 @@ export default function AppHeader({ userEmail }: { userEmail: string | null }) {
           <form
             action="/auth/signout"
             method="post"
-            className="flex items-center gap-4"
+            className="flex min-w-0 items-center gap-3"
           >
-            <span className="hidden max-w-48 truncate font-precision text-[10px] uppercase tracking-[0.16em] text-[var(--color-muted)] sm:inline">
+            <span className="hidden max-w-48 truncate font-display text-xs text-[var(--color-muted)] md:inline">
               {userEmail}
             </span>
-            <button className="font-precision text-xs uppercase tracking-[0.22em] text-[var(--color-body)] transition-colors hover:text-[var(--color-on-dark)]">
+            <button className="rounded-[6px] border border-transparent px-2 py-1.5 font-display text-sm font-medium text-[var(--color-body)] transition-colors hover:border-[var(--color-hairline)] hover:text-[var(--color-on-dark)]">
               Logout
             </button>
           </form>
