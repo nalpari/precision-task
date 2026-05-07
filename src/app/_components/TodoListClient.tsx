@@ -1,6 +1,12 @@
 "use client";
 
-import { startTransition, useMemo, useOptimistic, useState } from "react";
+import {
+  startTransition,
+  type CSSProperties,
+  useMemo,
+  useOptimistic,
+  useState,
+} from "react";
 import type { Todo, TodoFilter } from "@/types/todo";
 import {
   addTodo,
@@ -108,17 +114,29 @@ export default function TodoListClient({
       <AppHeader userEmail={userEmail} />
       <section className="hero-photo-band relative min-h-[560px] border-b border-[var(--color-hairline)]">
         <div className="mx-auto flex w-full max-w-7xl flex-col px-4 pb-20 pt-20 sm:px-8 md:pt-28">
-          <p className="font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]">
+          <p
+            className="motion-rise font-precision text-[11px] uppercase tracking-[0.22em] text-[var(--color-muted)]"
+            style={{ "--motion-delay": "40ms" } as CSSProperties}
+          >
             Private task ledger
           </p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl uppercase leading-[1.08] tracking-[0.08em] text-[var(--color-on-dark)] sm:text-6xl md:text-[64px]">
+          <h1
+            className="motion-rise mt-5 max-w-3xl font-display text-5xl uppercase leading-[1.08] tracking-[0.08em] text-[var(--color-on-dark)] sm:text-6xl md:text-[64px]"
+            style={{ "--motion-delay": "120ms" } as CSSProperties}
+          >
             Precision Tasks
           </h1>
-          <p className="mt-6 max-w-xl font-text text-lg leading-7 text-[var(--color-body)]">
+          <p
+            className="motion-rise mt-6 max-w-xl font-text text-lg leading-7 text-[var(--color-body)]"
+            style={{ "--motion-delay": "200ms" } as CSSProperties}
+          >
             오늘의 할 일을 조용하게 정렬하고, 진행 상태를 빠르게 갱신하세요.
           </p>
 
-          <div className="mt-12 max-w-2xl">
+          <div
+            className="motion-rise mt-12 max-w-2xl"
+            style={{ "--motion-delay": "280ms" } as CSSProperties}
+          >
             <TodoInput onAdd={handleAdd} />
           </div>
         </div>
@@ -126,10 +144,18 @@ export default function TodoListClient({
 
       <section className="mx-auto grid w-full max-w-7xl gap-12 px-4 py-16 sm:px-8 md:py-24 lg:grid-cols-[280px_1fr]">
         <aside className="border-t border-[var(--color-hairline)]">
-          <SpecCell value={counts.all} label="Total" />
-          <SpecCell value={counts.active} label="Active" />
-          <SpecCell value={counts.completed} label="Complete" />
-          <SpecCell value={`${completionRate}%`} label="Completion" />
+          <SpecCell value={counts.all} label="Total" delay="0ms" />
+          <SpecCell value={counts.active} label="Active" delay="80ms" />
+          <SpecCell
+            value={counts.completed}
+            label="Complete"
+            delay="160ms"
+          />
+          <SpecCell
+            value={`${completionRate}%`}
+            label="Completion"
+            delay="240ms"
+          />
         </aside>
 
         <div className="min-w-0">
@@ -161,9 +187,20 @@ export default function TodoListClient({
   );
 }
 
-function SpecCell({ value, label }: { value: number | string; label: string }) {
+function SpecCell({
+  value,
+  label,
+  delay,
+}: {
+  value: number | string;
+  label: string;
+  delay: string;
+}) {
   return (
-    <div className="border-b border-[var(--color-hairline)] py-6">
+    <div
+      className="motion-rise motion-hover-line border-b border-[var(--color-hairline)] py-6"
+      style={{ "--motion-delay": delay } as CSSProperties}
+    >
       <div className="font-display text-3xl uppercase tracking-[0.08em] text-[var(--color-on-dark)]">
         {value}
       </div>
