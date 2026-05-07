@@ -7,7 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Memo
 - task를 수행할때 항상 karpathy-guidelines 를 따른다.
 - 모든 답변과 추론과정 및 질문은 한국어로 해줘.
-- task 를 진행하면서 중간중간 흐름에 따라 뚜렷한 단락별로 commit을 진행해.
+- 한 문장으로 설명되는 의미 단위로 commit 진행해줘.
 - task를 마무리 할때마다 필요에 따라 AGENTS.md, README.md 문서를 업데이트 하고, graphify graph 도 현재 상태에 맞게 업데이트 해줘.
 
 ## Project Snapshot
