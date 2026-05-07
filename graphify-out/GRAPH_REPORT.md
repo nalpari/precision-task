@@ -1,7 +1,8 @@
-# Graph Report - .  (2026-05-07)
+# Graph Report - my-todo  (2026-05-07)
 
 ## Corpus Check
-- cluster-only mode — file stats not available
+- 27 files · ~116,111 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
 - 196 nodes · 176 edges · 31 communities detected
