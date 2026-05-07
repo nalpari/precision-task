@@ -457,7 +457,7 @@
       "label": "handleDragEnd()",
       "file_type": "code",
       "source_file": "src/app/_components/TodoListView.tsx",
-      "source_location": "L97",
+      "source_location": "L98",
       "id": "components_todolistview_handledragend",
       "community": 13,
       "norm_label": "handledragend()"
@@ -2841,7 +2841,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/_components/TodoListView.tsx",
-      "source_location": "L97",
+      "source_location": "L98",
       "weight": 1.0,
       "_src": "src_app_components_todolistview_tsx",
       "_tgt": "components_todolistview_handledragend",
