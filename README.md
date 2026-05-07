@@ -10,6 +10,7 @@ Supabase로 인증·데이터를 처리하는 Next.js 16 / React 19 기반의 �
 - `useOptimistic` 기반 즉시 반영 UX
 - RLS로 사용자별 데이터 격리
 - `DESIGN.md` 기반 austere luxury black UI (사진 히어로, outline pill CTA, 헤어라인 목록)
+- reduced-motion-aware CSS reveal 애니메이션 (hero, todo 카운트, active 차트)
 
 ## 기술 스택
 
@@ -100,6 +101,8 @@ src/
 └── app/
     ├── layout.tsx              # 루트 레이아웃 (폰트, metadata)
     ├── page.tsx                # 보호된 todo 페이지 (Server Component, 인증 게이트)
+    ├── active/
+    │   └── page.tsx            # 보호된 active 대시보드 페이지
     ├── login/
     │   └── page.tsx            # 로그인 화면
     ├── auth/
@@ -109,9 +112,12 @@ src/
     │   └── todos.ts            # 'use server' — addTodo / toggleTodo / renameTodo / removeTodo
     └── _components/
         ├── TodoListClient.tsx  # Client — useOptimistic + filter
+        ├── ActiveDashboardClient.tsx
         ├── TodoInput.tsx
         ├── TodoItem.tsx        # 인라인 편집 포함
         ├── FilterTabs.tsx
+        ├── dashboard/
+        │   └── Charts.tsx      # 자체 SVG 차트
         └── login/
             ├── EmailMagicLinkForm.tsx
             └── GoogleSignInButton.tsx
