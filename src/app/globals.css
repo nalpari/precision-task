@@ -147,7 +147,13 @@ button:disabled {
 }
 
 .chart-ring-value {
-  transition: stroke-dasharray var(--motion-slow) var(--motion-ease-out);
+  animation: ring-grow var(--motion-slow) var(--motion-ease-out) both;
+}
+
+@keyframes ring-grow {
+  from {
+    stroke-dasharray: 0 100000;
+  }
 }
 
 .chart-age-bar {
